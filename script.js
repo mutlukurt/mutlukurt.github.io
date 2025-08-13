@@ -4,23 +4,17 @@
   const toggle = document.getElementById('themeToggle');
 
   const saved = localStorage.getItem('theme');
-  if (saved === 'dark' || saved === 'light') {
-    root.setAttribute('data-theme', saved);
-  } else {
-    root.setAttribute('data-theme', 'auto');
-  }
+  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = (saved === 'dark' || saved === 'light') ? saved : (systemPrefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initial);
 
   toggle?.addEventListener('click', () => {
     // Smooth transition using View Transitions API when available
     const apply = () => {
       const current = root.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : current === 'light' ? 'auto' : 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
-      if (next === 'auto') {
-        localStorage.removeItem('theme');
-      } else {
-        localStorage.setItem('theme', next);
-      }
+      localStorage.setItem('theme', next);
     };
 
     if (document.startViewTransition) {
