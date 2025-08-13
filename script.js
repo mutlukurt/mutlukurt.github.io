@@ -11,13 +11,22 @@
   }
 
   toggle?.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : current === 'light' ? 'auto' : 'dark';
-    root.setAttribute('data-theme', next);
-    if (next === 'auto') {
-      localStorage.removeItem('theme');
+    // Smooth transition using View Transitions API when available
+    const apply = () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : current === 'light' ? 'auto' : 'dark';
+      root.setAttribute('data-theme', next);
+      if (next === 'auto') {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', next);
+      }
+    };
+
+    if (document.startViewTransition) {
+      document.startViewTransition(apply);
     } else {
-      localStorage.setItem('theme', next);
+      apply();
     }
   });
 })();
