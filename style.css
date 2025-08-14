@@ -251,6 +251,9 @@ html[data-theme="dark"] .hero-blob { color: #3a2e12; }
   transition: background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
 }
 
+.bio-section { margin-bottom: 16px; }
+.bio-title { margin: 0 0 8px; font-size: 16px; font-weight: 700; }
+
 .links { margin-top: 16px; }
 
 /* Videos UI */
