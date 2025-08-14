@@ -40,13 +40,15 @@
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease}
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
       .reveal.show { opacity: 1; transform: translateY(0); }
       .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
       .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
     </style>
   </head>
-  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom">
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Top section -->
       <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start">
