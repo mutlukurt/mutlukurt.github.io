@@ -148,4 +148,77 @@
   });
 })();
 
+// Responsive optimizations and touch device support
+(function(){
+  // Detect touch device
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  // Add touch-specific classes
+  if (isTouch) {
+    document.documentElement.classList.add('touch-device');
+  }
+  
+  // Responsive image loading
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src || img.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+  }
+  
+  // Mobile menu improvements
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (navToggle && navMenu) {
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !navMenu.classList.contains('hidden')) {
+        navMenu.classList.add('hidden');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  
+  // Smooth scrolling polyfill for older browsers
+  if (!('scrollBehavior' in document.documentElement.style)) {
+    const smoothScrollPolyfill = () => {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+    };
+    
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'auto', block: 'start' });
+          }
+        }
+      });
+    });
+  }
+})();
+
 
