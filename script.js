@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
       iframe.width = '560';
       iframe.height = '315';
       iframe.title = 'Video player';
-      iframe.loading = 'lazy';
+      iframe.loading = 'eager';
+      iframe.fetchPriority = 'high';
       iframe.referrerPolicy = 'no-referrer';
       iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       host.appendChild(iframe);
@@ -65,24 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return iframe;
   };
 
-  // Lazy create when container becomes visible (mobile/tablet friendly)
+  // Create immediately so it is ready on mobile without delay
   if (host && currentId) {
-    const loadInitial = () => createIframe(currentId, false);
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            loadInitial();
-            obs.disconnect();
-          }
-        });
-      }, { rootMargin: '200px' });
-      obs.observe(host);
-    } else if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadInitial);
-    } else {
-      setTimeout(loadInitial, 200);
-    }
+    createIframe(currentId, false);
   }
 
   document.querySelectorAll('.video-btn').forEach((btn) => {
