@@ -21,6 +21,8 @@
 
   --social-bg: #f5f3ff;
   --social-border: #8b5cf6;
+  --accent: #8b5cf6;
+  --accent-2: #0ea5e9;
 }
 
 /* Force theme overrides when toggled */
@@ -66,6 +68,8 @@ html[data-theme="dark"] {
   --creative-border: #f472b6;
   --social-bg: #24222e;
   --social-border: #a78bfa;
+  --accent: #a78bfa;
+  --accent-2: #22d3ee;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -96,7 +100,10 @@ html, body {
 }
 
 html {
-  background: var(--bg);
+  background:
+    radial-gradient(900px 600px at 95% -5%, rgba(59,130,246,0.14), transparent 60%),
+    radial-gradient(800px 600px at -10% 20%, rgba(139,92,246,0.16), transparent 60%),
+    var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
   transition: background-color .25s ease, color .25s ease;
@@ -182,6 +189,7 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
   width: 100%;
   display: grid;
   place-items: center;
+  position: relative;
 }
 
 /* Ensure the profile image never fills the background */
@@ -192,6 +200,17 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
   border-radius: 24px;
   box-shadow: var(--shadow);
   display: block;
+}
+
+.hero::before {
+  content: '';
+  width: 240px;
+  height: 280px;
+  border-radius: 36px;
+  background: linear-gradient(180deg, rgba(14,165,233,0.35), rgba(14,165,233,0.15));
+  box-shadow: 0 0 0 2px rgba(167,139,250,0.5), 0 30px 80px rgba(0,0,0,0.35);
+  position: absolute;
+  z-index: -1;
 }
 
 .hero-blob { width: 100%; color: #fde68a; display: block; }
@@ -242,14 +261,15 @@ html[data-theme="dark"] .hero-blob { color: #3a2e12; }
 }
 
 .bio {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(139,92,246,0.10), rgba(14,165,233,0.06));
+  border: 1px solid rgba(167,139,250,0.45);
   padding: 12px 14px;
-  border-radius: 14px;
+  border-radius: 24px;
   line-height: 1.6;
   margin: 8px 0;
   transition: background-color .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
   text-align: center;
+  box-shadow: 0 0 0 1px rgba(167,139,250,0.2) inset, 0 24px 60px rgba(0,0,0,0.3);
 }
 
 .bio-section { margin-bottom: 16px; }
@@ -260,7 +280,7 @@ html[data-theme="dark"] .hero-blob { color: #3a2e12; }
 /* Videos UI */
 .videos { margin-top: 22px; }
 .videos h2 { margin: 0 0 12px; font-size: 18px; text-align: center; }
-.video-player { background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+.video-player { background: linear-gradient(180deg, rgba(139,92,246,0.08), rgba(14,165,233,0.05)); border: 1px solid rgba(167,139,250,0.45); border-radius: 24px; box-shadow: 0 0 0 1px rgba(167,139,250,0.18) inset, 0 24px 60px rgba(0,0,0,0.3); overflow: hidden; }
 .video-header { padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .video-title { font-weight: 600; }
 .video-frame-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
