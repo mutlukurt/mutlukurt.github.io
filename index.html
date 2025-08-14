@@ -14,7 +14,24 @@
     <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css">
+    <script>
+      // Mute Tailwind Play CDN production warning in console (keeps other warnings)
+      const __tw_warn = console.warn.bind(console);
+      console.warn = (...args) => {
+        const m = args && args[0] ? String(args[0]) : '';
+        if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        __tw_warn(...args);
+      };
+    </script>
+    <style>
+      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease}
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
+      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
+      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -33,9 +50,8 @@
         }
       }
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom">
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Minimal headline hero -->
       <section class="reveal show mb-6 md:mb-8">
@@ -106,7 +122,7 @@
       </section>
 
       <!-- Bottom section: grouped categories -->
-      <section class="no-cv mt-10 md:mt-16 space-y-6">
+      <section class="mt-10 md:mt-16 space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Education -->
           <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
@@ -193,7 +209,7 @@
       </section>
 
       <!-- Video previews -->
-      <section class="cv mt-10 md:mt-16 reveal">
+      <section class="mt-10 md:mt-16 reveal">
         <h2 class="text-center text-white text-xl font-semibold mb-4">Video Previews of Our Products</h2>
         <div class="rounded-2xl bg-card/90 backdrop-blur glow p-4">
           <div class="aspect-video rounded-xl overflow-hidden photo-glow bg-blueAccent/10">
@@ -208,7 +224,7 @@
       </section>
 
       <!-- Links section -->
-      <section class="cv mt-10 md:mt-16 reveal">
+      <section class="mt-10 md:mt-16 reveal">
         <h2 class="text-center text-white text-xl font-semibold mb-4">Explore More</h2>
         <ul class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
           <!-- Generated from earlier list -->
