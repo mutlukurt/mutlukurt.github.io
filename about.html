@@ -6,6 +6,15 @@
     <title>About Me — Mutlu Kurt</title>
     <meta name="description" content="About me — portfolio-style page for Mutlu Kurt">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script>
+      // Mute Tailwind Play CDN production warning in console (keeps other warnings)
+      const __tw_warn = console.warn.bind(console);
+      console.warn = (...args) => {
+        const m = args && args[0] ? String(args[0]) : '';
+        if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        __tw_warn(...args);
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
