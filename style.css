@@ -250,6 +250,14 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
   gap: 12px;
 }
 
+.link-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 4px 2px;
+  margin-top: 14px;
+}
+
 .pill {
   position: relative;
   display: block;
