@@ -66,12 +66,23 @@ document.addEventListener('DOMContentLoaded', () => {
     return iframe;
   };
 
-  // Preload first frame on idle
+  // Lazy create when container becomes visible (mobile/tablet friendly)
   if (host && currentId) {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => createIframe(currentId, false));
+    const loadInitial = () => createIframe(currentId, false);
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            loadInitial();
+            obs.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+      obs.observe(host);
+    } else if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadInitial);
     } else {
-      setTimeout(() => createIframe(currentId, false), 200);
+      setTimeout(loadInitial, 200);
     }
   }
 
