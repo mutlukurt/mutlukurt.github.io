@@ -78,7 +78,6 @@
     { id: 'about', el: document.getElementById('about') },
     { id: 'work', el: document.getElementById('work') },
     { id: 'products', el: document.getElementById('products') },
-    { id: 'links', el: document.getElementById('links') },
   ].filter(s => s.el);
 
   const obs = new IntersectionObserver((entries) => {
