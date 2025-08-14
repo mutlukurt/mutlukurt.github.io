@@ -99,6 +99,8 @@ html{visibility:visible;opacity:1}
   /* Ensure container paddings are comfortable on small screens */
   .px-4 { padding-left: 1rem; padding-right: 1rem; }
   .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  /* Work grid tighter gap on very small screens */
+  .work-grid { gap: .75rem; }
 }
 
 /* Nav active state */
