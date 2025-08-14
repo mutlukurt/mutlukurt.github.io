@@ -8,57 +8,15 @@
     <meta name="theme-color" content="#0F172A">
     <link rel="preload" as="image" href="assets/profile.jpg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <script>
-      // Mute Tailwind Play CDN production warning in console (keeps other warnings)
-      const __tw_warn = console.warn.bind(console);
-      console.warn = (...args) => {
-        const m = args && args[0] ? String(args[0]) : '';
-        if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
-        __tw_warn(...args);
-      };
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
-            colors: {
-              bgTop: "#0F172A",
-              bgBottom: "#1E1B4B",
-              card: "#4C1D95",
-              purpleAccent: "#A78BFA",
-              blueAccent: "#60A5FA",
-              bodyText: "#E0E7FF",
-              glow: "rgba(167, 139, 250, 0.5)",
-            }
-          }
-        }
-      }
-    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
-      html{visibility:hidden;opacity:0;transition:opacity .2s ease}
-      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-      .reveal.show { opacity: 1; transform: translateY(0); }
-      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
-      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
-      /* Micro-optimizations for scroll/paint */
-      .reveal { will-change: transform, opacity; }
-      .cv { content-visibility: auto; contain-intrinsic-size: 1000px 800px; }
-      @media (max-width: 640px) {
-        .glow { box-shadow: 0 0 0 1px rgba(167,139,250,.25), 0 8px 22px rgba(0,0,0,.25); }
-        .photo-glow { box-shadow: 0 0 0 1px rgba(167,139,250,.35), 0 14px 36px rgba(0,0,0,.35); }
-        .backdrop-blur { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-      }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom">
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Minimal headline hero -->
       <section class="reveal cv mb-6 md:mb-8">
@@ -266,43 +224,7 @@
       </footer>
     </main>
 
-    <script>
-      // Reveal animations
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) {
-        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
-      } else {
-        const io = new IntersectionObserver((entries)=>{
-          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-      }
-      document.getElementById('y').textContent = new Date().getFullYear();
-
-      // Lazy init and inline player swapping
-      const main = document.getElementById('ytMain');
-      const initialId = main ? (main.getAttribute('data-initial') || '') : '';
-      const setSrc = (id, autoplay=false) => {
-        if (!main || !id) return;
-        const qp = autoplay ? '&autoplay=1' : '';
-        main.src = `https://www.youtube-nocookie.com/embed/${id}?modestbranding=1&rel=0&playsinline=1${qp}`;
-      };
-
-      // Defer initial iframe src until idle/visible to improve first paint
-      const boot = () => setSrc(initialId);
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(boot, { timeout: 2000 });
-      } else {
-        setTimeout(boot, 600);
-      }
-
-      document.querySelectorAll('.yt-thumb').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id = btn.getAttribute('data-video-id');
-          setSrc(id, true);
-        });
-      });
-    </script>
+    <script src="assets/main.js" defer></script>
   </body>
   </html>
 
