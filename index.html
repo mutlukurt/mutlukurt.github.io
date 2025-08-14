@@ -9,6 +9,10 @@
 
     <link rel="preload" as="image" href="assets/profile.jpg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
@@ -60,7 +64,7 @@
             <span id="videoTitle" class="video-title">Preview 1</span>
           </div>
           <div class="video-frame-wrap">
-            <iframe id="ytPlayer" class="video-frame" title="Video player" width="560" height="315" src="https://www.youtube-nocookie.com/embed/LwM-U5Ger4Y?modestbranding=1&rel=0&playsinline=1" loading="lazy" referrerpolicy="no-referrer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            <div id="ytPlayerHost" class="video-frame" data-initial="LwM-U5Ger4Y" aria-label="Video container"></div>
           </div>
         </div>
         <ul class="video-list" role="list">

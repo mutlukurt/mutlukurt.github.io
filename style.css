@@ -221,6 +221,7 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
 .video-title { font-weight: 600; }
 .video-frame-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
 .video-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-frame:not(iframe) { display: block; }
 .video-list { display: flex; gap: 10px; padding: 10px 0 0; margin: 10px 0 0; overflow-x: auto; }
 .video-btn { display: grid; grid-template-rows: auto 1fr; gap: 6px; min-width: 160px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 12px; padding: 6px; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease; }
 .video-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }

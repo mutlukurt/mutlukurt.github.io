@@ -40,18 +40,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Inline YouTube previews
-  const player = document.getElementById('ytPlayer');
+  const host = document.getElementById('ytPlayerHost');
   const titleEl = document.getElementById('videoTitle');
+  let currentId = host?.getAttribute('data-initial') || null;
+
+  // Lazy create iframe only when container is visible or on first interaction
+  const createIframe = (videoId, autoplay) => {
+    if (!host) return null;
+    let iframe = host.querySelector('iframe');
+    const base = `https://www.youtube-nocookie.com/embed/${videoId}`;
+    const params = `?modestbranding=1&rel=0&playsinline=1${autoplay ? '&autoplay=1' : ''}`;
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.className = 'video-frame';
+      iframe.width = '560';
+      iframe.height = '315';
+      iframe.title = 'Video player';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.setAttribute('allowfullscreen', '');
+      host.appendChild(iframe);
+    }
+    iframe.src = base + params;
+    return iframe;
+  };
+
+  // Preload first frame on idle
+  if (host && currentId) {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => createIframe(currentId, false));
+    } else {
+      setTimeout(() => createIframe(currentId, false), 200);
+    }
+  }
+
   document.querySelectorAll('.video-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-video-id');
       const vt = btn.getAttribute('data-title') || 'Preview';
-      if (player && id) {
-        const base = `https://www.youtube-nocookie.com/embed/${id}`;
-        const params = '?modestbranding=1&rel=0&playsinline=1&autoplay=1';
-        player.src = base + params;
-      }
+      if (id) createIframe(id, true);
       if (titleEl) titleEl.textContent = vt;
+      currentId = id;
     });
   });
 });
