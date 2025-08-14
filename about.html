@@ -181,6 +181,21 @@
         </div>
       </section>
 
+      <!-- Video previews -->
+      <section class="mt-10 md:mt-16 reveal">
+        <h2 class="text-center text-white text-xl font-semibold mb-4">Video Previews of Our Products</h2>
+        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-4">
+          <div class="aspect-video rounded-xl overflow-hidden photo-glow bg-blueAccent/10">
+            <iframe id="ytMain" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/LwM-U5Ger4Y?modestbranding=1&rel=0&playsinline=1" loading="lazy" referrerpolicy="no-referrer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <ul class="mt-3 grid grid-cols-3 sm:grid-cols-6 gap-2">
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="LwM-U5Ger4Y" aria-label="Play video 1"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/LwM-U5Ger4Y/hqdefault.jpg" alt="Video 1 thumbnail" loading="lazy"></button></li>
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="-pKJKIxCTp0" aria-label="Play video 2"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/-pKJKIxCTp0/hqdefault.jpg" alt="Video 2 thumbnail" loading="lazy"></button></li>
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="iHJrekXBXCA" aria-label="Play video 3"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/iHJrekXBXCA/hqdefault.jpg" alt="Video 3 thumbnail" loading="lazy"></button></li>
+          </ul>
+        </div>
+      </section>
+
       <!-- Links section -->
       <section class="mt-10 md:mt-16 reveal">
         <h2 class="text-center text-white text-xl font-semibold mb-4">Explore More</h2>
@@ -224,6 +239,16 @@
       }, { threshold: 0.15 });
       document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Inline player swapping
+      const main = document.getElementById('ytMain');
+      document.querySelectorAll('.yt-thumb').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-video-id');
+          if (!id || !main) return;
+          main.src = `https://www.youtube-nocookie.com/embed/${id}?modestbranding=1&rel=0&playsinline=1&autoplay=1`;
+        });
+      });
     </script>
   </body>
   </html>
