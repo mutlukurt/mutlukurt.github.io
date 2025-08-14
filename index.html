@@ -1,304 +1,273 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <meta name="description" content="Mutlu Kurt (codebymutlu) — Creative Developer. All links, projects, and profiles.">
-    <title>Mutlu Kurt — About</title>
-
-    <link rel="preload" as="image" href="assets/profile.jpg">
+    <title>About Me — Mutlu Kurt</title>
+    <meta name="description" content="About me — portfolio-style page for Mutlu Kurt">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script>
+      // Mute Tailwind Play CDN production warning in console (keeps other warnings)
+      const __tw_warn = console.warn.bind(console);
+      console.warn = (...args) => {
+        const m = args && args[0] ? String(args[0]) : '';
+        if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        __tw_warn(...args);
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
+            colors: {
+              bgTop: "#0F172A",
+              bgBottom: "#1E1B4B",
+              card: "#4C1D95",
+              purpleAccent: "#A78BFA",
+              blueAccent: "#60A5FA",
+              bodyText: "#E0E7FF",
+              glow: "rgba(167, 139, 250, 0.5)",
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
-    <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <meta http-equiv="refresh" content="0; url=about.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease}
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
+      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
+      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+    </style>
   </head>
-  <body>
-    <main class="page">
-      <header class="header">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
-          <span class="sun" aria-hidden="true">☀️</span>
-          <span class="moon" aria-hidden="true">🌙</span>
-        </button>
-      </header>
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <!-- Top section -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start">
+        <!-- Left: heading + intro + contacts -->
+        <div class="reveal">
+          <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+            <span class="inline-flex items-center px-4 py-2 rounded-full bg-purpleAccent/20 text-white glow">About me</span>
+          </h1>
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl text-[15px] sm:text-base">
+            Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.
+          </p>
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
+            My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it’s a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.
+          </p>
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
+            For me, development is not just about coding — it’s about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.
+          </p>
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
+            Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.
+          </p>
 
-      
-
-      <section class="profile" aria-labelledby="profile-title">
-        <div class="hero" role="img" aria-label="Profile header">
-          <img id="profile-img" class="hero-photo" src="assets/profile.jpg" alt="Profile picture of Mutlu Kurt" decoding="async" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/avatar-placeholder.svg'">
+          <!-- Contacts -->
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="mailto:mutlu@techie.com">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
+                <span>mutlu@techie.com</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="tel:+905461583405">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
+                <span>+90 546 158 34 05</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v15h-4zM7.5 8h3.8v2.1h.1C12.2 8.9 14 8 16.3 8 21 8 23 10.9 23 15.6V23h-4v-6.3c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V23h-4z"/></svg>
+                <span>linkedin.com/in/mutlukurt</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                <span>github.com/mutlukurt</span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <h1 id="profile-title" class="name">Mutlu Kurt <span class="aka">(codebymutlu)</span></h1>
 
-        <nav class="socials" aria-label="Social links">
-          <a class="social-link" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 2c-5.5 0-10 4.5-10 10 0 4.4 2.9 8.1 6.9 9.4.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.2-1.4-1.2-1.4-1-.7.1-.7.1-.7 1.1.1 1.6 1.1 1.6 1.1 1 .1.7 1.8 2.7 1.3.1-.7.4-1.1.7-1.4-2.3-.3-4.7-1.2-4.7-5.3 0-1.2.4-2.1 1.1-2.8-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 2.9 1.1a10 10 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.6 1.5.2 2.6.1 2.9.7.7 1.1 1.6 1.1 2.8 0 4.1-2.4 5-4.7 5.3.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 22 12C22 6.5 17.5 2 12 2z"/></svg>
-          </a>
-          <a class="social-link" href="http://instagram.com/mutlukurtio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zM18 6.3a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
-          </a>
-          <a class="social-link" href="https://x.com/mutlukurtio" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 3h5l5.4 7.1L18 3h3l-7 9.1L21 21h-5l-5.7-7.5L9 21H6l3-8.9L3 3z"/></svg>
-          </a>
-          <a class="social-link" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7 0h3.8v2.1h.1C12.2 8.9 14 8 16.3 8 21 8 23 10.9 23 15.6V23h-4V16.7c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V23h-4V8z"/></svg>
-          </a>
-          <a class="social-link" href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.2 3.2 0 0 0-2.3-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.2.5A3.2 3.2 0 0 0 .5 6.2 33.1 33.1 0 0 0 0 12a33.1 33.1 0 0 0 .5 5.8 3.2 3.2 0 0 0 2.3 2.2c2 .5 9.2.5 9.2.5s7.2 0 9.2-.5a3.2 3.2 0 0 0 2.3-2.2A33.1 33.1 0 0 0 24 12a33.1 33.1 0 0 0-.5-5.8zM9.8 15.6V8.4l6.1 3.6-6.1 3.6z"/></svg>
-          </a>
-          <a class="social-link" href="https://t.me/mutlukurt" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M9.7 15.5l-.4 5 4.1-3 5 3.6 3.6-16.7-20.5 8 5.3 1.8 11.8-7.4-9 8.7z"/></svg>
-          </a>
-        </nav>
+        <!-- Right: photo in rounded rectangle with glow -->
+        <div class="reveal flex justify-center lg:justify-end lg:-ml-4 mt-6 lg:mt-0">
+          <div class="relative rounded-[36px] overflow-hidden photo-glow bg-blueAccent/10 w-[280px] h-[340px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[460px]">
+            <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"/>
+          </div>
+        </div>
       </section>
 
-      <section class="bios" aria-label="About">
-        <div class="bio-section">
-          <div class="bio">
-            <h3 class="bio-title">Hakkında (Türkçe)</h3>
-            <p>Her başarılı dijital ürünün arkasında, iyi planlanmış bir yapı ve kullanıcıya değer katan bir deneyim vardır. Ben, tasarım estetiğini teknik uzmanlıkla birleştirerek hem görsel açıdan etkileyici hem de performans açısından güçlü çözümler üretiyorum.</p>
-            <p>Projelerimde modern web standartları, erişilebilirlik ve hız odaklı bir yaklaşım benimsiyorum. Web siteleri, e-ticaret sayfaları ve kişiselleştirilmiş şablonlar geliştirerek, markaların dijital dünyada güçlü bir izlenim bırakmasını sağlıyorum. Gerektiğinde mobil uyumlu arayüzler, gerektiğinde de özel işlevsellikler ekleyerek her projenin ihtiyacına uygun bir yapı oluşturuyorum.</p>
-            <p>Kodlama sürecim yalnızca teknik uygulamadan ibaret değil; fikir aşamasından son kullanıcı deneyimine kadar tüm adımları kapsıyor. Bu sayede ortaya çıkan ürünler sadece çalışmakla kalmıyor, aynı zamanda kullanımı kolay, estetik ve amaca uygun oluyor.</p>
-            <p>Bugün, kendi geliştirdiğim web sitesi şablonlarını Shopier ve Etsy üzerinden satışa sunuyor, aynı zamanda iş birliği fırsatlarına da açık şekilde çalışmaya devam ediyorum. Amacım, her projede hem işlevselliği hem de yaratıcılığı ön plana çıkaran çözümler üretmek.</p>
-          </div>
+      <!-- Bottom section: grouped categories -->
+      <section class="mt-10 md:mt-16 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Education -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-3">Education</h2>
+            <ul class="space-y-2 text-bodyText/90">
+              <li>
+                <div class="font-medium text-white">Çankırı Karatekin University — Faculty of Economics and Administrative Sciences</div>
+                <div>Labour Economics and Industrial Relations <span class="text-purpleAccent">(2022 → Now)</span></div>
+              </li>
+              <li class="pt-2 border-t border-white/10">
+                <div class="font-medium text-white">Anadolu University</div>
+                <div>Web Design and Coding — <span class="text-purpleAccent">Graduated 2022</span></div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Soft skills -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Soft Skills</h2>
+            <ul class="grid grid-cols-2 gap-2 text-bodyText/90">
+              <li>Teamwork</li>
+              <li>Critical Thinking</li>
+              <li>Communication</li>
+              <li>Time Management</li>
+            </ul>
+          </article>
         </div>
 
-        <div class="bio-section">
-          <div class="bio">
-            <h3 class="bio-title">About Me (English)</h3>
-            <p>Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.</p>
-            <p>My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it’s a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.</p>
-            <p>For me, development is not just about coding — it’s about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.</p>
-            <p>Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.</p>
-          </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Technical skills (stack) -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-3">Technical Skills</h2>
+            <div class="flex items-center gap-3 flex-wrap">
+              <!-- HTML5 -->
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#F97316]/20 p-2">
+                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><path fill="#F97316" d="M3 2l1.7 19.3L12 22l7.3-.7L21 2H3zm14.1 6.2H8.9l.2 2h7l-.5 5.1-3.6 1-.1.1-3.6-1-.2-2.6h1.8l.1 1.2 1.9.5 1.9-.5.2-2.7H7.6L7 6.2h10.1z"/></svg>
+              </span>
+              <!-- CSS3 -->
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#3B82F6]/20 p-2">
+                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><path fill="#3B82F6" d="M3 2l1.7 19.3L12 22l7.3-.7L21 2H3zm13 6H8.2l.1 1.8h7.4l-.3 3.2-3.4.9-3.4-.9-.2-1.6H7.5l.3 3.6 4.2 1.1 4.2-1.1.6-7z"/></svg>
+              </span>
+              <!-- JavaScript -->
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#F59E0B]/20 p-2">
+                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="#F59E0B"/><text x="7" y="17" font-size="10" fill="#0b0b0b" font-family="Inter, Arial, sans-serif" font-weight="700">JS</text></svg>
+              </span>
+              <!-- React Native -->
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#22D3EE]/15 p-2">
+                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><g fill="none" stroke="#22D3EE" stroke-width="1.5"><circle cx="12" cy="12" r="2.2" fill="#22D3EE"/><ellipse cx="12" cy="12" rx="9" ry="3.8"/><ellipse cx="12" cy="12" rx="9" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.8" transform="rotate(120 12 12)"/></g></svg>
+              </span>
+            </div>
+          </article>
+
+          <!-- Skill set -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Skill Set</h2>
+            <div class="grid grid-cols-2 gap-x-6 text-bodyText/90">
+              <ul class="space-y-1">
+                <li>User Research</li>
+                <li>Wireframing</li>
+                <li>Brainstorming</li>
+              </ul>
+              <ul class="space-y-1">
+                <li>Web Design</li>
+                <li>App Design</li>
+                <li>Prototyping</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Interest -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Interests</h2>
+            <div class="text-bodyText/90">Design Trends • Technology • UI Engineering</div>
+          </article>
+
+          <!-- Languages -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Languages</h2>
+            <div class="text-bodyText/90">Turkish (Native) • English (Intermediate+)</div>
+          </article>
         </div>
       </section>
 
-      <section class="videos" aria-labelledby="videos-title">
-        <h2 id="videos-title">Video Previews of Our Products</h2>
-        <div class="video-player" aria-live="polite">
-          <div class="video-header">
-            <span id="videoTitle" class="video-title">Preview 1</span>
+      <!-- Video previews -->
+      <section class="mt-10 md:mt-16 reveal">
+        <h2 class="text-center text-white text-xl font-semibold mb-4">Video Previews of Our Products</h2>
+        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-4">
+          <div class="aspect-video rounded-xl overflow-hidden photo-glow bg-blueAccent/10">
+            <iframe id="ytMain" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/LwM-U5Ger4Y?modestbranding=1&rel=0&playsinline=1" loading="lazy" referrerpolicy="no-referrer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <div class="video-frame-wrap">
-            <div id="ytPlayerHost" class="video-frame" data-initial="LwM-U5Ger4Y" aria-label="Video container" allowfullscreen></div>
-          </div>
+          <ul class="mt-3 grid grid-cols-3 sm:grid-cols-6 gap-2">
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="LwM-U5Ger4Y" aria-label="Play video 1"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/LwM-U5Ger4Y/hqdefault.jpg" alt="Video 1 thumbnail" loading="lazy"></button></li>
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="-pKJKIxCTp0" aria-label="Play video 2"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/-pKJKIxCTp0/hqdefault.jpg" alt="Video 2 thumbnail" loading="lazy"></button></li>
+            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="iHJrekXBXCA" aria-label="Play video 3"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/iHJrekXBXCA/hqdefault.jpg" alt="Video 3 thumbnail" loading="lazy"></button></li>
+          </ul>
         </div>
-        <ul class="video-list" role="list">
-          <li>
-            <button class="video-btn" data-video-id="LwM-U5Ger4Y" data-title="Preview 1" aria-label="Play Preview 1">
-              <img src="https://i.ytimg.com/vi/LwM-U5Ger4Y/hqdefault.jpg" alt="Preview 1 thumbnail" loading="lazy" width="160" height="90" referrerpolicy="no-referrer">
-              <span>Preview 1</span>
-            </button>
-          </li>
-          <li>
-            <button class="video-btn" data-video-id="-pKJKIxCTp0" data-title="Preview 2" aria-label="Play Preview 2">
-              <img src="https://i.ytimg.com/vi/-pKJKIxCTp0/hqdefault.jpg" alt="Preview 2 thumbnail" loading="lazy" width="160" height="90" referrerpolicy="no-referrer">
-              <span>Preview 2</span>
-            </button>
-          </li>
-          <li>
-            <button class="video-btn" data-video-id="iHJrekXBXCA" data-title="Preview 3" aria-label="Play Preview 3">
-              <img src="https://i.ytimg.com/vi/iHJrekXBXCA/hqdefault.jpg" alt="Preview 3 thumbnail" loading="lazy" width="160" height="90" referrerpolicy="no-referrer">
-              <span>Preview 3</span>
-            </button>
-          </li>
+      </section>
+
+      <!-- Links section -->
+      <section class="mt-10 md:mt-16 reveal">
+        <h2 class="text-center text-white text-xl font-semibold mb-4">Explore More</h2>
+        <ul class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+          <!-- Generated from earlier list -->
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://www.shopier.com/codebymutlu" target="_blank" rel="noopener noreferrer"><span>Premium Web Projects – Shopier</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://topmate.io/mutlukurt" target="_blank" rel="noopener noreferrer"><span>Full Source Code – Apps & Packages</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/responsive-blog" target="_blank" rel="noopener noreferrer"><span>Responsive Blog – Template</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/ui-ux-portfolio" target="_blank" rel="noopener noreferrer"><span>UI/UX Portfolio – Website</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/portfolyo-selin-kaya-ornek-proje" target="_blank" rel="noopener noreferrer"><span>Selin Kaya – Portfolio Demo</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/Appointmently" target="_blank" rel="noopener noreferrer"><span>Appointmently – Haircut & Style</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/portfolio-web-site" target="_blank" rel="noopener noreferrer"><span>Creative Developer – Portfolio</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/responsive-portfolio-web" target="_blank" rel="noopener noreferrer"><span>Alex Rivera – Portfolio</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/landingpage" target="_blank" rel="noopener noreferrer"><span>Elegance – Fashion & Beauty</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/neuralnotes" target="_blank" rel="noopener noreferrer"><span>Neural Notes – App</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.github.io/Note-taking-app" target="_blank" rel="noopener noreferrer"><span>Note-Taking – App Demo</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://buymeacoffee.com/mutlukurt" target="_blank" rel="noopener noreferrer"><span>Support My Work – Buy Me a Coffee</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://www.upwork.com/freelancers/~01a3cc2aeb2695f5f9?companyReference=1305266647034060801&mp_source=share" target="_blank" rel="noopener noreferrer"><span>Hire Me – Upwork</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://www.figma.com/@mutlukurt" target="_blank" rel="noopener noreferrer"><span>Figma – Designs</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://www.behance.net/mutlukurt" target="_blank" rel="noopener noreferrer"><span>Behance – Portfolio</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://folio.procreate.com/mutlukurt" target="_blank" rel="noopener noreferrer"><span>Procreate – Art</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer"><span>LinkedIn – Connect</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://mutlukurt.carrd.co/" target="_blank" rel="noopener noreferrer"><span>Carrd – Portfolio Site</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer"><span>GitHub – Repos</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://solo.to/mutlu" target="_blank" rel="noopener noreferrer"><span>Solo.to – All My Links</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://x.com/mutlukurtio" target="_blank" rel="noopener noreferrer"><span>X – Follow</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="http://instagram.com/mutlukurtio" target="_blank" rel="noopener noreferrer"><span>Instagram – Follow</span><span>↗</span></a></li>
+          <li><a class="flex items-center justify-between rounded-full bg-card/90 glow px-4 py-3 hover:text-blueAccent transition" href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer"><span>YouTube – Watch</span><span>↗</span></a></li>
         </ul>
       </section>
 
-      <section class="links" aria-labelledby="links-title">
-        <h2 id="links-title" class="visually-hidden">Links</h2>
-        <ul class="link-list" role="list">
-          <!-- Featured -->
-          <li class="link-section-title">Online Stores</li>
-          <li>
-            <a class="pill featured" href="https://www.shopier.com/codebymutlu" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Premium Web Projects – Shopier</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill featured" href="https://topmate.io/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Full Source Code – Apps & Packages</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <!-- Project templates/demos -->
-          <li class="link-section-title">Open Source Projects I’ve Developed</li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/responsive-blog" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Responsive Blog – Template</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/ui-ux-portfolio" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">UI/UX Portfolio – Website</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/portfolyo-selin-kaya-ornek-proje" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Selin Kaya – Portfolio Demo</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/Appointmently" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Appointmently – Haircut & Style</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/portfolio-web-site" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Creative Developer – Portfolio</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/responsive-portfolio-web" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Alex Rivera – Portfolio</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/landingpage" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Elegance – Fashion & Beauty</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/neuralnotes" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Neural Notes – App</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill template" href="https://mutlukurt.github.io/Note-taking-app" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <span class="pill-title">Note-Taking – App Demo</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <!-- Support / Hire Me -->
-          <li class="link-section-title">Let’s Collaborate</li>
-          <li>
-            <a class="pill support" href="https://buymeacoffee.com/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Support My Work – Buy Me a Coffee</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill support" href="https://www.upwork.com/freelancers/~01a3cc2aeb2695f5f9?companyReference=1305266647034060801&mp_source=share" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Hire Me – Upwork</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <!-- Creative tools/design portfolios -->
-          <li class="link-section-title">Art & Creative Works</li>
-          <li>
-            <a class="pill creative" href="https://www.figma.com/@mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Figma – Designs</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill creative" href="https://www.behance.net/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Behance – Portfolio</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill creative" href="https://folio.procreate.com/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Procreate – Art</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-
-          <!-- Social / follow links -->
-          <li class="link-section-title">More to Explore</li>
-          <li>
-            <a class="pill social" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">LinkedIn – Connect</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="https://mutlukurt.carrd.co/" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Carrd – Portfolio Site</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">GitHub – Repos</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="https://solo.to/mutlu" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 0 1-7-7l1-1"/></svg></span>
-              <span class="pill-title">Solo.to – All My Links</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="https://x.com/mutlukurtio" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 3h5l5.4 7.1L18 3h3l-7 9.1L21 21h-5l-5.7-7.5L9 21H6l3-8.9L3 3z"/></svg></span>
-              <span class="pill-title">X – Follow</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="http://instagram.com/mutlukurtio" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zM18 6.3a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
-              <span class="pill-title">Instagram – Follow</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-          <li>
-            <a class="pill social" href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer">
-              <span class="pill-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3.2 3.2 0 0 0-2.3-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.2.5A3.2 3.2 0 0 0 .5 6.2 33.1 33.1 0 0 0 0 12a33.1 33.1 0 0 0 .5 5.8 3.2 3.2 0 0 0 2.3 2.2c2 .5 9.2.5 9.2.5s7.2 0 9.2-.5a3.2 3.2 0 0 0 2.3-2.2A33.1 33.1 0 0 0 24 12a33.1 33.1 0 0 0-.5-5.8zM9.8 15.6V8.4l6.1 3.6-6.1 3.6z"/></svg></span>
-              <span class="pill-title">YouTube – Watch</span>
-              <span class="pill-arrow" aria-hidden="true">↗</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <footer class="footer">
-        <p>© <span id="year"></span> Mutlu Kurt • Built with HTML, CSS, and JS</p>
+      <footer class="mt-12 text-center text-sm text-bodyText/70">
+        © <span id="y"></span> Mutlu Kurt. Built with Tailwind CSS (CDN).
       </footer>
     </main>
 
-    <noscript>
-      <style>
-        html { visibility: visible; opacity: 1; }
-      </style>
-    </noscript>
+    <script>
+      // Reveal animations
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+      } else {
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      }
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Inline player swapping
+      const main = document.getElementById('ytMain');
+      document.querySelectorAll('.yt-thumb').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-video-id');
+          if (!id || !main) return;
+          main.src = `https://www.youtube-nocookie.com/embed/${id}?modestbranding=1&rel=0&playsinline=1&autoplay=1`;
+        });
+      });
+    </script>
   </body>
   </html>
 
