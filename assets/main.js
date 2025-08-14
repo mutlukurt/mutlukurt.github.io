@@ -96,4 +96,56 @@
   sections.forEach(s => obs.observe(s.el));
 })();
 
+// Simple lightbox for My Work grid
+(function(){
+  const grid = document.querySelector('#work .work-grid');
+  if (!grid) return;
+
+  // Create overlay once
+  const overlay = document.createElement('div');
+  overlay.id = 'lightboxOverlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.className = 'fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4';
+  overlay.innerHTML = '<img id="lightboxImg" class="max-h-[85vh] max-w-[92vw] rounded-2xl shadow-2xl" alt="Preview" />';
+  document.body.appendChild(overlay);
+
+  const imgEl = overlay.querySelector('#lightboxImg');
+  let lastTrigger = null;
+
+  const open = (src, trigger) => {
+    lastTrigger = trigger || null;
+    imgEl.src = src;
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    overlay.tabIndex = -1; overlay.focus({ preventScroll: true });
+  };
+
+  const close = () => {
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    imgEl.src = '';
+    if (lastTrigger) lastTrigger.focus();
+  };
+
+  grid.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    const img = a.querySelector('img');
+    if (!img) return;
+    open(img.currentSrc || img.src, a);
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') close();
+  });
+})();
+
 
