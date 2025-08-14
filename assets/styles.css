@@ -93,6 +93,9 @@ html{visibility:visible;opacity:1}
   .glow { box-shadow: 0 0 0 1px rgba(167,139,250,.25), 0 10px 30px rgba(167,139,250,.22); }
   .photo-glow { box-shadow: 0 0 0 1px rgba(167,139,250,.35), 0 14px 36px rgba(0,0,0,.4); }
   .backdrop-blur { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* Ensure container paddings are comfortable on small screens */
+  .px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
 
 /* Subtle animated halo for photo on capable devices */
