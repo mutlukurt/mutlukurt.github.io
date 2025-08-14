@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Me — Mutlu Kurt</title>
+    <meta name="description" content="About me — portfolio-style page for Mutlu Kurt">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
+            colors: {
+              bgTop: "#0F172A",
+              bgBottom: "#1E1B4B",
+              card: "#4C1D95",
+              purpleAccent: "#A78BFA",
+              blueAccent: "#60A5FA",
+              bodyText: "#E0E7FF",
+              glow: "rgba(167, 139, 250, 0.5)",
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
+      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
+      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+    </style>
+  </head>
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <!-- Top section -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <!-- Left: heading + intro + contacts -->
+        <div class="reveal">
+          <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+            <span class="inline-flex items-center px-4 py-2 rounded-full bg-purpleAccent/20 text-white glow">About me</span>
+          </h1>
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl">
+            Hi! I’m Mutlu — a creative developer building fast, accessible and design‑driven web experiences.
+            I enjoy shaping ideas into production‑ready products with clean UI and thoughtful UX.
+          </p>
+
+          <!-- Contacts -->
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="mailto:mutlu@example.com">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
+                <span>thangndhe160978@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="tel:+0000000000">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
+                <span>+90 000 000 00 00</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v15h-4zM7.5 8h3.8v2.1h.1C12.2 8.9 14 8 16.3 8 21 8 23 10.9 23 15.6V23h-4v-6.3c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V23h-4z"/></svg>
+                <span>linkedin.com/in/mutlukurt</span>
+              </a>
+            </li>
+            <li>
+              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://behance.net/mutlukurt" target="_blank" rel="noopener noreferrer">
+                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 7h5v2h-5zM9 7C5.7 7 3 9.7 3 13s2.7 6 6 6c3.1 0 5.6-2.3 5.9-5.3H9v-1.9h7.9C16.9 8.7 13.3 7 9 7zM24 14.3c0-2.1-1.4-3.7-3.6-3.7-2.1 0-3.6 1.6-3.6 3.7 0 2.1 1.5 3.7 3.6 3.7 1.9.1 3.6-1.6 3.6-3.7z"/></svg>
+                <span>behance.net/mutlukurt</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: photo in rounded rectangle with glow -->
+        <div class="reveal flex justify-center lg:justify-end">
+          <div class="relative rounded-[36px] overflow-hidden photo-glow bg-blueAccent/10 w-[260px] h-[320px] sm:w-[300px] sm:h-[360px]">
+            <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover"/>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom section: grouped categories -->
+      <section class="mt-10 md:mt-16 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Education -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Education</h2>
+            <div class="text-bodyText/90">FPT University — Graphic Design <span class="text-purpleAccent">(2020 → Now)</span></div>
+          </article>
+
+          <!-- Soft skills -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Soft Skills</h2>
+            <ul class="grid grid-cols-2 gap-2 text-bodyText/90">
+              <li>Teamwork</li>
+              <li>Critical Thinking</li>
+              <li>Communication</li>
+              <li>Time Management</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Technical skills with icon placeholders -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-3">Technical Skills</h2>
+            <div class="flex items-center gap-3 flex-wrap">
+              <!-- Icon placeholders -->
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-[#FF9A00]/20 text-white font-bold">Ai</span>
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-[#31A8FF]/20 text-white font-bold">Ps</span>
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-[#9999FF]/20 text-white font-bold">Pr</span>
+              <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-[#9999FF]/20 text-white font-bold">Ae</span>
+            </div>
+          </article>
+
+          <!-- Skill set -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Skill Set</h2>
+            <div class="grid grid-cols-2 gap-x-6 text-bodyText/90">
+              <ul class="space-y-1">
+                <li>User Research</li>
+                <li>Wireframing</li>
+                <li>Brainstorming</li>
+              </ul>
+              <ul class="space-y-1">
+                <li>Web Design</li>
+                <li>App Design</li>
+                <li>Prototyping</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Interest -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Interests</h2>
+            <div class="text-bodyText/90">Design Trends • Technology • UI Engineering</div>
+          </article>
+
+          <!-- Languages -->
+          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
+            <h2 class="text-white text-xl font-semibold mb-2">Languages</h2>
+            <div class="text-bodyText/90">Turkish (Native) • English (Intermediate+)</div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="mt-12 text-center text-sm text-bodyText/70">
+        © <span id="y"></span> Mutlu Kurt. Built with Tailwind CSS.
+      </footer>
+    </main>
+
+    <script>
+      // Reveal animations
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
+
