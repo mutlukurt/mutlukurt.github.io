@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
+    <title>Blog — Mutlu Kurt</title>
+    <meta name="description" content="Frontend development insights, research, and technical articles by Mutlu Kurt">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preload" as="image" href="assets/profile.jpg">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopier.app" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Mute Tailwind Play CDN production warning in console (keeps other warnings)
+      const __tw_warn = console.warn.bind(console);
+      console.warn = (...args) => {
+        const m = args && args[0] ? String(args[0]) : '';
+        if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        __tw_warn(...args);
+      };
+    </script>
+    <style>
+      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth}
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
+      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
+      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
+            colors: {
+              bgTop: "#0F172A",
+              bgBottom: "#1E1B4B",
+              card: "#4C1D95",
+              purpleAccent: "#A78BFA",
+              blueAccent: "#60A5FA",
+              bodyText: "#E0E7FF",
+              glow: "rgba(167, 139, 250, 0.5)",
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+    <!-- Sticky top navigation -->
+    <header class="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="text-white font-semibold hidden sm:inline">← Back to Portfolio</a>
+        <button id="navToggle" class="sm:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+          <span>Menu</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        </button>
+        <ul id="navMenu" class="hidden sm:flex items-center gap-4 text-white">
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html">Portfolio</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#about">About</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#work">My Work</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#products">Project Demos</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5 active" href="blog.html">Blog</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="links.html">Links</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <!-- Page header -->
+      <section class="reveal show mb-6 md:mb-8 scroll-mt-28 sm:scroll-mt-32">
+        <header class="mx-auto max-w-3xl pt-16 pb-10 text-center">
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">Frontend Insights</h1>
+          <p class="mt-4 text-white/70 text-lg">Research, tutorials, and technical articles about modern web development</p>
+          <div class="mt-6">
+            <a href="index.html" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-white/10 text-white border border-white/15 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/60 transition">
+              ← Back to Portfolio
+            </a>
+          </div>
+        </header>
+      </section>
+
+      <!-- Blog posts grid -->
+      <section class="reveal show scroll-mt-28 sm:scroll-mt-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Sample Blog Post 1 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">Development</span>
+                <span class="text-white/60">5 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Modern CSS Grid Layouts</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sample Blog Post 2 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Performance</span>
+                <span class="text-white/60">8 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Web Performance Optimization</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Best practices for improving Core Web Vitals and creating lightning-fast user experiences.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sample Blog Post 3 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">UI/UX</span>
+                <span class="text-white/60">6 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Design Systems in Practice</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Building scalable design systems that improve consistency and developer experience.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sample Blog Post 4 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Tools</span>
+                <span class="text-white/60">4 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Essential Dev Tools 2024</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Must-have development tools and extensions that boost productivity and code quality.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sample Blog Post 5 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">Tutorial</span>
+                <span class="text-white/60">10 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Building a Portfolio Site</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Step-by-step guide to creating a professional portfolio website with modern technologies.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sample Blog Post 6 -->
+          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
+            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
+                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Career</span>
+                <span class="text-white/60">7 min read</span>
+              </div>
+              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Freelancing Success Tips</h2>
+              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
+                Lessons learned from successful freelancing and building a sustainable client base.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-white/60 text-sm">Coming Soon</span>
+                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Newsletter signup section -->
+      <section class="mt-16 reveal show">
+        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-8 text-center max-w-2xl mx-auto">
+          <h2 class="text-white text-2xl font-semibold mb-3">Stay Updated</h2>
+          <p class="text-bodyText/90 mb-6">Get notified when new articles are published. No spam, just valuable insights.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <input type="email" placeholder="Enter your email" class="flex-1 max-w-sm px-4 py-3 rounded-xl bg-white/10 text-white border border-white/15 focus:outline-none focus:ring-2 focus:ring-purpleAccent/50 placeholder:text-white/50">
+            <button class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-medium shadow-lg hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/60 transition">
+              Subscribe
+            </button>
+          </div>
+          <p class="text-xs text-white/50 mt-3">Coming soon - Newsletter functionality will be added</p>
+        </div>
+      </section>
+
+      <!-- Additional info section -->
+      <section class="mt-10 md:mt-16 reveal show">
+        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-6 text-center">
+          <h2 class="text-white text-xl font-semibold mb-3">Have a Topic in Mind?</h2>
+          <p class="text-bodyText/90 mb-4">Want me to write about a specific frontend development topic? Let me know!</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="mailto:mutlu@techie.com" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-medium shadow-lg hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/60">
+              Suggest a Topic
+            </a>
+            <a href="https://www.upwork.com/freelancers/~01a3cc2aeb2695f5f9?companyReference=1305266647034060801&mp_source=share" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-white/10 text-white border border-white/15 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/60" target="_blank" rel="noopener noreferrer">
+              Hire Me on Upwork
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-12 text-center text-sm text-bodyText/70">
+        © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
+      </footer>
+    </main>
+
+    <script src="assets/main.js" defer></script>
+  </body>
+</html>
