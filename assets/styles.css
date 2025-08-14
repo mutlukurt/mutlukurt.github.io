@@ -95,4 +95,18 @@ html{visibility:visible;opacity:1}
   .backdrop-blur { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
+/* Subtle animated halo for photo on capable devices */
+@media (prefers-reduced-motion: no-preference) {
+  .photo-glow { position: relative; }
+  .photo-glow::before {
+    content: "";
+    position: absolute; inset: -14px; border-radius: 40px;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(167,139,250,.22), rgba(167,139,250,0) 70%);
+    filter: blur(10px);
+    pointer-events: none;
+    animation: haloPulse 4.5s ease-in-out infinite alternate;
+  }
+  @keyframes haloPulse { from { opacity: .5 } to { opacity: .9 } }
+}
+
 
