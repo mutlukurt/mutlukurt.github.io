@@ -26,8 +26,15 @@
       </header>
 
       <section class="profile" aria-labelledby="profile-title">
-        <!-- Replace the image source below to update your profile picture -->
-        <img id="profile-img" class="avatar" src="assets/profile.jpg" alt="Profile picture of Mutlu Kurt" width="160" height="160" decoding="async" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/avatar-placeholder.svg'">
+        <div class="hero" role="img" aria-label="Profile header">
+          <div class="hero-blob" aria-hidden="true">
+            <svg viewBox="0 0 600 300" width="600" height="300" preserveAspectRatio="none">
+              <path d="M0,40 C120,10 220,0 300,20 C380,40 470,110 600,80 L600,300 L0,300 Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <!-- Replace the image source below to update your profile picture -->
+          <img id="profile-img" class="hero-photo" src="assets/profile.jpg" alt="Profile picture of Mutlu Kurt" decoding="async" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/avatar-placeholder.svg'">
+        </div>
         <h1 id="profile-title" class="name">Mutlu Kurt <span class="aka">(codebymutlu)</span></h1>
 
         <nav class="socials" aria-label="Social links">

@@ -149,20 +149,36 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
   margin-top: 16px;
 }
 
-.avatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 999px;
-  border: 2px solid var(--border);
-  box-shadow: var(--shadow);
-  background: var(--card);
-  object-fit: cover;
+.hero {
+  width: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
 }
+
+.hero-blob {
+  width: 100%;
+  color: #fde68a; /* warm yellow */
+}
+
+html[data-theme="dark"] .hero-blob { color: #3a2e12; }
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  position: absolute;
+  bottom: -40px;
+}
+
+/* Old circular avatar no longer used */
 
 .name {
   font-size: 28px;
   line-height: 1.2;
-  margin: 8px 0 0;
+  margin: 48px 0 0;
   text-align: center;
 }
 
@@ -313,7 +329,7 @@ html[data-theme="dark"] .theme-toggle .moon { display: inline; }
 }
 
 @media (min-width: 720px) {
-  .avatar { width: 160px; height: 160px; }
+  .hero-photo { width: 260px; height: 260px; bottom: -46px; }
   .name { font-size: 32px; }
   .pill { padding: 16px 18px; }
 }
