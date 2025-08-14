@@ -27,13 +27,15 @@
 
       <section class="profile" aria-labelledby="profile-title">
         <div class="hero" role="img" aria-label="Profile header">
-          <div class="hero-blob" aria-hidden="true">
-            <svg viewBox="0 0 600 300" width="600" height="300" preserveAspectRatio="none">
-              <path d="M0,40 C120,10 220,0 300,20 C380,40 470,110 600,80 L600,300 L0,300 Z" fill="currentColor"/>
-            </svg>
-          </div>
-          <!-- Replace the image source below to update your profile picture -->
-          <img id="profile-img" class="hero-photo" src="assets/profile.jpg" alt="Profile picture of Mutlu Kurt" decoding="async" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/avatar-placeholder.svg'">
+          <svg class="hero-blob" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <clipPath id="blobClip">
+                <path d="M0,50 C120,10 220,0 300,25 C390,50 470,120 600,85 L600,320 L0,320 Z"/>
+              </clipPath>
+            </defs>
+            <rect width="600" height="320" fill="currentColor"/>
+            <image x="0" y="0" width="600" height="320" preserveAspectRatio="xMidYMid slice" href="assets/profile.jpg" xlink:href="assets/profile.jpg" clip-path="url(#blobClip)"/>
+          </svg>
         </div>
         <h1 id="profile-title" class="name">Mutlu Kurt <span class="aka">(codebymutlu)</span></h1>
 
