@@ -85,6 +85,8 @@ html{visibility:visible;opacity:1}
 
 /* Content-visibility to reduce work on mobile */
 .cv { content-visibility: auto; contain-intrinsic-size: 1000px 800px; }
+/* Never hide hero/above-the-fold */
+.no-cv { content-visibility: visible; contain-intrinsic-size: auto; }
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
