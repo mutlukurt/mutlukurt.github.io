@@ -25,6 +25,29 @@
         </button>
       </header>
 
+      <!-- Wave hero section: left wave placeholder with photo, right content placeholders -->
+      <section class="intro-wave" aria-labelledby="intro-title">
+        <div class="wave-media" aria-hidden="false">
+          <svg class="wave-svg" viewBox="0 0 600 600" role="img" aria-label="Profile image inside wave placeholder" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <clipPath id="waveClipPath">
+                <path d="M0,0 H360 C420,120 440,240 360,360 C300,450 150,520 0,600 Z"/>
+              </clipPath>
+            </defs>
+            <path d="M0,0 H360 C420,120 440,240 360,360 C300,450 150,520 0,600 Z" fill="#ffffff"/>
+            <image href="assets/profile.jpg" x="0" y="0" width="600" height="600" preserveAspectRatio="xMidYMid slice" clip-path="url(#waveClipPath)" />
+          </svg>
+        </div>
+        <div class="wave-content">
+          <h2 id="intro-title">Build, Ship, Grow</h2>
+          <p class="lead">Clean, fast, and responsive web experiences. This area is a placeholder for your future pitch, feature bullets, or CTAs.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#links-title">Explore Links</a>
+            <a class="btn ghost" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </section>
+
       <section class="profile" aria-labelledby="profile-title">
         <div class="hero" role="img" aria-label="Profile header">
           <img id="profile-img" class="hero-photo" src="assets/profile.jpg" alt="Profile picture of Mutlu Kurt" decoding="async" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/avatar-placeholder.svg'">
