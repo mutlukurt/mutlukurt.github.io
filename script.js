@@ -38,6 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
     profileImg.decoding = 'async';
     profileImg.loading = 'eager';
   }
+
+  // Inline YouTube previews
+  const player = document.getElementById('ytPlayer');
+  const titleEl = document.getElementById('videoTitle');
+  document.querySelectorAll('.video-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-video-id');
+      const vt = btn.getAttribute('data-title') || 'Preview';
+      if (player && id) {
+        const base = `https://www.youtube-nocookie.com/embed/${id}`;
+        const params = '?modestbranding=1&rel=0&playsinline=1&autoplay=1';
+        player.src = base + params;
+      }
+      if (titleEl) titleEl.textContent = vt;
+    });
+  });
 });
 
 
