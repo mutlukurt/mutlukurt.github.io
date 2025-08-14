@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
       iframe.loading = 'lazy';
       iframe.referrerPolicy = 'no-referrer';
       iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-      iframe.setAttribute('allowfullscreen', '');
       host.appendChild(iframe);
     }
     iframe.src = base + params;
