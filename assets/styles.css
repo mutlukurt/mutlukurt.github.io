@@ -98,6 +98,9 @@ html{visibility:visible;opacity:1}
   .py-8 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
 
+/* Nav active state */
+.nav-link.active { text-decoration: underline; text-underline-offset: 6px; }
+
 /* Subtle animated halo for photo on capable devices */
 @media (prefers-reduced-motion: no-preference) {
   .photo-glow { position: relative; }

@@ -52,9 +52,26 @@
     </script>
   </head>
   <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+    <!-- Sticky top navigation -->
+    <header class="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between" aria-label="Main navigation">
+        <a href="#home" class="text-white font-semibold hidden sm:inline">Mutlu Kurt</a>
+        <button id="navToggle" class="sm:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+          <span>Menu</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        </button>
+        <ul id="navMenu" class="hidden sm:flex items-center gap-4 text-white">
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#home" data-nav="home">Home</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#about" data-nav="about">About</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#work" data-nav="work">My Work</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#products" data-nav="products">Our Products</a></li>
+          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#links" data-nav="links">Links</a></li>
+        </ul>
+      </nav>
+    </header>
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Minimal headline hero -->
-      <section class="reveal show mb-6 md:mb-8">
+      <section id="home" class="reveal show mb-6 md:mb-8 scroll-mt-28 sm:scroll-mt-32">
         <header class="mx-auto max-w-3xl pt-16 pb-10">
           <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight text-center">Frontend Developer crafting fast, clean, revenue-focused UIs.</h1>
           <p class="mt-4 text-white/70 text-center">Available for freelance & collaborations</p>
@@ -65,7 +82,7 @@
         </header>
       </section>
       <!-- Top section -->
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start">
+      <section id="about" class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start scroll-mt-28 sm:scroll-mt-32">
         <!-- Left: heading + intro + contacts -->
         <div class="reveal show">
           <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
@@ -208,8 +225,11 @@
         </div>
       </section>
 
+      <!-- Work / Products anchors for nav offset -->
+      <div id="work" class="scroll-mt-28 sm:scroll-mt-32"></div>
+      <div id="products" class="scroll-mt-28 sm:scroll-mt-32"></div>
       <!-- Video previews -->
-      <section id="templates" class="mt-10 md:mt-16 reveal scroll-mt-24 sm:scroll-mt-28">
+      <section id="templates" class="mt-10 md:mt-16 reveal scroll-mt-28 sm:scroll-mt-32">
         <h2 class="text-center text-white text-xl font-semibold mb-4">Video Previews of Our Products</h2>
         <div class="rounded-2xl bg-card/90 backdrop-blur glow p-4">
           <div class="aspect-video rounded-xl overflow-hidden photo-glow bg-blueAccent/10">
@@ -224,7 +244,7 @@
       </section>
 
       <!-- Links section -->
-      <section class="mt-10 md:mt-16 reveal">
+      <section id="links" class="mt-10 md:mt-16 reveal scroll-mt-28 sm:scroll-mt-32">
         <h2 class="text-center text-white text-xl font-semibold mb-4">Explore More</h2>
         <ul class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
           <!-- Generated from earlier list -->
