@@ -27,6 +27,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
@@ -38,22 +40,22 @@
   <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom">
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Top section -->
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start">
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start">
         <!-- Left: heading + intro + contacts -->
         <div class="reveal">
           <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
             <span class="inline-flex items-center px-4 py-2 rounded-full bg-purpleAccent/20 text-white glow">About me</span>
           </h1>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl">
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl text-[15px] sm:text-base">
             Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.
           </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3">
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
             My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it’s a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.
           </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3">
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
             For me, development is not just about coding — it’s about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.
           </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3">
+          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
             Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.
           </p>
 
@@ -87,9 +89,9 @@
         </div>
 
         <!-- Right: photo in rounded rectangle with glow -->
-        <div class="reveal flex justify-center lg:justify-end lg:-ml-4">
-          <div class="relative rounded-[36px] overflow-hidden photo-glow bg-blueAccent/10 w-[300px] h-[360px] sm:w-[340px] sm:h-[420px]">
-            <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover"/>
+        <div class="reveal flex justify-center lg:justify-end lg:-ml-4 mt-6 lg:mt-0">
+          <div class="relative rounded-[36px] overflow-hidden photo-glow bg-blueAccent/10 w-[280px] h-[340px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[460px]">
+            <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"/>
           </div>
         </div>
       </section>
@@ -234,10 +236,15 @@
 
     <script>
       // Reveal animations
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+      } else {
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      }
       document.getElementById('y').textContent = new Date().getFullYear();
 
       // Inline player swapping
