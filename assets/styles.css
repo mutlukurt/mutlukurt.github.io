@@ -130,6 +130,54 @@ header {
   pointer-events: auto !important;
 }
 
+/* Work Card Styles */
+.work-card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.work-card figure {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.work-card .project-image-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.work-card img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Fix grid layout for 3 cards */
+.work-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1rem !important;
+}
+
+@media (min-width: 640px) {
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
 /* Mobile-specific optimizations */
 @media (max-width: 1024px) {
   /* Ensure touch targets are large enough */

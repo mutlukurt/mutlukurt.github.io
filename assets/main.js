@@ -19,6 +19,17 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
+// AOS (Animate On Scroll) Management
+(function() {
+  // Initialize AOS normally
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      once: false,
+      mirror: false
+    });
+  }
+})();
+
 // Modern Mobile Menu System
 (function() {
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
