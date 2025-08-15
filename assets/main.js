@@ -3,11 +3,13 @@
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) {
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+    document.querySelectorAll('.work-card').forEach(el=>el.classList.add('show'));
   } else {
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    document.querySelectorAll('.work-card').forEach(el=>io.observe(el));
   }
 })();
 
@@ -15,6 +17,42 @@
 (function(){
   const y = document.getElementById('y');
   if (y) y.textContent = new Date().getFullYear();
+})();
+
+// Enhanced My Work section animations
+(function(){
+  const workCards = document.querySelectorAll('.work-card');
+  
+  // 3D Parallax effect on mouse move
+  workCards.forEach(card => {
+    const imageContainer = card.querySelector('.project-image-container');
+    const image = card.querySelector('img');
+    
+    if (!imageContainer || !image) return;
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      image.style.transform = `scale(1.1) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      image.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+  
+  // Staggered animation delays
+  workCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.15}s`;
+  });
 })();
 
 // YouTube lazy init + inline swapping
