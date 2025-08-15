@@ -6,6 +6,8 @@
   --purpleAccent: #A78BFA;
   --blueAccent: #60A5FA;
   --bodyText: #E0E7FF;
+  --accent: #22D3EE;
+  --accent2: #F59E0B;
 }
 
 /* Prevent flash before CSS loads */
@@ -21,16 +23,62 @@ html{visibility:visible;opacity:1}
   touch-action: manipulation !important;
   position: relative !important;
   z-index: 10000 !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
   pointer-events: auto !important;
+  overflow: hidden !important;
 }
 
 #mobileMenuBtn:active,
 #mobileMenuBtn:focus,
 #mobileMenuBtn:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  transform: scale(0.95) !important;
+  transform: scale(1.05) !important;
+}
+
+#mobileMenuBtn:active {
+  transform: scale(0.98) !important;
+}
+
+/* Enhanced hover effects */
+#mobileMenuBtn:hover {
+  box-shadow: 0 8px 32px rgba(34, 211, 238, 0.3) !important;
+}
+
+#mobileMenuBtn:hover .bg-gradient-to-r {
+  opacity: 1 !important;
+}
+
+#mobileMenuBtn:hover .blur-xl {
+  opacity: 1 !important;
+}
+
+/* Animated lines on hover */
+#mobileMenuBtn:hover .bg-white {
+  background-color: var(--accent) !important;
+}
+
+#mobileMenuBtn:hover .bg-white:nth-child(2) {
+  background-color: var(--accent2) !important;
+}
+
+#mobileMenuBtn:hover .bg-white:nth-child(3) {
+  background-color: var(--accent) !important;
+}
+
+/* Glow effect animation */
+@keyframes menuGlow {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.1); 
+  }
+}
+
+#mobileMenuBtn:hover .blur-xl {
+  animation: menuGlow 2s ease-in-out infinite !important;
 }
 
 #mobileMenuOverlay {

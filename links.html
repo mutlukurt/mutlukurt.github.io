@@ -58,11 +58,12 @@
   </head>
   <body class="min-h-screen font-inter text-text bg-dark" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-50 bg-dark/95 backdrop-blur border-b border-white/10">
+    <header class="sticky top-0 z-[9999] bg-dark/95 backdrop-blur border-b border-white/10">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between" aria-label="Main navigation">
         <a href="index.html" class="text-2xl font-bold gradient-text">← Back to Portfolio</a>
         
-        <ul class="hidden md:flex items-center gap-8 text-white">
+        <!-- Desktop Navigation -->
+        <ul class="hidden lg:flex items-center gap-8 text-white">
           <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html">Portfolio</a></li>
           <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#about">About</a></li>
           <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#work">My Work</a></li>
@@ -71,24 +72,160 @@
           <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors active" href="links.html">Links</a></li>
         </ul>
 
-        <button id="navToggle" class="md:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60 transition-all duration-200" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
-          <span class="text-sm font-medium">Menu</span>
-          <svg class="w-5 h-5 transition-transform duration-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+        <!-- Modern Mobile/Tablet Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden group relative inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 text-white w-14 h-14 border border-white/20 focus-visible:ring-2 focus-visible:ring-white/60 transition-all duration-300 cursor-pointer select-none touch-manipulation hover:from-white/20 hover:to-white/10 hover:scale-105 hover:shadow-lg hover:shadow-white/10" aria-expanded="false" aria-label="Toggle mobile menu">
+          <!-- Animated Background -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/20 to-accent2/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <!-- Icon Container -->
+          <div class="relative z-10 flex items-center gap-2">
+            <div class="w-6 h-6 relative">
+              <!-- Animated Lines -->
+              <div class="absolute inset-0 flex flex-col justify-center gap-1.5">
+                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
+                <div class="w-4 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent2 ml-1"></div>
+                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
+              </div>
+            </div>
+            <span class="text-sm font-semibold tracking-wide">Menu</span>
+          </div>
+          
+          <!-- Glow Effect -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/30 to-accent2/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </button>
       </nav>
-      
-      <!-- Mobile Navigation Menu -->
-      <div id="navMenu" class="md:hidden hidden bg-dark/98 backdrop-blur border-b border-white/10 transition-all duration-300 ease-in-out">
-        <nav class="px-4 py-6 space-y-4" aria-label="Mobile navigation">
-          <a href="index.html" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">Portfolio</a>
-          <a href="index.html#about" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">About</a>
-          <a href="index.html#work" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">My Work</a>
-          <a href="index.html#products" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">Project Demos</a>
-          <a href="blog.html" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">Blog</a>
-          <a href="links.html" class="block text-white font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-colors">Links</a>
-        </nav>
-      </div>
     </header>
+
+    <!-- Modern Mobile/Tablet Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998] hidden lg:hidden">
+      <div class="flex flex-col h-full">
+        <!-- Menu Header -->
+        <div class="flex items-center justify-between p-6 border-b border-white/10">
+          <h2 class="text-xl font-bold text-white">Navigation</h2>
+          <button id="closeMenuBtn" class="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Menu Items -->
+        <nav class="flex-1 px-6 py-8">
+          <ul class="space-y-6">
+            <li>
+              <a href="index.html" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">Portfolio</div>
+                    <div class="text-white/60 text-sm">Ana sayfa</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="index.html#about" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">About</div>
+                    <div class="text-white/60 text-sm">Hakkımda</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="index.html#work" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">My Work</div>
+                    <div class="text-white/60 text-sm">Çalışmalarım</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="index.html#products" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">Project Demos</div>
+                    <div class="text-white/60 text-sm">Proje demoları</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="blog.html" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">Blog</div>
+                    <div class="text-white/60 text-sm">Blog yazıları</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="links.html" class="mobile-menu-link">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-white font-semibold text-lg">Links</div>
+                    <div class="text-white/60 text-sm">Bağlantılar</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
+        <!-- Menu Footer -->
+        <div class="p-6 border-t border-white/10">
+          <div class="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-accent/20 to-accent2/20">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold">Mutlu Kurt</div>
+              <div class="text-white/60 text-sm">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <!-- Hero Section -->

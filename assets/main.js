@@ -119,19 +119,29 @@
     link.addEventListener('pointerdown', (e) => {
       console.log('Menu link clicked:', link.href);
       
-      // Close menu
-      closeMenu();
-      
       // Handle internal links with smooth scroll
       const href = link.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
+          // Close menu first for internal links
+          closeMenu();
           setTimeout(() => {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 300);
         }
+      } else if (href && (href.includes('.html') || href.includes('http'))) {
+        // External page links - delay menu close to allow navigation
+        console.log('Navigating to external page:', href);
+        e.preventDefault();
+        
+        // Small delay to ensure navigation starts
+        setTimeout(() => {
+          closeMenu();
+          // Navigate to the page
+          window.location.href = href;
+        }, 100);
       }
     }, { passive: false });
   });

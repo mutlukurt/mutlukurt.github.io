@@ -205,12 +205,26 @@
           <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="links.html">Links</a></li>
         </ul>
 
-        <!-- Mobile/Tablet Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 text-white w-12 h-12 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60 transition-all duration-200 cursor-pointer select-none touch-manipulation" aria-expanded="false" aria-label="Toggle mobile menu">
-          <span class="text-sm font-medium">Menu</span>
-          <svg class="w-5 h-5 transition-transform duration-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
-          </svg>
+        <!-- Modern Mobile/Tablet Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden group relative inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 text-white w-14 h-14 border border-white/20 focus-visible:ring-2 focus-visible:ring-white/60 transition-all duration-300 cursor-pointer select-none touch-manipulation hover:from-white/20 hover:to-white/10 hover:scale-105 hover:shadow-lg hover:shadow-white/10" aria-expanded="false" aria-label="Toggle mobile menu">
+          <!-- Animated Background -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/20 to-accent2/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <!-- Icon Container -->
+          <div class="relative z-10 flex items-center gap-2">
+            <div class="w-6 h-6 relative">
+              <!-- Animated Lines -->
+              <div class="absolute inset-0 flex flex-col justify-center gap-1.5">
+                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
+                <div class="w-4 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent2 ml-1"></div>
+                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
+              </div>
+            </div>
+            <span class="text-sm font-semibold tracking-wide">Menu</span>
+          </div>
+          
+          <!-- Glow Effect -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/30 to-accent2/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </button>
       </nav>
     </header>
