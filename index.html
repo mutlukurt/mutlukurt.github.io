@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link rel="preconnect" href="https://cdn.shopier.app" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
       // Mute Tailwind Play CDN production warning in console (keeps other warnings)
       const __tw_warn = console.warn.bind(console);
@@ -29,8 +29,12 @@
       html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth}
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
       .reveal.show { opacity: 1; transform: translateY(0); }
-      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
-      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+      .gradient-text { background: linear-gradient(135deg, #22D3EE, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .gradient-bg { background: linear-gradient(135deg, #22D3EE, #F59E0B); }
+      .card-glow { box-shadow: 0 8px 32px rgba(34, 211, 238, 0.15); }
+      .photo-glow { box-shadow: 0 0 40px rgba(34, 211, 238, 0.3); }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -39,324 +43,434 @@
           extend: {
             fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
             colors: {
-              bgTop: "#0F172A",
-              bgBottom: "#1E1B4B",
-              card: "#4C1D95",
-              purpleAccent: "#A78BFA",
-              blueAccent: "#60A5FA",
-              bodyText: "#E0E7FF",
-              glow: "rgba(167, 139, 250, 0.5)",
+              dark: "#0A0A0A",
+              darker: "#050505",
+              card: "#1A1A1A",
+              cardHover: "#252525",
+              accent: "#22D3EE",
+              accent2: "#F59E0B",
+              text: "#FFFFFF",
+              textSecondary: "#A3A3A3",
             }
           }
         }
       }
     </script>
   </head>
-  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-text bg-dark" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-white/10">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between" aria-label="Main navigation">
-        <a href="#home" class="text-white font-semibold hidden sm:inline">Mutlu Kurt</a>
-        <button id="navToggle" class="sm:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+    <header class="sticky top-0 z-50 bg-dark/95 backdrop-blur border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between" aria-label="Main navigation">
+        <a href="#home" class="text-2xl font-bold gradient-text">Mutlu Kurt</a>
+        
+        <ul class="hidden md:flex items-center gap-8 text-white">
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="#home">Home</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="#about">About</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="#work">My Work</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="#products">Project Demos</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="blog.html">Blog</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="links.html">Links</a></li>
+        </ul>
+
+        <button id="navToggle" class="md:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
           <span>Menu</span>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
         </button>
-        <ul id="navMenu" class="hidden sm:flex items-center gap-4 text-white">
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#home" data-nav="home">Home</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#about" data-nav="about">About</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#work" data-nav="work">My Work</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="#products" data-nav="products">Project Demos</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="links.html">Links</a></li>
-        </ul>
       </nav>
-      </header>
+    </header>
+
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-      <!-- Minimal headline hero -->
-      <section id="home" class="reveal show mb-6 md:mb-8 scroll-mt-28 sm:scroll-mt-32">
-        <header class="mx-auto max-w-3xl pt-16 pb-10">
-          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight text-center">Frontend Developer crafting fast, clean, revenue-focused UIs.</h1>
-          <p class="mt-4 text-white/70 text-center">Available for freelance & collaborations</p>
-          <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-            <a href="#work" class="inline-flex justify-center items-center text-center w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-medium shadow-lg hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/60">View Templates</a>
-            <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" class="inline-flex justify-center items-center text-center w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 text-white border border-white/15 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/60" target="_blank" rel="noopener noreferrer">Hire Me on Upwork</a>
-        </div>
-        </header>
-      </section>
-      <!-- Top section -->
-      <section id="about" class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 items-start scroll-mt-28 sm:scroll-mt-32">
-        <!-- Left: heading + intro + contacts -->
+      <!-- Hero Section -->
+      <section id="home" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-16 pb-20">
+        <!-- Left: Content -->
         <div class="reveal show">
-          <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
-            <span class="inline-flex items-center px-4 py-2 rounded-full bg-purpleAccent/20 text-white glow">About me</span>
+          <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+            Discover Digital Art and 
+            <span class="gradient-text">Collect NFTs</span>
           </h1>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl text-[15px] sm:text-base">
+          <p class="text-lg text-textSecondary leading-relaxed mb-8 max-w-xl">
+            Mutlu Kurt is a shared liquidity Frontend Developer smart contract which is used by multiple websites to provide users the best possible experience.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#work" class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+              Get Started
+            </a>
+            <a href="#about" class="text-white font-medium px-8 py-4 rounded-xl border border-white/20 hover:bg-white/5 transition-colors flex items-center gap-2">
+              Learn More
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Profile Image with NFT Style -->
+        <div class="reveal show flex justify-center lg:justify-end">
+          <div class="relative">
+            <!-- Circular NFT Badge -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center animate-float">
+              <div class="text-xs font-bold text-white text-center leading-tight">
+                MUTLU<br>KURT<br>NFTS
+              </div>
+            </div>
+            
+            <!-- Main Profile Image -->
+            <div class="relative rounded-[36px] overflow-hidden photo-glow bg-gradient-to-br from-accent/20 to-accent2/20 ring-2 ring-accent/30 w-[280px] h-[340px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[460px]">
+              <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async"/>
+            </div>
+            
+            <!-- Bottom Info -->
+            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-card/90 backdrop-blur rounded-2xl px-6 py-3 border border-white/10">
+              <div class="text-center">
+                <div class="text-white font-bold">Art 3.4 ETH</div>
+                <div class="flex items-center justify-center gap-2 mt-2">
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-r from-accent to-accent2"></div>
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-r from-accent2 to-accent"></div>
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-r from-accent to-accent2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">27k+</div>
+          <div class="text-textSecondary">Artwork</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">25k+</div>
+          <div class="text-textSecondary">Auction</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">12k+</div>
+          <div class="text-textSecondary">Artist</div>
+        </div>
+      </section>
+
+      <!-- Hot Trending Section -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <!-- Left: Image Grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent/20 to-accent2/20 p-2">
+            <div class="aspect-square bg-gradient-to-br from-accent/30 to-accent2/30 rounded-xl flex items-center justify-center">
+              <div class="text-accent text-4xl">🎨</div>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent2/20 to-accent/20 p-2">
+            <div class="aspect-square bg-gradient-to-br from-accent2/30 to-accent/30 rounded-xl flex items-center justify-center">
+              <div class="text-accent2 text-4xl">✨</div>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent/20 to-accent2/20 p-2">
+            <div class="aspect-square bg-gradient-to-br from-accent/30 to-accent2/30 rounded-xl flex items-center justify-center">
+              <div class="text-accent text-4xl">🚀</div>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent2/20 to-accent/20 p-2">
+            <div class="aspect-square bg-gradient-to-br from-accent2/30 to-accent/30 rounded-xl flex items-center justify-center">
+              <div class="text-accent2 text-4xl">💎</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div>
+          <div class="text-sm font-medium text-accent mb-2">Popular Item</div>
+          <h2 class="text-3xl font-bold text-white mb-4">Hot Trending On This Week</h2>
+          <p class="text-textSecondary leading-relaxed mb-6">
+            Various kinds of NFTs that are trending the trend will be reset every week. Don't miss out on the best NFTs every week.
+          </p>
+          <a href="#work" class="text-white font-medium hover:text-accent transition-colors flex items-center gap-2">
+            See all
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Top List Artist Section -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <!-- Left: Content -->
+        <div>
+          <div class="text-sm font-medium text-accent mb-2">Artist</div>
+          <h2 class="text-3xl font-bold text-white mb-4">Top List Artist</h2>
+          <p class="text-textSecondary leading-relaxed">
+            We have dozens of artists who contribute to create amazing works.
+          </p>
+        </div>
+
+        <!-- Right: Artist Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-accent2"></div>
+              <div>
+                <div class="text-white font-bold">Johnny Five</div>
+                <div class="text-textSecondary text-sm">Bizrate Survey, March 22</div>
+              </div>
+            </div>
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-xl flex items-center justify-center">
+              <div class="text-accent text-2xl">🎭</div>
+            </div>
+          </div>
+          
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent2 to-accent"></div>
+              <div>
+                <div class="text-white font-bold">Lucinta Luna</div>
+                <div class="text-textSecondary text-sm">Bizrate Survey, March 22</div>
+              </div>
+            </div>
+            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 rounded-xl flex items-center justify-center">
+              <div class="text-accent2 text-2xl">🏛️</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <!-- Left: Content -->
+        <div class="reveal show">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">About me</h2>
+          <p class="text-textSecondary leading-relaxed mb-4">
             Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.
           </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
-            My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it’s a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.
+          <p class="text-textSecondary leading-relaxed mb-4">
+            My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space.
           </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
-            For me, development is not just about coding — it’s about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.
-          </p>
-          <p class="text-bodyText/90 leading-relaxed max-w-2xl mt-3 text-[15px] sm:text-base">
-            Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.
+          <p class="text-textSecondary leading-relaxed mb-6">
+            For me, development is not just about coding — it's about shaping the entire process, from the initial concept to the final user experience.
           </p>
 
-          <!-- Contacts -->
-          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="mailto:mutlu@techie.com">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
-                <span>mutlu@techie.com</span>
-              </a>
-            </li>
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="tel:+905461583405">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
-                <span>+90 546 158 34 05</span>
-              </a>
-            </li>
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span>linkedin.com/in/mutlukurt</span>
-              </a>
-            </li>
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-                <span>github.com/mutlukurt</span>
-              </a>
-            </li>
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://www.shopier.com/codebymutlu" target="_blank" rel="noopener noreferrer">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.25a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"/>
-                </svg>
-                <span>shopier.com/codebymutlu</span>
-              </a>
-            </li>
-            <li>
-              <a class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur glow px-4 py-3 hover:text-blueAccent transition" href="https://topmate.io/mutlukurt" target="_blank" rel="noopener noreferrer">
-                <svg class="w-5 h-5 text-purpleAccent group-hover:text-blueAccent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M19 4h-1V2h-2v2H8V2H6v2H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10h16v9zm0-11H4V7a1 1 0 0 1 1-1h1v2h2V6h8v2h2V6h1a1 1 0 0 1 1 1v1z"/>
-                  <path d="M10.5 16.5l-2-2-1.4 1.4 3.4 3.4 6-6-1.4-1.4-4.6 4.6z"/>
-                </svg>
-                <span>topmate.io/mutlukurt</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: photo in rounded rectangle with glow -->
-        <div class="reveal show flex justify-center lg:justify-end lg:-ml-4 mt-6 lg:mt-0">
-          <div class="relative rounded-[36px] overflow-hidden photo-glow bg-blueAccent/10 ring-2 ring-purpleAccent/30 w-[280px] h-[340px] sm:w-[340px] sm:h-[420px] md:w-[380px] md:h-[460px]">
-            <img src="assets/profile.jpg" alt="Profile photo" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async"/>
+          <!-- Contact Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href="mailto:mutlu@techie.com" class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur card-glow px-4 py-3 hover:bg-cardHover transition-all">
+              <svg class="w-5 h-5 text-accent group-hover:text-accent2" viewBox="0 0 24 24" fill="currentColor"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
+              <span class="text-white">mutlu@techie.com</span>
+            </a>
+            <a href="tel:+905461583405" class="group flex items-center gap-3 rounded-xl bg-card/90 backdrop-blur card-glow px-4 py-3 hover:bg-cardHover transition-all">
+              <svg class="w-5 h-5 text-accent group-hover:text-accent2" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
+              <span class="text-white">+90 546 158 34 05</span>
+            </a>
           </div>
         </div>
-      </section>
 
-      <!-- Bottom section: grouped categories -->
-      <section class="mt-10 md:mt-16 space-y-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Right: Skills Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Technical Skills -->
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow">
+            <h3 class="text-xl font-bold text-white mb-4">Technical Skills</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent/20 to-accent2/20 flex items-center justify-center">
+                  <span class="text-accent font-bold text-sm">HTML</span>
+                </div>
+                <span class="text-textSecondary">HTML5</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent/20 to-accent2/20 flex items-center justify-center">
+                  <span class="text-accent font-bold text-sm">CSS</span>
+                </div>
+                <span class="text-textSecondary">CSS3</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent/20 to-accent2/20 flex items-center justify-center">
+                  <span class="text-accent font-bold text-sm">JS</span>
+                </div>
+                <span class="text-textSecondary">JavaScript</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent/20 to-accent2/20 flex items-center justify-center">
+                  <span class="text-accent font-bold text-sm">RN</span>
+                </div>
+                <span class="text-textSecondary">React Native</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Education -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-3">Education</h2>
-            <ul class="space-y-2 text-bodyText/90">
-              <li>
-                <div class="font-medium text-white">Çankırı Karatekin University — Faculty of Economics and Administrative Sciences</div>
-                <div>Labour Economics and Industrial Relations <span class="text-purpleAccent">(2022 → Now)</span></div>
-              </li>
-              <li class="pt-2 border-t border-white/10">
-                <div class="font-medium text-white">Anadolu University</div>
-                <div>Web Design and Coding — <span class="text-purpleAccent">Graduated 2022</span></div>
-              </li>
-            </ul>
-          </article>
-
-          <!-- Soft skills -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-2">Soft Skills</h2>
-            <ul class="grid grid-cols-2 gap-2 text-bodyText/90">
-              <li>Teamwork</li>
-              <li>Critical Thinking</li>
-              <li>Communication</li>
-              <li>Time Management</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Technical skills (stack) -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-3">Technical Skills</h2>
-            <div class="flex items-center gap-3 flex-wrap">
-              <!-- HTML5 -->
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#F97316]/20 p-2">
-                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><path fill="#F97316" d="M3 2l1.7 19.3L12 22l7.3-.7L21 2H3zm14.1 6.2H8.9l.2 2h7l-.5 5.1-3.6 1-.1.1-3.6-1-.2-2.6h1.8l.1 1.2 1.9.5 1.9-.5.2-2.7H7.6L7 6.2h10.1z"/></svg>
-              </span>
-              <!-- CSS3 -->
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#3B82F6]/20 p-2">
-                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><path fill="#3B82F6" d="M3 2l1.7 19.3L12 22l7.3-.7L21 2H3zm13 6H8.2l.1 1.8h7.4l-.3 3.2-3.4.9-3.4-.9-.2-1.6H7.5l.3 3.6 4.2 1.1 4.2-1.1.6-7z"/></svg>
-              </span>
-              <!-- JavaScript -->
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#F59E0B]/20 p-2">
-                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="#F59E0B"/><text x="7" y="17" font-size="10" fill="#0b0b0b" font-family="Inter, Arial, sans-serif" font-weight="700">JS</text></svg>
-              </span>
-              <!-- React Native -->
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#22D3EE]/15 p-2">
-                <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true"><g fill="none" stroke="#22D3EE" stroke-width="1.5"><circle cx="12" cy="12" r="2.2" fill="#22D3EE"/><ellipse cx="12" cy="12" rx="9" ry="3.8"/><ellipse cx="12" cy="12" rx="9" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.8" transform="rotate(120 12 12)"/></g></svg>
-              </span>
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow">
+            <h3 class="text-xl font-bold text-white mb-4">Education</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="text-white font-medium">Çankırı Karatekin University</div>
+                <div class="text-textSecondary text-sm">Labour Economics and Industrial Relations</div>
+                <div class="text-accent text-sm">2022 → Now</div>
+              </div>
+              <div class="pt-2 border-t border-white/10">
+                <div class="text-white font-medium">Anadolu University</div>
+                <div class="text-textSecondary text-sm">Web Design and Coding</div>
+                <div class="text-accent text-sm">Graduated 2022</div>
+              </div>
             </div>
-          </article>
+          </div>
+        </div>
+      </section>
 
-          <!-- Skill set -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-2">Skill Set</h2>
-            <div class="grid grid-cols-2 gap-x-6 text-bodyText/90">
-              <ul class="space-y-1">
-                <li>User Research</li>
-                <li>Wireframing</li>
-                <li>Brainstorming</li>
-              </ul>
-              <ul class="space-y-1">
-                <li>Web Design</li>
-                <li>App Design</li>
-                <li>Prototyping</li>
-              </ul>
+      <!-- My Work Section -->
+      <section id="work" class="mb-20">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">My Work</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Work Item 1 -->
+          <div class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
+              <div class="text-accent text-4xl">🎨</div>
             </div>
-          </article>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Interest -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-2">Interests</h2>
-            <div class="text-bodyText/90">Design Trends • Technology • UI Engineering</div>
-          </article>
-
-          <!-- Languages -->
-          <article class="reveal rounded-2xl bg-card/90 backdrop-blur glow p-5">
-            <h2 class="text-white text-xl font-semibold mb-2">Languages</h2>
-            <div class="text-bodyText/90">Turkish (Native) • English (Intermediate+)</div>
-          </article>
+            <div class="p-4">
+              <h3 class="text-white font-semibold">Brightfolio</h3>
+              <p class="text-textSecondary text-sm">Portfolio Template</p>
+            </div>
           </div>
-      </section>
 
-      <!-- My Work grid -->
-      <section id="work" class="mt-10 md:mt-16 reveal scroll-mt-28 sm:scroll-mt-32">
-        <h2 class="text-center text-white text-xl font-semibold mb-4">My Work</h2>
-        <div class="work-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Brightfolio — Portfolio Template -->
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Brightfolio preview 1" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_26a09eca5bffedc0dbe49dfec1461bfd.png" alt="Brightfolio — Portfolio Template, preview 1" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Brightfolio — Portfolio Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Brightfolio preview 2" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_c4ead891b07b8b74749e9a823c249a87.png" alt="Brightfolio — Portfolio Template, preview 2" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Brightfolio — Portfolio Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Brightfolio preview 3" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_b6555c5906571f06f2dc133e84e2e964.png" alt="Brightfolio — Portfolio Template, preview 3" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Brightfolio — Portfolio Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Brightfolio preview 4" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_c77c2f9b09f6b7cf3e356d288209d99a.png" alt="Brightfolio — Portfolio Template, preview 4" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Brightfolio — Portfolio Template</figcaption>
-          </figure>
-
-          <!-- Lux UI Template -->
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Lux UI Template preview 1" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_b161189737b15382dc735fb09ebea223.png" alt="Lux UI Template, preview 1" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Lux UI Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Lux UI Template preview 2" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_c107ffaae05ad1abf41390632b85e34f.png" alt="Lux UI Template, preview 2" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Lux UI Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Lux UI Template preview 3" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_606146bd5e6e66912faa7fe898217e82.png" alt="Lux UI Template, preview 3" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Lux UI Template</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Lux UI Template preview 4" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_2167b503a71def12a8b14d828414ad59.png" alt="Lux UI Template, preview 4" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Lux UI Template</figcaption>
-          </figure>
-
-          <!-- Premium Responsive Landing Page (HTML/CSS/JS) -->
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Premium Landing preview 1" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_af4f2aa531089fb029e3bb5addd1e81b.jpeg" alt="Premium Responsive Landing Page, preview 1" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Premium Responsive Landing Page</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Premium Landing preview 2" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_bcf76e2db0812a4fc44628ae34cb1cc0.jpeg" alt="Premium Responsive Landing Page, preview 2" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Premium Responsive Landing Page</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Premium Landing preview 3" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_e7d86facccaf579af03a29c626831225.jpeg" alt="Premium Responsive Landing Page, preview 3" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Premium Responsive Landing Page</figcaption>
-          </figure>
-          <figure class="rounded-2xl bg-card/90 glow overflow-hidden transition transform hover:scale-[1.01]">
-            <a href="#" aria-label="Open Premium Landing preview 4" class="block">
-              <img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://cdn.shopier.app/pictures_large/codebymutlu_026b8edb2e1aabd01bb4871199b0be57.jpeg" alt="Premium Responsive Landing Page, preview 4" class="w-full h-full object-cover" />
-            </a>
-            <figcaption class="sr-only">Premium Responsive Landing Page</figcaption>
-          </figure>
-        </div>
-      </section>
-      
-      <!-- Products anchor for nav offset -->
-      <div id="products" class="scroll-mt-28 sm:scroll-mt-32"></div>
-      <div id="products" class="scroll-mt-28 sm:scroll-mt-32"></div>
-      <!-- Video previews -->
-      <section id="templates" class="mt-10 md:mt-16 reveal scroll-mt-28 sm:scroll-mt-32">
-        <h2 class="text-center text-white text-xl font-semibold mb-4">Project Demos</h2>
-        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-4">
-          <div class="aspect-video rounded-xl overflow-hidden photo-glow bg-blueAccent/10">
-            <iframe id="ytMain" class="w-full h-full" src="" data-initial="LwM-U5Ger4Y" title="Product preview" loading="lazy" referrerpolicy="no-referrer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <!-- Work Item 2 -->
+          <div class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
+              <div class="text-accent2 text-4xl">✨</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-semibold">Lux UI</h3>
+              <p class="text-textSecondary text-sm">UI Template</p>
+            </div>
           </div>
-          <ul class="mt-3 grid grid-cols-3 sm:grid-cols-6 gap-2">
-            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="LwM-U5Ger4Y" aria-label="Play video 1"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/LwM-U5Ger4Y/hqdefault.jpg" alt="Video 1 thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button></li>
-            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="-pKJKIxCTp0" aria-label="Play video 2"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/-pKJKIxCTp0/hqdefault.jpg" alt="Video 2 thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button></li>
-            <li><button class="yt-thumb group w-full rounded-lg overflow-hidden bg-white/5 border border-white/10 hover:border-blueAccent transition" data-video-id="iHJrekXBXCA" aria-label="Play video 3"><img class="w-full h-full object-cover group-hover:opacity-90" src="https://i.ytimg.com/vi/iHJrekXBXCA/hqdefault.jpg" alt="Video 3 thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button></li>
-          </ul>
+
+          <!-- Work Item 3 -->
+          <div class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
+              <div class="text-accent text-4xl">🚀</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-semibold">Premium Landing</h3>
+              <p class="text-textSecondary text-sm">Landing Page</p>
+            </div>
+          </div>
+
+          <!-- Work Item 4 -->
+          <div class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
+              <div class="text-accent2 text-4xl">💎</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-semibold">Custom Solutions</h3>
+              <p class="text-textSecondary text-sm">Web Development</p>
+            </div>
+          </div>
         </div>
       </section>
 
+      <!-- Project Demos Section -->
+      <section id="products" class="mb-20">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">Project Demos</h2>
+        <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow">
+          <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-xl flex items-center justify-center mb-6">
+            <div class="text-center">
+              <div class="text-accent text-6xl mb-4">🎬</div>
+              <div class="text-white font-semibold">Video Preview</div>
+              <div class="text-textSecondary text-sm">Click to watch project demos</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gradient-to-br hover:from-accent/30 hover:to-accent2/30 transition-all">
+              <div class="text-accent text-2xl">▶️</div>
+            </div>
+            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gradient-to-br hover:from-accent2/30 hover:to-accent/30 transition-all">
+              <div class="text-accent2 text-2xl">▶️</div>
+            </div>
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gradient-to-br hover:from-accent/30 hover:to-accent2/30 transition-all">
+              <div class="text-accent text-2xl">▶️</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Partners Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">Partners & Integrations</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all text-center">
+            <div class="text-accent text-3xl mb-2">🔧</div>
+            <div class="text-white font-semibold">Quixel</div>
+          </div>
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all text-center">
+            <div class="text-accent2 text-3xl mb-2">🎮</div>
+            <div class="text-white font-semibold">Unreal</div>
+          </div>
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all text-center">
+            <div class="text-accent text-3xl mb-2">🦊</div>
+            <div class="text-white font-semibold">Metamask</div>
+          </div>
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all text-center">
+            <div class="text-accent2 text-3xl mb-2">💰</div>
+            <div class="text-white font-semibold">Binance</div>
+          </div>
+          <div class="bg-card/90 backdrop-blur rounded-2xl p-6 card-glow hover:bg-cardHover transition-all text-center">
+            <div class="text-accent text-3xl mb-2">🥽</div>
+            <div class="text-white font-semibold">Oculus</div>
+          </div>
+        </div>
+      </section>
 
-      <footer class="mt-12 text-center text-sm text-bodyText/70">
-        © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
+      <!-- Newsletter Section -->
+      <section class="text-center mb-20">
+        <h2 class="text-3xl font-bold text-white mb-6">Subscribe to Get Fresh News Update About Development</h2>
+        <button class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+          Subscribe
+        </button>
+      </section>
+
+      <!-- Footer -->
+      <footer class="border-t border-white/10 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="text-2xl font-bold gradient-text mb-4">Mutlu Kurt</div>
+            <p class="text-textSecondary mb-4">Frontend Developer crafting fast, clean, revenue-focused UIs.</p>
+            <div class="flex gap-4">
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📱</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">🐦</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📺</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📞</a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Explore</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">Art</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Collectibles</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Domain Name</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Utility</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Statistic</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">Ranking</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Activity</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Resource</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Platform Status</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Partners</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="text-center text-textSecondary border-t border-white/10 pt-8">
+          © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
+        </div>
       </footer>
     </main>
 
     <script src="assets/main.js" defer></script>
   </body>
-  </html>
+</html>
 
 

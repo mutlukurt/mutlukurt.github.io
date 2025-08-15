@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
     <title>Blog — Mutlu Kurt</title>
     <meta name="description" content="Frontend development insights, research, and technical articles by Mutlu Kurt">
-    <meta name="theme-color" content="#0F172A">
+    <meta name="theme-color" content="#0A0A0A">
     <link rel="preload" as="image" href="assets/profile.jpg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link rel="preconnect" href="https://cdn.shopier.app" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
       // Mute Tailwind Play CDN production warning in console (keeps other warnings)
       const __tw_warn = console.warn.bind(console);
@@ -29,8 +29,11 @@
       html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth}
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
       .reveal.show { opacity: 1; transform: translateY(0); }
-      .glow { box-shadow: 0 0 0 2px rgba(167,139,250,.35), 0 12px 40px rgba(167,139,250,.25); }
-      .photo-glow { box-shadow: 0 0 0 2px rgba(167,139,250,.45), 0 20px 60px rgba(0,0,0,.45); }
+      .gradient-text { background: linear-gradient(135deg, #22D3EE, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .gradient-bg { background: linear-gradient(135deg, #22D3EE, #F59E0B); }
+      .card-glow { box-shadow: 0 8px 32px rgba(34, 211, 238, 0.15); }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -39,231 +42,291 @@
           extend: {
             fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
             colors: {
-              bgTop: "#0F172A",
-              bgBottom: "#1E1B4B",
-              card: "#4C1D95",
-              purpleAccent: "#A78BFA",
-              blueAccent: "#60A5FA",
-              bodyText: "#E0E7FF",
-              glow: "rgba(167, 139, 250, 0.5)",
+              dark: "#0A0A0A",
+              darker: "#050505",
+              card: "#1A1A1A",
+              cardHover: "#252525",
+              accent: "#22D3EE",
+              accent2: "#F59E0B",
+              text: "#FFFFFF",
+              textSecondary: "#A3A3A3",
             }
           }
         }
       }
     </script>
   </head>
-  <body class="min-h-screen font-inter text-bodyText bg-gradient-to-b from-bgTop to-bgBottom" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-text bg-dark" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-white/10">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between" aria-label="Main navigation">
-        <a href="index.html" class="text-white font-semibold hidden sm:inline">← Back to Portfolio</a>
-        <button id="navToggle" class="sm:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+    <header class="sticky top-0 z-50 bg-dark/95 backdrop-blur border-b border-white/10">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between" aria-label="Main navigation">
+        <a href="index.html" class="text-2xl font-bold gradient-text">← Back to Portfolio</a>
+        
+        <ul class="hidden md:flex items-center gap-8 text-white">
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html">Portfolio</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#about">About</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#work">My Work</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#products">Project Demos</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors active" href="blog.html">Blog</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="links.html">Links</a></li>
+        </ul>
+
+        <button id="navToggle" class="md:hidden inline-flex items-center gap-2 rounded-xl bg-white/10 text-white px-3 py-2 border border-white/15 focus-visible:ring-2 focus-visible:ring-white/60" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
           <span>Menu</span>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
         </button>
-        <ul id="navMenu" class="hidden sm:flex items-center gap-4 text-white">
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html">Portfolio</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#about">About</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#work">My Work</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="index.html#products">Project Demos</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5 active" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-3 py-2 rounded-lg hover:bg-white/5" href="links.html">Links</a></li>
-        </ul>
       </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-      <!-- Page header -->
-      <section class="reveal show mb-6 md:mb-8 scroll-mt-28 sm:scroll-mt-32">
-        <header class="mx-auto max-w-3xl pt-16 pb-10 text-center">
-          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">Frontend Insights</h1>
-          <p class="mt-4 text-white/70 text-lg">Research, tutorials, and technical articles about modern web development</p>
-          <div class="mt-6">
-            <a href="index.html" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-white/10 text-white border border-white/15 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/60 transition">
+      <!-- Hero Section -->
+      <section class="text-center pt-16 pb-20">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-5xl sm:text-7xl font-black tracking-tight text-white leading-tight mb-6">
+            Frontend <span class="gradient-text">Insights</span>
+          </h1>
+          <p class="text-xl text-textSecondary leading-relaxed mb-8 max-w-2xl mx-auto">
+            Research, tutorials, and technical articles about modern web development and digital innovation
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="index.html" class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
               ← Back to Portfolio
             </a>
+            <a href="#articles" class="text-white font-medium px-8 py-4 rounded-xl border border-white/20 hover:bg-white/5 transition-colors flex items-center gap-2">
+              Explore Articles
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
           </div>
-        </header>
-      </section>
-
-      <!-- Blog posts grid -->
-      <section class="reveal show scroll-mt-28 sm:scroll-mt-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Sample Blog Post 1 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">Development</span>
-                <span class="text-white/60">5 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Modern CSS Grid Layouts</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sample Blog Post 2 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Performance</span>
-                <span class="text-white/60">8 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Web Performance Optimization</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Best practices for improving Core Web Vitals and creating lightning-fast user experiences.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sample Blog Post 3 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">UI/UX</span>
-                <span class="text-white/60">6 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Design Systems in Practice</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Building scalable design systems that improve consistency and developer experience.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sample Blog Post 4 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Tools</span>
-                <span class="text-white/60">4 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Essential Dev Tools 2024</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Must-have development tools and extensions that boost productivity and code quality.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sample Blog Post 5 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-purpleAccent/20 to-blueAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-purpleAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-purpleAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-purpleAccent/20 text-purpleAccent">Tutorial</span>
-                <span class="text-white/60">10 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Building a Portfolio Site</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Step-by-step guide to creating a professional portfolio website with modern technologies.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-purpleAccent group-hover:text-blueAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Sample Blog Post 6 -->
-          <article class="bg-card/90 backdrop-blur glow rounded-2xl overflow-hidden transition transform hover:scale-[1.02] group">
-            <div class="aspect-video bg-gradient-to-br from-blueAccent/20 to-purpleAccent/20 flex items-center justify-center">
-              <svg class="w-16 h-16 text-blueAccent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 text-sm text-blueAccent mb-3">
-                <span class="px-2 py-1 rounded-full bg-blueAccent/20 text-blueAccent">Career</span>
-                <span class="text-white/60">7 min read</span>
-              </div>
-              <h2 class="text-xl font-bold text-white mb-3 group-hover:text-blueAccent transition">Freelancing Success Tips</h2>
-              <p class="text-bodyText/80 text-sm leading-relaxed mb-4">
-                Lessons learned from successful freelancing and building a sustainable client base.
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-white/60 text-sm">Coming Soon</span>
-                <span class="text-blueAccent group-hover:text-purpleAccent transition">→</span>
-              </div>
-            </div>
-          </article>
-
         </div>
       </section>
 
-      <!-- Newsletter signup section -->
-      <section class="mt-16 reveal show">
-        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-8 text-center max-w-2xl mx-auto">
-          <h2 class="text-white text-2xl font-semibold mb-3">Stay Updated</h2>
-          <p class="text-bodyText/90 mb-6">Get notified when new articles are published. No spam, just valuable insights.</p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <input type="email" placeholder="Enter your email" class="flex-1 max-w-sm px-4 py-3 rounded-xl bg-white/10 text-white border border-white/15 focus:outline-none focus:ring-2 focus:ring-purpleAccent/50 placeholder:text-white/50">
-            <button class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-medium shadow-lg hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/60 transition">
+      <!-- Statistics Section -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">50+</div>
+          <div class="text-textSecondary">Articles</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">10k+</div>
+          <div class="text-textSecondary">Readers</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black gradient-text mb-2">25+</div>
+          <div class="text-textSecondary">Topics</div>
+        </div>
+      </section>
+
+      <!-- Featured Article -->
+      <section class="mb-20">
+        <div class="bg-card/90 backdrop-blur rounded-3xl p-8 card-glow">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div class="text-sm font-medium text-accent mb-4">Featured Article</div>
+              <h2 class="text-3xl font-bold text-white mb-4">The Future of Web Development in 2024</h2>
+              <p class="text-textSecondary leading-relaxed mb-6">
+                Explore the latest trends, technologies, and methodologies that are shaping the future of web development. From AI-powered tools to advanced CSS techniques, discover what's next in the digital landscape.
+              </p>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-accent2"></div>
+                <div>
+                  <div class="text-white font-semibold">Mutlu Kurt</div>
+                  <div class="text-textSecondary text-sm">Frontend Developer</div>
+                </div>
+              </div>
+              <a href="#" class="gradient-bg text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 inline-block">
+                Read Full Article
+              </a>
+            </div>
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-2xl flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-accent text-6xl mb-4">🚀</div>
+                <div class="text-white font-semibold">Future of Web Dev</div>
+                <div class="text-textSecondary text-sm">2024 Trends & Insights</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Posts Grid -->
+      <section id="articles" class="mb-20">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">Latest Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Blog Post 1 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
+              <div class="text-accent text-4xl group-hover:scale-110 transition-transform">🎨</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent mb-2">Web Design</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">Modern CSS Grid Layouts</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Learn how to create responsive, flexible layouts using CSS Grid. Discover advanced techniques and best practices for modern web design.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">5 min read</div>
+                <a href="#" class="text-accent hover:text-accent2 transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
+              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">⚡</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent2 mb-2">Performance</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">Website Speed Optimization</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Essential techniques to improve your website's loading speed and performance. From image optimization to code splitting strategies.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">8 min read</div>
+                <a href="#" class="text-accent2 hover:text-accent transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
+              <div class="text-accent text-4xl group-hover:scale-110 transition-transform">🔧</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent mb-2">Development</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">JavaScript ES2024 Features</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Explore the latest JavaScript features and how they can improve your development workflow and code quality.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">6 min read</div>
+                <a href="#" class="text-accent hover:text-accent2 transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 4 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
+              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">📱</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent2 mb-2">Mobile First</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">Responsive Design Principles</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Master the art of creating websites that look great on all devices. Learn mobile-first design strategies and responsive techniques.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">7 min read</div>
+                <a href="#" class="text-accent2 hover:text-accent transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 5 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
+              <div class="text-accent text-4xl group-hover:scale-110 transition-transform">🎯</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent mb-2">UX/UI</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">User Experience Design</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Understand the fundamentals of UX design and how to create intuitive, user-friendly interfaces that convert visitors into customers.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">9 min read</div>
+                <a href="#" class="text-accent hover:text-accent2 transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 6 -->
+          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
+            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
+              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">🚀</div>
+            </div>
+            <div class="p-6">
+              <div class="text-sm font-medium text-accent2 mb-2">Frameworks</div>
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">React vs Vue vs Angular</h3>
+              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+                Comprehensive comparison of the three major JavaScript frameworks. Choose the right tool for your next project.
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-textSecondary text-sm">12 min read</div>
+                <a href="#" class="text-accent2 hover:text-accent transition-colors font-medium">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section class="text-center mb-20">
+        <div class="bg-card/90 backdrop-blur rounded-3xl p-12 card-glow">
+          <h2 class="text-3xl font-bold text-white mb-6">Stay Updated with Latest Insights</h2>
+          <p class="text-textSecondary text-lg mb-8 max-w-2xl mx-auto">
+            Get notified about new articles, tutorials, and industry insights delivered straight to your inbox.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-textSecondary focus:outline-none focus:border-accent transition-colors">
+            <button class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
               Subscribe
             </button>
           </div>
-          <p class="text-xs text-white/50 mt-3">Coming soon - Newsletter functionality will be added</p>
         </div>
       </section>
 
-      <!-- Additional info section -->
-      <section class="mt-10 md:mt-16 reveal show">
-        <div class="rounded-2xl bg-card/90 backdrop-blur glow p-6 text-center">
-          <h2 class="text-white text-xl font-semibold mb-3">Have a Topic in Mind?</h2>
-          <p class="text-bodyText/90 mb-4">Want me to write about a specific frontend development topic? Let me know!</p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="mailto:mutlu@techie.com" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white font-medium shadow-lg hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/60">
-              Suggest a Topic
-            </a>
-            <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" class="inline-flex justify-center items-center text-center px-5 py-3 rounded-xl bg-white/10 text-white border border-white/15 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/60" target="_blank" rel="noopener noreferrer">
-              Hire Me on Upwork
-            </a>
+      <!-- Footer -->
+      <footer class="border-t border-white/10 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="text-2xl font-bold gradient-text mb-4">Mutlu Kurt</div>
+            <p class="text-textSecondary mb-4">Frontend Developer crafting fast, clean, revenue-focused UIs.</p>
+            <div class="flex gap-4">
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📱</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">🐦</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📺</a>
+              <a href="#" class="text-accent hover:text-accent2 transition-colors">📞</a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Categories</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">Web Design</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Development</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Performance</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">UX/UI</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">Tutorials</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Code Snippets</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Tools</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Books</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Connect</h3>
+            <ul class="space-y-2 text-textSecondary">
+              <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Portfolio</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Services</a></li>
+            </ul>
           </div>
         </div>
-      </section>
-
-      <footer class="mt-12 text-center text-sm text-bodyText/70">
-        © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
+        
+        <div class="text-center text-textSecondary border-t border-white/10 pt-8">
+          © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
+        </div>
       </footer>
     </main>
 
