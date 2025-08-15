@@ -11,6 +11,92 @@
 /* Prevent flash before CSS loads */
 html{visibility:visible;opacity:1}
 
+/* Modern Mobile Menu Styles */
+#mobileMenuBtn {
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3) !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  touch-action: manipulation !important;
+  position: relative !important;
+  z-index: 10000 !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  pointer-events: auto !important;
+}
+
+#mobileMenuBtn:active,
+#mobileMenuBtn:focus,
+#mobileMenuBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(0.95) !important;
+}
+
+#mobileMenuOverlay {
+  z-index: 9998 !important;
+  pointer-events: auto !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+#mobileMenuOverlay:not(.hidden) {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#mobileMenuOverlay.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.mobile-menu-link {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  display: block !important;
+  transition: all 0.2s ease !important;
+}
+
+.mobile-menu-link:hover {
+  transform: translateY(-2px) !important;
+}
+
+.mobile-menu-link:active {
+  transform: translateY(0) !important;
+}
+
+/* Force touch behavior */
+@media (hover: none) and (pointer: coarse) {
+  #mobileMenuBtn {
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.5) !important;
+  }
+}
+
+/* Ensure header is above everything */
+header {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 1024px) {
+  /* Ensure touch targets are large enough */
+  #mobileMenuBtn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  .mobile-menu-link {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+}
+
 /* Utility subset matching used Tailwind classes */
 .font-inter { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
 .text-bodyText { color: var(--bodyText); }
