@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, shrink-to-fit=no">
     <title>Blog — Mutlu Kurt</title>
     <meta name="description" content="Frontend development insights, research, and technical articles by Mutlu Kurt">
-    <meta name="theme-color" content="#0A0A0A">
-    <link rel="preload" as="image" href="assets/profile.jpg">
+    <meta name="theme-color" content="#0F172A">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
-    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.shopier.app" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
       // Mute Tailwind Play CDN production warning in console (keeps other warnings)
@@ -26,7 +22,7 @@
     </script>
     <style>
       /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
-      html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth}
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth; scroll-padding-top: 80px;}
       
       /* Critical mobile overflow fixes */
       html, body {
@@ -45,11 +41,62 @@
       }
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
       .reveal.show { opacity: 1; transform: translateY(0); }
-      .gradient-text { background: linear-gradient(135deg, #22D3EE, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-      .gradient-bg { background: linear-gradient(135deg, #22D3EE, #F59E0B); }
-      .card-glow { box-shadow: 0 8px 32px rgba(34, 211, 238, 0.15); }
+      .gradient-text { background: linear-gradient(135deg, #4ADE80, #FB923C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
+      .gradient-bg { background: linear-gradient(135deg, #4ADE80, #FB923C); }
+      .card-glow { box-shadow: 0 8px 32px rgba(74, 222, 128, 0.15); }
+      .photo-glow { box-shadow: 0 0 40px rgba(74, 222, 128, 0.3); }
       .animate-float { animation: float 6s ease-in-out infinite; }
-      @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+      .animate-float-slow { animation: float 3s ease-in-out infinite; }
+      .animate-float-slow-delayed { animation: float 3s ease-in-out infinite 1.5s; }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      
+      /* Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #4ADE80, #22C55E);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 32px rgba(74, 222, 128, 0.3);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.8);
+        z-index: 1000;
+        border: none;
+      }
+      
+      .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+      
+      .scroll-to-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+        background: linear-gradient(135deg, #22C55E, #16A34A);
+      }
+      
+      /* Mobile optimizations */
+      @media (max-width: 640px) {
+        .scroll-to-top {
+          width: 50px;
+          height: 50px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -58,260 +105,126 @@
           extend: {
             fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
             colors: {
-              dark: "#0A0A0A",
-              darker: "#050505",
-              card: "#1A1A1A",
-              cardHover: "#252525",
-              accent: "#22D3EE",
-              accent2: "#F59E0B",
-              text: "#FFFFFF",
-              textSecondary: "#A3A3A3",
+              primary: "#4ADE80", // Vibrant green
+              secondary: "#22C55E", // Darker green
+              accent: "#FB923C", // Orange
+              accent2: "#FBBF24", // Yellow
+              background: "#F8FAFC", // Light background
+              card: "#FFFFFF", // White cards
+              cardHover: "#F1F5F9", // Light hover
+              text: "#1F2937", // Dark text
+              textSecondary: "#6B7280", // Gray text
+              success: "#10B981",
+              warning: "#F59E0B",
+              error: "#EF4444",
             }
           }
         }
       }
     </script>
   </head>
-  <body class="min-h-screen font-inter text-text bg-dark" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-text bg-background" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-[9999] bg-dark/95 backdrop-blur border-b border-white/10">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between" aria-label="Main navigation">
-        <a href="index.html" class="text-2xl font-bold gradient-text">← Back to Portfolio</a>
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation">
+        <a href="index.html" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
+          <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
+          <span class="hidden sm:inline lg:hidden">Modern UI Projects</span>
+          <span class="sm:hidden">Modern UI</span>
+        </a>
         
         <!-- Desktop Navigation -->
-        <ul class="hidden lg:flex items-center gap-8 text-white">
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html">Portfolio</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#about">About</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#recent-projects">Recent Projects</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#work">My Work</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="index.html#products">Project Demos</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors active" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-white/5 transition-colors" href="links.html">Links</a></li>
+        <ul class="hidden lg:flex items-center gap-8 text-text">
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html">Home</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#about">About</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#recent-projects">Recent Projects</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#work">My Work</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#products">Project Demos</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg bg-primary/10 transition-colors font-semibold" href="blog.html">Blog</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="links.html">Links</a></li>
         </ul>
 
         <!-- Modern Mobile/Tablet Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden group relative inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 text-white w-14 h-14 border border-white/20 focus-visible:ring-2 focus-visible:ring-white/60 transition-all duration-300 cursor-pointer select-none touch-manipulation hover:from-white/20 hover:to-white/10 hover:scale-105 hover:shadow-lg hover:shadow-white/10" aria-expanded="false" aria-label="Toggle mobile menu">
-          <!-- Animated Background -->
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/20 to-accent2/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          
-          <!-- Icon Container -->
-          <div class="relative z-10 flex items-center gap-2">
-            <div class="w-6 h-6 relative">
-              <!-- Animated Lines -->
-              <div class="absolute inset-0 flex flex-col justify-center gap-1.5">
-                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
-                <div class="w-4 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent2 ml-1"></div>
-                <div class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:bg-accent"></div>
-              </div>
-            </div>
-            <span class="text-sm font-semibold tracking-wide">Menu</span>
-          </div>
-          
-          <!-- Glow Effect -->
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/30 to-accent2/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-expanded="false" aria-label="Toggle mobile menu">
+          <svg class="w-6 h-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
+        
+        <!-- Simple Mobile Menu Dropdown -->
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
+          <nav class="py-2">
+            <a href="index.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
+            <a href="index.html#about" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
+            <a href="index.html#recent-projects" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Recent Projects</a>
+            <a href="index.html#work" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
+            <a href="index.html#products" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
+            <a href="blog.html" class="block px-4 py-3 text-text bg-gray-50 font-semibold transition-colors border-b border-gray-100">Blog</a>
+            <a href="links.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors">Links</a>
+          </nav>
+        </div>
       </nav>
     </header>
 
-    <!-- Modern Mobile/Tablet Menu Overlay -->
-    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998] hidden lg:hidden">
-      <div class="flex flex-col h-full">
-        <!-- Menu Header -->
-        <div class="flex items-center justify-between p-6 border-b border-white/10">
-          <h2 class="text-xl font-bold text-white">Navigation</h2>
-          <button id="closeMenuBtn" class="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <!-- Menu Items -->
-        <nav class="flex-1 px-6 py-8">
-          <ul class="space-y-6">
-            <li>
-              <a href="index.html" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Portfolio</div>
-                    <div class="text-white/60 text-sm">Ana sayfa</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="index.html#about" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">About</div>
-                    <div class="text-white/60 text-sm">Hakkımda</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="index.html#recent-projects" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Recent Projects</div>
-                    <div class="text-white/60 text-sm">Son projeler</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="index.html#work" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">My Work</div>
-                    <div class="text-white/60 text-sm">Çalışmalarım</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="index.html#products" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Project Demos</div>
-                    <div class="text-white/60 text-sm">Proje demoları</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="blog.html" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Blog</div>
-                    <div class="text-white/60 text-sm">Blog yazıları</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="links.html" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Links</div>
-                    <div class="text-white/60 text-sm">Bağlantılar</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        
-        <!-- Menu Footer -->
-        <div class="p-6 border-t border-white/10">
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-accent/20 to-accent2/20">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-white font-semibold">Mutlu Kurt</div>
-              <div class="text-white/60 text-sm">Frontend Developer</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <main class="bg-background">
       <!-- Hero Section -->
-      <section class="text-center pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 lg:pb-20">
+      <section class="text-center pt-16 sm:pt-20 pb-12 sm:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white leading-tight mb-4 sm:mb-6">
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-text leading-tight mb-4 sm:mb-6">
             Frontend <span class="gradient-text">Insights</span>
           </h1>
           <p class="text-base sm:text-lg lg:text-xl text-textSecondary leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
             Research, tutorials, and technical articles about modern web development and digital innovation
           </p>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a href="index.html" class="gradient-bg text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 text-sm sm:text-base">
-              ← Back to Portfolio
+            <a href="index.html" class="gradient-bg text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 text-sm sm:text-base flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Back to Portfolio
             </a>
-            <a href="#articles" class="text-white font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-white/20 hover:bg-white/5 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
+            <a href="#articles" class="text-text font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
               Explore Articles
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
             </a>
           </div>
         </div>
       </section>
 
       <!-- Statistics Section -->
-      <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
-        <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-black gradient-text mb-2">50+</div>
-          <div class="text-textSecondary text-sm sm:text-base">Articles</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-black gradient-text mb-2">10k+</div>
-          <div class="text-textSecondary text-sm sm:text-base">Readers</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-black gradient-text mb-2">25+</div>
-          <div class="text-textSecondary text-sm sm:text-base">Topics</div>
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-16 sm:mb-20 justify-items-center">
+          <div class="text-center w-full flex flex-col items-center">
+            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">50+</div>
+            <div class="text-textSecondary text-sm sm:text-base text-center">Articles</div>
+          </div>
+          <div class="text-center w-full flex flex-col items-center">
+            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">10k+</div>
+            <div class="text-textSecondary text-sm sm:text-base text-center">Readers</div>
+          </div>
+          <div class="text-center w-full flex flex-col items-center">
+            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">25+</div>
+            <div class="text-textSecondary text-sm sm:text-base text-center">Topics</div>
+          </div>
         </div>
       </section>
 
       <!-- Featured Article -->
-      <section class="mb-16 sm:mb-20">
-        <div class="bg-card/90 backdrop-blur rounded-2xl sm:rounded-3xl p-6 sm:p-8 card-glow">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
+        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-6 sm:p-8 card-glow border border-gray-200">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="order-2 lg:order-1">
-              <div class="text-xs sm:text-sm font-medium text-accent mb-3 sm:mb-4">Featured Article</div>
-              <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Modern CSS Grid Layouts</h2>
+              <div class="text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">Featured Article</div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-text mb-3 sm:mb-4">Modern CSS Grid Layouts</h2>
               <p class="text-sm sm:text-base text-textSecondary leading-relaxed mb-4 sm:mb-6">
                 Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices. Learn how to build modern, flexible web designs that adapt to any screen size.
               </p>
               <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-accent to-accent2"></div>
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
                 <div>
-                  <div class="text-white font-semibold text-sm sm:text-base">Mutlu Kurt</div>
+                  <div class="text-text font-semibold text-sm sm:text-base">Mutlu Kurt</div>
                   <div class="text-textSecondary text-xs sm:text-sm">Frontend Developer</div>
                 </div>
               </div>
@@ -319,14 +232,14 @@
                 Coming Soon
               </span>
             </div>
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 rounded-xl sm:rounded-2xl flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
               <div class="text-center">
-                <div class="text-accent text-4xl sm:text-6xl mb-3 sm:mb-4">
+                <div class="text-primary text-4xl sm:text-6xl mb-3 sm:mb-4">
                   <svg class="w-16 h-16 sm:w-24 sm:h-24 mx-auto" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
                   </svg>
                 </div>
-                <div class="text-white font-semibold text-sm sm:text-base">CSS Grid Mastery</div>
+                <div class="text-text font-semibold text-sm sm:text-base">CSS Grid Mastery</div>
                 <div class="text-textSecondary text-xs sm:text-sm">Advanced Layout Techniques</div>
               </div>
             </div>
@@ -335,138 +248,138 @@
       </section>
 
       <!-- Blog Posts Grid -->
-      <section id="articles" class="mb-16 sm:mb-20">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">Latest Articles</h2>
+      <section id="articles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-text text-center mb-8 sm:mb-12">Latest Articles</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           
           <!-- Blog Post 1 -->
-          <article class="bg-card/90 backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
-              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
                 </svg>
               </div>
             </div>
             <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Web Design</div>
-              <h3 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-accent transition-colors">Modern CSS Grid Layouts</h3>
+              <div class="text-xs sm:text-sm font-medium text-primary mb-2">Web Design</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Modern CSS Grid Layouts</h3>
               <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices.
               </p>
               <div class="flex items-center justify-between">
                 <div class="text-textSecondary text-xs sm:text-sm">5 min read</div>
-                <span class="text-accent group-hover:text-accent2 transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
 
           <!-- Blog Post 2 -->
-          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
-              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
+              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17 2H7C5.9 2 5 2.9 5 4v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 17c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5-4H7V4h10v11z"/>
                 </svg>
               </div>
             </div>
-            <div class="p-6">
-              <div class="text-sm font-medium text-accent2 mb-2">Performance</div>
-              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">Web Performance Optimization</h3>
-              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+            <div class="p-4 sm:p-6">
+              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Performance</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Web Performance Optimization</h3>
+              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Best practices for improving Core Web Vitals and creating lightning-fast user experiences.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-sm">8 min read</div>
-                <span class="text-accent2 group-hover:text-accent transition-colors font-medium">Coming Soon</span>
+                <div class="text-textSecondary text-xs sm:text-sm">8 min read</div>
+                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
 
           <!-- Blog Post 3 -->
-          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
-              <div class="text-accent text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
                 </svg>
               </div>
             </div>
-            <div class="p-6">
-              <div class="text-sm font-medium text-accent mb-2">UI/UX</div>
-              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">Design Systems in Practice</h3>
-              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+            <div class="p-4 sm:p-6">
+              <div class="text-xs sm:text-sm font-medium text-primary mb-2">UI/UX</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Design Systems in Practice</h3>
+              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Building scalable design systems that improve consistency and developer experience.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-sm">6 min read</div>
-                <span class="text-accent group-hover:text-accent2 transition-colors font-medium">Coming Soon</span>
+                <div class="text-textSecondary text-xs sm:text-sm">6 min read</div>
+                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
 
           <!-- Blog Post 4 -->
-          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
-              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
+              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
                 </svg>
               </div>
             </div>
-            <div class="p-6">
-              <div class="text-sm font-medium text-accent2 mb-2">Tools</div>
-              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">Essential Dev Tools 2024</h3>
-              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+            <div class="p-4 sm:p-6">
+              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Tools</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Essential Dev Tools 2024</h3>
+              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Must-have development tools and extensions that boost productivity and code quality.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-sm">4 min read</div>
-                <span class="text-accent2 group-hover:text-accent transition-colors font-medium">Coming Soon</span>
+                <div class="text-textSecondary text-xs sm:text-sm">4 min read</div>
+                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
 
           <!-- Blog Post 5 -->
-          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center">
-              <div class="text-accent text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
                 </svg>
               </div>
             </div>
-            <div class="p-6">
-              <div class="text-sm font-medium text-accent mb-2">Tutorial</div>
-              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">Building a Portfolio Site</h3>
-              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+            <div class="p-4 sm:p-6">
+              <div class="text-xs sm:text-sm font-medium text-primary mb-2">Tutorial</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Building a Portfolio Site</h3>
+              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Step-by-step guide to creating a professional portfolio website with modern technologies.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-sm">10 min read</div>
-                <span class="text-accent group-hover:text-accent2 transition-colors font-medium">Coming Soon</span>
+                <div class="text-textSecondary text-xs sm:text-sm">10 min read</div>
+                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
 
           <!-- Blog Post 6 -->
-          <article class="bg-card/90 backdrop-blur rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group">
-            <div class="aspect-video bg-gradient-to-br from-accent2/20 to-accent/20 flex items-center justify-center">
-              <div class="text-accent2 text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
+            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
+              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
+                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
                 </svg>
               </div>
             </div>
-            <div class="p-6">
-              <div class="text-sm font-medium text-accent2 mb-2">Career</div>
-              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">Freelancing Success Tips</h3>
-              <p class="text-textSecondary text-sm mb-4 leading-relaxed">
+            <div class="p-4 sm:p-6">
+              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Career</div>
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Freelancing Success Tips</h3>
+              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 Lessons learned from successful freelancing and building a sustainable client base.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-sm">7 min read</div>
-                <span class="text-accent2 group-hover:text-accent transition-colors font-medium">Coming Soon</span>
+                <div class="text-textSecondary text-xs sm:text-sm">7 min read</div>
+                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
               </div>
             </div>
           </article>
@@ -474,14 +387,14 @@
       </section>
 
       <!-- Newsletter Section -->
-      <section class="text-center mb-20">
-        <div class="bg-card/90 backdrop-blur rounded-3xl p-12 card-glow">
-          <h2 class="text-3xl font-bold text-white mb-6">Stay Updated with Latest Insights</h2>
-          <p class="text-textSecondary text-lg mb-8 max-w-2xl mx-auto">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
+        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-8 sm:p-12 card-glow border border-gray-200 max-w-4xl mx-auto">
+          <h2 class="text-2xl sm:text-3xl font-bold text-text mb-4 sm:mb-6">Stay Updated with Latest Insights</h2>
+          <p class="text-textSecondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
             Get notified about new articles, tutorials, and industry insights delivered straight to your inbox.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-textSecondary focus:outline-none focus:border-accent transition-colors">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl bg-gray-50 border border-gray-300 text-text placeholder-textSecondary focus:outline-none focus:border-primary transition-colors">
             <button class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
               Subscribe
             </button>
@@ -490,72 +403,137 @@
       </section>
 
       <!-- Footer -->
-      <footer class="border-t border-white/10 pt-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div class="text-2xl font-bold gradient-text mb-4">Mutlu Kurt</div>
-            <p class="text-textSecondary mb-4">Frontend Developer crafting fast, clean, revenue-focused UIs.</p>
-            <div class="flex gap-4">
-              <a href="#" class="text-accent hover:text-accent2 transition-colors">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-accent hover:text-accent2 transition-colors">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-accent hover:text-accent2 transition-colors">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-accent hover:text-accent2 transition-colors">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
-                </svg>
-              </a>
+      <footer class="bg-card border-t border-gray-200 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div class="sm:col-span-2 lg:col-span-1">
+              <div class="text-2xl font-bold gradient-text mb-4">Modern Web & Mobile UI Projects</div>
+              <p class="text-textSecondary mb-4">Frontend Developer crafting modern, high-performance web solutions.</p>
+              <div class="flex gap-4">
+                <a href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+                <a href="mailto:mutlu@techie.com" class="text-primary hover:text-accent transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-text font-semibold mb-4">Categories</h3>
+              <ul class="space-y-2 text-textSecondary">
+                <li><a href="#" class="hover:text-primary transition-colors">Web Design</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">Development</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">Performance</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">UX/UI</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-text font-semibold mb-4">Resources</h3>
+              <ul class="space-y-2 text-textSecondary">
+                <li><a href="#" class="hover:text-primary transition-colors">Tutorials</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">Code Snippets</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">Tools</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors">Books</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-text font-semibold mb-4">Connect</h3>
+              <ul class="space-y-2 text-textSecondary">
+                <li><a href="index.html#about" class="hover:text-primary transition-colors">About</a></li>
+                <li><a href="mailto:mutlu@techie.com" class="hover:text-primary transition-colors">Contact</a></li>
+                <li><a href="index.html" class="hover:text-primary transition-colors">Portfolio</a></li>
+                <li><a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Services</a></li>
+              </ul>
             </div>
           </div>
           
-          <div>
-            <h3 class="text-white font-semibold mb-4">Categories</h3>
-            <ul class="space-y-2 text-textSecondary">
-              <li><a href="#" class="hover:text-white transition-colors">Web Design</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Development</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Performance</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">UX/UI</a></li>
-            </ul>
+          <div class="text-center text-textSecondary border-t border-gray-200 pt-8">
+            <div class="text-sm">© <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.</div>
           </div>
-          
-          <div>
-            <h3 class="text-white font-semibold mb-4">Resources</h3>
-            <ul class="space-y-2 text-textSecondary">
-              <li><a href="#" class="hover:text-white transition-colors">Tutorials</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Code Snippets</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Tools</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Books</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-white font-semibold mb-4">Connect</h3>
-            <ul class="space-y-2 text-textSecondary">
-              <li><a href="#" class="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Portfolio</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Services</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="text-center text-textSecondary border-t border-white/10 pt-8">
-          © <span id="y"></span> Mutlu Kurt. Built with HTML, Tailwind CSS (CDN), and Vanilla JavaScript (ES6). Hosted on GitHub Pages.
         </div>
       </footer>
     </main>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+      </svg>
+    </button>
+
     <script src="assets/main.js" defer></script>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        if (mobileMenuBtn && mobileMenuOverlay) {
+          mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuOverlay.classList.toggle('hidden');
+            const isExpanded = !mobileMenuOverlay.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+          });
+          
+          // Close menu when clicking on a link
+          const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenuOverlay.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenuOverlay.contains(e.target)) {
+              mobileMenuOverlay.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.pageYOffset;
+          
+          // Show/hide scroll to top button
+          if (scrollTop > 300) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        });
+        
+        // Scroll to top functionality
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
   </body>
 </html>
