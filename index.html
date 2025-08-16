@@ -372,7 +372,7 @@
         
         /* Mobile hero section */
         .hero-content {
-          padding: 2rem 1rem;
+          padding: 3rem 1rem 2rem 1rem;
         }
         
         /* Mobile card spacing */
@@ -650,7 +650,7 @@
     </div>
     
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center" style="pointer-events: auto;">
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative" style="pointer-events: auto;">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation" style="pointer-events: auto;">
         <a href="#home" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
           <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
@@ -675,158 +675,26 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
+        
+        <!-- Simple Mobile Menu Dropdown -->
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
+          <nav class="py-2">
+            <a href="#home" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
+            <a href="#about" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
+            <a href="#recent-projects" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Recent Projects</a>
+            <a href="#work" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
+            <a href="#products" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
+            <a href="blog.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Blog</a>
+            <a href="links.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors">Links</a>
+          </nav>
+        </div>
       </nav>
     </header>
 
-    <!-- Modern Mobile/Tablet Menu Overlay -->
-    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998] hidden lg:hidden">
-      <div class="flex flex-col h-full">
-        <!-- Menu Header -->
-        <div class="flex items-center justify-between p-4 border-b border-white/10">
-          <h2 class="text-lg font-bold text-white">Navigation</h2>
-          <button id="closeMenuBtn" class="p-2 rounded-lg hover:bg-white/10 text-white transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <!-- Menu Items -->
-        <nav class="flex-1 px-6 py-8">
-          <ul class="space-y-6">
-            <li>
-              <a href="#home" class="mobile-menu-link" data-section="home">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Home</div>
-                    <div class="text-white/60 text-sm">Ana sayfa</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="#about" class="mobile-menu-link" data-section="about">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">About</div>
-                    <div class="text-white/60 text-sm">Hakkımda</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="#recent-projects" class="mobile-menu-link" data-section="recent-projects">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Recent Projects</div>
-                    <div class="text-white/60 text-sm">Son projeler</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="#work" class="mobile-menu-link" data-section="work">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">My Work</div>
-                    <div class="text-white/60 text-sm">Çalışmalarım</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="#products" class="mobile-menu-link" data-section="products">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Project Demos</div>
-                    <div class="text-white/60 text-sm">Proje demoları</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="blog.html" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Blog</div>
-                    <div class="text-white/60 text-sm">Blog yazıları</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-            
-            <li>
-              <a href="links.html" class="mobile-menu-link">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200">
-                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-accent2 to-accent flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-white font-semibold text-lg">Links</div>
-                    <div class="text-white/60 text-sm">Bağlantılar</div>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        
-        <!-- Menu Footer -->
-        <div class="p-6 border-t border-white/10">
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-accent/20 to-accent2/20">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-accent2 flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-white font-semibold">Mutlu Kurt</div>
-              <div class="text-white/60 text-sm">Frontend Developer</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
       <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary overflow-hidden pt-16 sm:pt-20">
         <!-- Background Elements -->
         <div class="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/80 to-primary/90"></div>
         <div class="absolute top-10 left-10 w-32 h-32 bg-accent/30 rounded-full blur-xl animate-float animate-pulse delay-100"></div>
@@ -836,7 +704,7 @@
         <div class="absolute bottom-32 left-20 w-20 h-20 bg-white/10 rounded-full blur-md animate-float-slow-delayed delay-400"></div>
         
         <!-- Content Container -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center hero-content">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center hero-content py-8 sm:py-12">
         <!-- Left: Content -->
           <div class="text-center lg:text-left">
             <div class="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 sm:px-6 sm:py-2 mb-4 sm:mb-6 animate-slide-in-down hover-glow">
@@ -1545,6 +1413,35 @@
       
       // Observe all elements with animate-on-scroll class
       document.addEventListener('DOMContentLoaded', () => {
+        // Simple Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        if (mobileMenuBtn && mobileMenuOverlay) {
+          mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuOverlay.classList.toggle('hidden');
+            const isExpanded = !mobileMenuOverlay.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+          });
+          
+          // Close menu when clicking on a link
+          const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenuOverlay.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenuOverlay.contains(e.target)) {
+              mobileMenuOverlay.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
         const animateElements = document.querySelectorAll('.animate-on-scroll');
         animateElements.forEach(el => observer.observe(el));
         
