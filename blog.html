@@ -96,6 +96,86 @@
           bottom: 20px;
           right: 20px;
         }
+        
+        /* Mobile navigation improvements */
+        .gradient-text {
+          font-size: 0.8rem;
+          line-height: 1.1;
+          max-width: 50%;
+          text-align: center;
+        }
+        
+        /* Mobile header spacing */
+        header {
+          min-height: 50px;
+        }
+        
+        header nav {
+          width: 100%;
+          padding: 0.5rem 1rem;
+        }
+        
+        /* Mobile logo container */
+        header nav a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        
+        /* Mobile scroll padding */
+        html {
+          scroll-padding-top: 50px !important;
+        }
+        
+        /* Mobile hero section */
+        .hero-content {
+          padding: 2rem 1rem;
+        }
+        
+        /* Mobile text sizes */
+        .text-3xl.sm\\:text-5xl.lg\\:text-6xl {
+          font-size: 2rem;
+        }
+        
+        .text-base.sm\\:text-lg.lg\\:text-xl {
+          font-size: 0.875rem;
+        }
+        
+        /* Mobile button adjustments */
+        .flex.flex-col.sm\\:flex-row.gap-3.sm\\:gap-4 {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+      }
+      
+      /* Tablet optimizations */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        /* Tablet navigation */
+        .nav-link {
+          font-size: 0.9375rem;
+          padding: 0.75rem 1rem;
+        }
+        
+        /* Tablet hero section */
+        .hero-content {
+          padding: 3rem 2rem;
+        }
+        
+        /* Tablet text sizes */
+        .text-3xl.sm\\:text-5xl.lg\\:text-6xl {
+          font-size: 3.5rem;
+        }
+      }
+      
+      /* Touch device optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .hover\\:scale-105:hover {
+          transform: none;
+        }
+        
+        .hover\\:bg-gray-50:hover {
+          background-color: transparent;
+        }
       }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
