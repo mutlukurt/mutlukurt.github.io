@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <script>
+      // Mute Tailwind Play CDN production warning in console - MUST BE FIRST
+      (function() {
+        const __tw_warn = console.warn.bind(console);
+        console.warn = function(...args) {
+          const m = args && args[0] ? String(args[0]) : '';
+          if (m.includes('cdn.tailwindcss.com should not be used in production')) return;
+          __tw_warn.apply(console, args);
+        };
+      })();
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, shrink-to-fit=no">
+    <title>About Me — Mutlu Kurt</title>
+    <meta name="description" content="About me — portfolio-style page for Mutlu Kurt">
+    <meta name="theme-color" content="#0F172A">
+    
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
+            colors: {
+              primary: "#6366f1",
+              secondary: "#818cf8",
+              accent: "#ff6b6b",
+              accent2: "#f59e0b",
+              background: "#f5f3f0",
+              card: "#FFFFFF",
+              cardHover: "#F1F5F9",
+              text: "#2d2d2d",
+              textSecondary: "#6b6b6b",
+              success: "#10B981",
+              warning: "#F59E0B",
+              error: "#EF4444",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth; scroll-padding-top: 80px;}
+      html, body { max-width: 100vw !important; overflow-x: hidden !important; }
+      * { box-sizing: border-box; }
+      .gradient-text { background: linear-gradient(135deg, #6366f1, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
+      .gradient-bg { background: linear-gradient(135deg, #6366f1, #ff6b6b); }
+      .card-glow { box-shadow: 0 8px 32px rgba(74, 222, 128, 0.15); }
+      .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .delay-100 { animation-delay: 0.1s; }
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+    </style>
+  </head>
+  <body class="min-h-screen font-inter text-[#2d2d2d] bg-[#f5f3f0]" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+    
+    <!-- Sticky top navigation -->
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation">
+        <a href="index.html" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
+          <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
+          <span class="hidden sm:inline lg:hidden">Modern UI Projects</span>
+          <span class="sm:hidden">Modern UI</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <ul class="hidden lg:flex items-center gap-8 text-text">
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html">Home</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="about.html">About</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="projects.html">Projects</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="work.html">My Work</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="demos.html">Project Demos</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="blog.html">Blog</a></li>
+          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="links.html">Links</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-expanded="false" aria-label="Toggle mobile menu">
+          <svg class="w-6 h-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
+          <nav class="py-2">
+            <a href="index.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
+            <a href="about.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
+            <a href="projects.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Projects</a>
+            <a href="work.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
+            <a href="demos.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
+            <a href="blog.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Blog</a>
+            <a href="links.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors">Links</a>
+          </nav>
+        </div>
+      </nav>
+    </header>
+
+    <main class="bg-[#f5f3f0] pt-16">
+      <!-- About Section -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="text-center mb-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text mb-6 animate-fade-in-up">About Me</h1>
+          <p class="text-lg text-textSecondary max-w-2xl mx-auto">Frontend Developer crafting beautiful, fast, and user-friendly websites</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
+          <!-- Left: Content -->
+          <div class="order-2 lg:order-1">
+            <p class="text-textSecondary leading-relaxed mb-4">
+              Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.
+            </p>
+            <p class="text-textSecondary leading-relaxed mb-4">
+              My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it's a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.
+            </p>
+            <p class="text-textSecondary leading-relaxed mb-4">
+              For me, development is not just about coding — it's about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.
+            </p>
+            <p class="text-textSecondary leading-relaxed mb-6">
+              Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.
+            </p>
+
+            <!-- Contact Info -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a href="mailto:mutlu@techie.com" class="flex items-center gap-3 p-4 bg-card rounded-xl hover:bg-cardHover transition-all group">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
+                </div>
+                <span class="text-text font-medium">mutlu@techie.com</span>
+              </a>
+              <a href="tel:+905461583405" class="flex items-center gap-3 p-4 bg-card rounded-xl hover:bg-cardHover transition-all group">
+                <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+                  <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
+                </div>
+                <span class="text-text font-medium">+90 546 158 34 05</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Skills Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 order-1 lg:order-2 mb-8 lg:mb-0">
+            <!-- Technical Skills -->
+            <div class="bg-card rounded-xl p-4 sm:p-6 card-glow border border-gray-200">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Technical Skills</h3>
+              <div class="space-y-2 sm:space-y-3">
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
+                    <span class="text-primary font-bold text-xs sm:text-sm">HTML</span>
+                  </div>
+                  <span class="text-textSecondary text-sm sm:text-base">HTML5</span>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
+                    <span class="text-primary font-bold text-xs sm:text-sm">CSS</span>
+                  </div>
+                  <span class="text-textSecondary text-sm sm:text-base">CSS3</span>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
+                    <span class="text-primary font-bold text-xs sm:text-sm">JS</span>
+                  </div>
+                  <span class="text-textSecondary text-sm sm:text-base">JavaScript</span>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
+                    <span class="text-primary font-bold text-xs sm:text-sm">RN</span>
+                  </div>
+                  <span class="text-textSecondary text-sm sm:text-base">React Native</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="bg-card rounded-xl p-4 sm:p-6 card-glow border border-gray-200">
+              <h3 class="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Education</h3>
+              <div class="space-y-2 sm:space-y-3">
+                <div>
+                  <div class="text-text font-medium text-sm sm:text-base">Çankırı Karatekin University</div>
+                  <div class="text-textSecondary text-xs sm:text-sm">Labour Economics and Industrial Relations</div>
+                  <div class="text-primary text-xs sm:text-sm">2022 → Now</div>
+                </div>
+                <div class="pt-2 border-t border-gray-200">
+                  <div class="text-text font-medium text-sm sm:text-base">Anadolu University</div>
+                  <div class="text-textSecondary text-xs sm:text-sm">Web Design and Coding</div>
+                  <div class="text-primary text-xs sm:text-sm">Graduated 2022</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center text-textSecondary border-t border-gray-200 pt-8">
+          <div class="text-sm mb-2">© <span id="y"></span> Mutlu Kurt. All rights reserved.</div>
+          <div class="text-xs">
+            <span class="font-medium">Built with:</span> 
+            HTML5 • Tailwind CSS 3.0 (CDN) • Vanilla JavaScript (ES6+) • 
+            CSS3 Animations • SVG Icons • Responsive Design • 
+            Mobile-First Approach • GitHub Pages
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        if (mobileMenuBtn && mobileMenuOverlay) {
+          mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuOverlay.classList.toggle('hidden');
+            const isExpanded = !mobileMenuOverlay.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+          });
+          
+          // Close menu when clicking on a link
+          const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenuOverlay.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+        
+        // Set current year
+        document.getElementById('y').textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
+</html>
