@@ -97,6 +97,94 @@ main, section, div {
   box-shadow: 0 8px 32px rgba(34, 211, 238, 0.3) !important;
 }
 
+/* GitHub Button Enhanced Styling */
+.github-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.github-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.github-btn:hover::before {
+  left: 100%;
+}
+
+/* Dark mode support for GitHub button */
+@media (prefers-color-scheme: dark) {
+  .github-btn {
+    background: linear-gradient(135deg, #1f2937, #111827) !important;
+  }
+  
+  .github-btn:hover {
+    background: linear-gradient(135deg, #374151, #1f2937) !important;
+  }
+}
+
+/* Ensure GitHub button maintains contrast in all themes */
+.github-btn {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.github-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Responsive GitHub button sizing */
+@media (max-width: 375px) {
+  .github-btn {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .github-btn svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 767px) {
+  .github-btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .github-btn {
+    padding: 1rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .github-btn {
+    padding: 1rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.github-btn:focus-visible {
+  outline: 2px solid #6366f1 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Smooth transitions for all interactive states */
+.github-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
 #mobileMenuBtn:hover .bg-gradient-to-r {
   opacity: 1 !important;
 }
