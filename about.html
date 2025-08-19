@@ -410,56 +410,94 @@
             </div>
           </div>
 
-          <!-- Right: Skills Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 order-1 lg:order-2 mb-8 lg:mb-0">
-            <!-- Technical Skills -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50">
-              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Technical Skills</h3>
-              <div class="space-y-4">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
-                    <span class="text-blue-600 font-bold text-sm">HTML</span>
-                  </div>
-                  <span class="text-slate-600 text-base font-medium">HTML5</span>
-                </div>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
-                    <span class="text-blue-600 font-bold text-sm">CSS</span>
-                  </div>
-                  <span class="text-slate-600 text-base font-medium">CSS3</span>
-                </div>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
-                    <span class="text-blue-600 font-bold text-sm">JS</span>
-                  </div>
-                  <span class="text-slate-600 text-base font-medium">JavaScript</span>
-                </div>
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
-                    <span class="text-blue-600 font-bold text-sm">RN</span>
-                  </div>
-                  <span class="text-slate-600 text-base font-medium">React Native</span>
+          <!-- Right: Profile Photo -->
+          <div class="order-1 lg:order-2 flex justify-center lg:justify-start">
+            <div class="relative group">
+              <!-- Profile Image with Premium Styling -->
+              <div class="relative z-10 overflow-hidden rounded-3xl shadow-2xl">
+                <img src="assets/profile.jpg" alt="Mutlu Kurt - Frontend Developer" class="w-full max-w-[360px] h-auto transition-transform duration-700 group-hover:scale-105" style="filter: brightness(1.05) contrast(1.1) saturate(1.1);"/>
+                
+                <!-- Subtle Overlay Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              
+              <!-- Floating Professional Elements -->
+              <div class="absolute -top-4 -right-4 bg-white rounded-2xl p-3 shadow-xl animate-float border border-slate-100">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
                 </div>
               </div>
-            </div>
-
-            <!-- Education -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-emerald-300/50">
-              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Education</h3>
-              <div class="space-y-4">
-                <div>
-                  <div class="text-slate-900 font-semibold text-base">Çankırı Karatekin University</div>
-                  <div class="text-slate-600 text-sm">Labour Economics and Industrial Relations</div>
-                  <div class="text-blue-600 text-sm font-medium">2022 → Now</div>
+              
+              <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-3 shadow-xl animate-float-slow border border-slate-100">
+                <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
                 </div>
-                <div class="pt-4 border-t border-slate-200">
-                  <div class="text-slate-900 font-semibold text-base">Anadolu University</div>
-                  <div class="text-slate-600 text-sm">Web Design and Coding</div>
-                  <div class="text-blue-600 text-sm font-medium">Graduated 2022</div>
-                </div>
+              </div>
+              
+              <!-- Background Enhancement -->
+              <div class="absolute inset-0 -z-10">
+                <div class="absolute top-8 right-8 w-48 h-48 bg-gradient-to-br from-blue-100/30 to-indigo-200/20 rounded-full blur-2xl"></div>
+                <div class="absolute bottom-8 left-8 w-36 h-36 bg-gradient-to-br from-slate-200/30 to-blue-100/20 rounded-full blur-2xl"></div>
               </div>
             </div>
           </div>
+
+        </div>
+        
+        <!-- Skills Grid Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          <!-- Technical Skills -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Technical Skills</h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                  <span class="text-blue-600 font-bold text-sm">HTML</span>
+                </div>
+                <span class="text-slate-600 text-base font-medium">HTML5</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                  <span class="text-blue-600 font-bold text-sm">CSS</span>
+                </div>
+                <span class="text-slate-600 text-base font-medium">CSS3</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                  <span class="text-blue-600 font-bold text-sm">JS</span>
+                </div>
+                <span class="text-slate-600 text-base font-medium">JavaScript</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                  <span class="text-blue-600 font-bold text-sm">RN</span>
+                </div>
+                <span class="text-slate-600 text-base font-medium">React Native</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-emerald-300/50">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Education</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="text-slate-900 font-semibold text-base">Çankırı Karatekin University</div>
+                <div class="text-slate-600 text-sm">Labour Economics and Industrial Relations</div>
+                <div class="text-blue-600 text-sm font-medium">2022 → Now</div>
+              </div>
+              <div class="pt-4 border-t border-slate-200">
+                <div class="text-slate-900 font-semibold text-base">Anadolu University</div>
+                <div class="text-slate-600 text-sm">Web Design and Coding</div>
+                <div class="text-blue-600 text-sm font-medium">Graduated 2022</div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </section>
     </main>
