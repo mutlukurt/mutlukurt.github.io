@@ -184,6 +184,12 @@
       
       /* Mobile & Tablet Responsive Optimizations */
       @media (max-width: 640px) {
+        /* Mobile profile photo optimization */
+        .order-1 img {
+          max-width: 280px !important;
+          margin: 0 auto 1.5rem auto;
+        }
+        
         /* Mobile navigation improvements */
         .gradient-text {
           font-size: 0.8rem;
@@ -244,6 +250,11 @@
       
       @media (min-width: 641px) and (max-width: 1024px) {
         /* Tablet optimizations */
+        .order-1 img {
+          max-width: 320px !important;
+          margin: 0 auto 2rem auto;
+        }
+        
         /* Tablet navigation */
         .nav-link {
           font-size: 0.9375rem;
@@ -415,7 +426,12 @@
             <div class="relative group">
               <!-- Profile Image with Premium Styling -->
               <div class="relative z-10 overflow-hidden rounded-3xl shadow-2xl">
-                <img src="assets/profile.jpg" alt="Mutlu Kurt - Frontend Developer" class="w-full max-w-[360px] h-auto transition-transform duration-700 group-hover:scale-105" style="filter: brightness(1.05) contrast(1.1) saturate(1.1);"/>
+                <img src="assets/profile.jpg" 
+                     alt="Mutlu Kurt - Frontend Developer" 
+                     class="w-full max-w-[380px] h-auto transition-transform duration-700 group-hover:scale-105" 
+                     style="filter: brightness(1.02) contrast(1.05) saturate(1.02);"
+                     width="380" 
+                     height="480" />
                 
                 <!-- Subtle Overlay Gradient -->
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
