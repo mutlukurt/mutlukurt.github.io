@@ -44,14 +44,212 @@
       .gradient-text { background: linear-gradient(135deg, #6366f1, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
       .gradient-bg { background: linear-gradient(135deg, #6366f1, #ff6b6b); }
       .card-glow { box-shadow: 0 8px 32px rgba(74, 222, 128, 0.15); }
-      .photo-glow { box-shadow: 0 0 40px rgba(74, 222, 128, 0.3); }
+
       .animate-float { animation: float 6s ease-in-out infinite; }
       .animate-float-slow { animation: float 3s ease-in-out infinite; }
-      .animate-float-slow-delayed { animation: float 3s ease-in-out infinite 1.5s; }
+
       
       @keyframes float {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-8px); }
+      }
+      
+      /* Professional Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes bounce {
+        0%, 20%, 53%, 80%, 100% {
+          transform: translateY(0);
+        }
+        40%, 43% {
+          transform: translateY(-8px);
+        }
+        70% {
+          transform: translateY(-4px);
+        }
+        90% {
+          transform: translateY(-2px);
+        }
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.8;
+        }
+      }
+      
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+      
+      @keyframes rotateIn {
+        from {
+          opacity: 0;
+          transform: rotate(-200deg);
+        }
+        to {
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+      }
+      
+      /* Animation Classes */
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in-left {
+        animation: fadeInLeft 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in-right {
+        animation: fadeInRight 0.8s ease-out forwards;
+      }
+      
+      .animate-scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+      }
+      
+      .animate-slide-in-down {
+        animation: slideInDown 0.8s ease-out forwards;
+      }
+      
+      .animate-bounce {
+        animation: bounce 2s infinite;
+      }
+      
+      .animate-pulse {
+        animation: pulse 2s infinite;
+      }
+      
+      .animate-shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      
+      .animate-rotate-in {
+        animation: rotateIn 0.8s ease-out forwards;
+      }
+      
+      /* Delay Classes */
+      .delay-100 { animation-delay: 0.1s; }
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+      .delay-400 { animation-delay: 0.4s; }
+      .delay-500 { animation-delay: 0.5s; }
+      .delay-600 { animation-delay: 0.6s; }
+      
+      /* Initial hidden state for animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      
+      .animate-on-scroll.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Enhanced hover effects */
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      }
+      
+      /* Magnetic button effect */
+      .magnetic-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .magnetic-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      
+      .magnetic-btn:hover::before {
+        left: 100%;
+      }
+      
+      .magnetic-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       }
       
       /* Scroll to Top Button */
@@ -61,12 +259,12 @@
         right: 30px;
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg, #6366f1, #818cf8);
+        background: linear-gradient(135deg, #4ADE80, #22C55E);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 8px 32px rgba(74, 222, 128, 0.3);
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
@@ -84,8 +282,41 @@
       
       .scroll-to-top:hover {
         transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-        background: linear-gradient(135deg, #818cf8, #6366f1);
+        box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+        background: linear-gradient(135deg, #22C55E, #16A34A);
+      }
+      
+      .scroll-to-top:active {
+        transform: translateY(-2px) scale(1.05);
+      }
+      
+      .scroll-to-top svg {
+        color: white;
+        transition: transform 0.3s ease;
+      }
+      
+      .scroll-to-top:hover svg {
+        transform: translateY(-2px);
+        animation: bounce 1s infinite;
+      }
+      
+      /* Scroll progress indicator */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(74, 222, 128, 0.1);
+        z-index: 9999;
+      }
+      
+      .scroll-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #4ADE80, #22C55E, #FB923C);
+        width: 0%;
+        transition: width 0.1s ease;
+        border-radius: 0 2px 2px 0;
       }
       
       /* Mobile optimizations */
@@ -215,102 +446,215 @@
       }
     </script>
   </head>
-  <body class="min-h-screen font-inter text-[#2d2d2d] bg-[#f5f3f0]" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
-    <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation">
-        <a href="index.html" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
-          <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
-          <span class="hidden sm:inline lg:hidden">Modern UI Projects</span>
-          <span class="sm:hidden">Modern UI</span>
+  <body class="min-h-screen font-inter text-slate-800 bg-slate-50" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar"></div>
+    </div>
+    
+    <!-- Premium Navigation Bar -->
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur-xl border-b border-slate-200/50 min-h-[60px] flex items-center relative shadow-sm" style="pointer-events: auto;">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between w-full" aria-label="Main navigation" style="pointer-events: auto;">
+        <!-- Premium Logo/Brand -->
+        <a href="index.html" class="group flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate max-w-[50%] sm:max-w-none transition-all duration-300 hover:scale-105">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <span class="bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+            <span class="hidden lg:inline">Mutlu Kurt</span>
+            <span class="hidden sm:inline lg:hidden">Mutlu Kurt</span>
+            <span class="sm:hidden">MK</span>
+          </span>
         </a>
         
-        <!-- Desktop Navigation -->
-        <ul class="hidden lg:flex items-center gap-8 text-text">
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html">Home</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#about">About</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#recent-projects">Recent Projects</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#work">My Work</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#products">Project Demos</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg bg-primary/10 transition-colors font-semibold" href="links.html">Links</a></li>
+        <!-- Premium Desktop Navigation -->
+        <ul class="hidden lg:flex items-center gap-1 text-slate-700">
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="index.html">
+            <span>Home</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="about.html">
+            <span>About</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="projects.html">
+            <span>Projects</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="work.html">
+            <span>My Work</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="demos.html">
+            <span>Demos</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="blog.html">
+            <span>Blog</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl bg-slate-100 text-slate-900 transition-all duration-300 font-medium relative group" href="links.html">
+            <span>Links</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
         </ul>
 
-        <!-- Modern Mobile/Tablet Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-expanded="false" aria-label="Toggle mobile menu">
-          <svg class="w-6 h-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        <!-- Premium Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-3 rounded-xl hover:bg-slate-100 transition-all duration-300 group" aria-expanded="false" aria-label="Toggle mobile menu">
+          <div class="w-6 h-6 flex flex-col justify-center items-center gap-1">
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+          </div>
         </button>
         
-        <!-- Simple Mobile Menu Dropdown -->
-        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
-          <nav class="py-2">
-            <a href="index.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
-            <a href="index.html#about" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
-            <a href="index.html#recent-projects" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Recent Projects</a>
-            <a href="index.html#work" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
-            <a href="index.html#products" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
-            <a href="blog.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Blog</a>
-            <a href="links.html" class="block px-4 py-3 text-text bg-gray-50 font-semibold transition-colors">Links</a>
+        <!-- Premium Mobile Menu Dropdown -->
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl shadow-xl border-t border-slate-200/50 z-[9998] hidden lg:hidden">
+          <nav class="py-4">
+            <a href="index.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Home</a>
+            <a href="about.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">About</a>
+            <a href="projects.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Projects</a>
+            <a href="work.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">My Work</a>
+            <a href="demos.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Project Demos</a>
+            <a href="blog.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Blog</a>
+            <a href="links.html" class="block px-6 py-3 text-slate-700 bg-slate-100 text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Links</a>
           </nav>
         </div>
       </nav>
     </header>
 
-    <main class="bg-[#f5f3f0]">
+    <main class="relative min-h-screen isolate">
+      <!-- Background gradient matching Home page -->
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+        <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-blue-100/40 to-indigo-200/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-slate-200/30 to-blue-100/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-slate-100/20 to-blue-50/10 rounded-full blur-3xl"></div>
+      </div>
+      
       <!-- Hero Section -->
-      <section class="text-center pt-16 sm:pt-20 pb-12 sm:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-text leading-tight mb-4 sm:mb-6">
-            Important <span class="gradient-text">Links</span>
-          </h1>
-          <p class="text-base sm:text-lg lg:text-xl text-textSecondary leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Connect with me across different platforms and discover valuable resources for web development and design
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a href="index.html" class="gradient-bg text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 text-sm sm:text-base flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
-              Back to Portfolio
-            </a>
-            <a href="#links" class="text-text font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
-              Explore Links
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </a>
+      <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center hero-content py-12 sm:py-16">
+          <!-- Left: Content -->
+          <div class="text-center lg:text-left space-y-8">
+            <!-- Professional Headline with Modern Typography -->
+            <div class="space-y-4">
+              <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.9] tracking-tight">
+                <span class="block animate-fade-in-left">Important</span>
+                <span class="block animate-fade-in-left delay-100">
+                  <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Links</span>
+                </span>
+                <span class="block animate-fade-in-left delay-200">Collection</span>
+              </h1>
+            </div>
+            
+            <!-- Refined Subtext with Perfect Typography -->
+            <p class="text-xl sm:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in-up delay-300 font-light">
+              Connect with me across different platforms and discover valuable resources for web development and design.
+            </p>
+            
+            <!-- Premium CTA Section -->
+            <div class="space-y-6 animate-fade-in-up delay-500">
+              <!-- Primary CTA Row -->
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="index.html" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 min-w-[200px]">
+                  <span class="relative z-10 flex items-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    Back to Portfolio
+                  </span>
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                
+                <a href="#links" class="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-slate-800 font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 min-w-[200px]">
+                  <span class="relative z-10 flex items-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                    Explore Links
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
+
+          <!-- Right: Decorative Elements -->
+          <div class="relative flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-[500px] animate-fade-in-right delay-200">
+              <!-- Decorative floating elements -->
+              <div class="relative" style="pointer-events: none; z-index: 1;">
+                <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl animate-float border border-slate-100">
+                  <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl animate-float-slow border border-slate-100">
+                  <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Background Enhancement -->
+                <div class="absolute inset-0 -z-10">
+                  <div class="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-blue-100/30 to-indigo-200/20 rounded-full blur-2xl"></div>
+                  <div class="absolute bottom-10 left-10 w-48 h-48 bg-gradient-to-br from-slate-200/30 to-blue-100/20 rounded-full blur-2xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Subtle Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
+          <div class="w-6 h-6 border-2 border-slate-300 border-t-slate-600 rounded-full animate-spin"></div>
         </div>
       </section>
 
-      <!-- Statistics Section -->
-      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-16 sm:mb-20 justify-items-center">
-          <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">15+</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Platforms</div>
+      <!-- Premium Statistics Section -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16 mb-16 sm:mb-20 justify-items-center">
+          <div class="text-center w-full flex flex-col items-center group">
+            <div class="relative">
+              <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3 w-full text-center group-hover:scale-110 transition-transform duration-300">15+</div>
+              <div class="absolute -inset-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="text-slate-600 text-base sm:text-lg text-center font-medium">Platforms</div>
           </div>
-          <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">100+</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Connections</div>
+          <div class="text-center w-full flex flex-col items-center group">
+            <div class="relative">
+              <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-3 w-full text-center group-hover:scale-110 transition-transform duration-300">100+</div>
+              <div class="absolute -inset-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="text-slate-600 text-base sm:text-lg text-center font-medium">Connections</div>
           </div>
-          <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">24/7</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Available</div>
+          <div class="text-center w-full flex flex-col items-center group">
+            <div class="relative">
+              <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-3 w-full text-center group-hover:scale-110 transition-transform duration-300">24/7</div>
+              <div class="absolute -inset-2 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="text-slate-600 text-base sm:text-lg text-center font-medium">Available</div>
           </div>
         </div>
       </section>
 
       <!-- Featured Link -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
-        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-6 sm:p-8 card-glow border border-gray-200">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-blue-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="order-2 lg:order-1">
-              <div class="text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">Featured Platform</div>
-              <h2 class="text-2xl sm:text-3xl font-bold text-text mb-3 sm:mb-4">Hire Me on Upwork</h2>
-              <p class="text-sm sm:text-base text-textSecondary leading-relaxed mb-4 sm:mb-6">
+              <div class="text-xs sm:text-sm font-medium text-blue-600 mb-3 sm:mb-4">Featured Platform</div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 sm:mb-4">Hire Me on Upwork</h2>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4 sm:mb-6">
                 Looking for a skilled frontend developer? I'm available for freelance projects and collaborations. Let's work together to bring your ideas to life with modern, responsive web solutions.
               </p>
               <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
@@ -318,23 +662,30 @@
                   <span class="text-white font-bold text-base sm:text-lg">U</span>
                 </div>
                 <div>
-                  <div class="text-text font-semibold text-sm sm:text-base">Upwork Profile</div>
-                  <div class="text-textSecondary text-xs sm:text-sm">Top Rated Plus Developer</div>
+                  <div class="text-slate-900 font-semibold text-sm sm:text-base">Upwork Profile</div>
+                  <div class="text-slate-600 text-xs sm:text-sm">Top Rated Plus Developer</div>
                 </div>
               </div>
-              <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="gradient-bg text-white font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 inline-block text-sm sm:text-base">
-                View Profile
+              <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-base rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                <span class="relative z-10 flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                  View Profile
+                </span>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
             </div>
-            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
+            <div class="aspect-video bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
               <div class="text-center">
-                <div class="text-primary text-4xl sm:text-6xl mb-3 sm:mb-4">
+                <div class="text-blue-600 text-4xl sm:text-6xl mb-3 sm:mb-4">
                   <svg class="w-16 h-16 sm:w-24 sm:h-24 mx-auto" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                   </svg>
                 </div>
-                <div class="text-text font-semibold text-sm sm:text-base">Freelance Services</div>
-                <div class="text-textSecondary text-xs sm:text-sm">Web Development & Design</div>
+                <div class="text-slate-900 font-semibold text-sm sm:text-base">Freelance Services</div>
+                <div class="text-slate-600 text-xs sm:text-sm">Web Development & Design</div>
               </div>
             </div>
           </div>
@@ -347,15 +698,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           
           <!-- Contact Links -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-blue-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
-              <div class="text-primary text-3xl sm:text-4xl mb-3 sm:mb-4">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
-                </svg>
-              </div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2">Contact</h3>
-              <p class="text-textSecondary text-xs sm:text-sm">Get in touch directly</p>
+                              <div class="text-blue-600 text-3xl sm:text-4xl mb-3 sm:mb-4">
+                  <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
+                  </svg>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Contact</h3>
+                <p class="text-slate-600 text-xs sm:text-sm">Get in touch directly</p>
             </div>
             <div class="space-y-4">
               <a href="mailto:mutlu@techie.com" class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors group">
@@ -374,7 +725,7 @@
           </div>
 
           <!-- Social Media -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-indigo-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
               <div class="text-accent text-3xl sm:text-4xl mb-3 sm:mb-4">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
@@ -401,7 +752,7 @@
           </div>
 
           <!-- Portfolio & Services -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-emerald-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
               <div class="text-primary text-3xl sm:text-4xl mb-3 sm:mb-4">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
@@ -428,7 +779,7 @@
           </div>
 
           <!-- Templates & Products -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-amber-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
               <div class="text-accent text-3xl sm:text-4xl mb-3 sm:mb-4">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
@@ -455,7 +806,7 @@
           </div>
 
           <!-- Blog & Resources -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-purple-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
               <div class="text-primary text-3xl sm:text-4xl mb-3 sm:mb-4">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
@@ -482,7 +833,7 @@
           </div>
 
           <!-- Quick Actions -->
-          <div class="bg-card backdrop-blur rounded-xl sm:rounded-2xl p-4 sm:p-6 card-glow hover:bg-cardHover transition-all border border-gray-200">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-teal-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll">
             <div class="text-center mb-4 sm:mb-6">
               <div class="text-accent text-3xl sm:text-4xl mb-3 sm:mb-4">
                 <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24">
@@ -512,24 +863,35 @@
 
       <!-- Call to Action -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
-        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-8 sm:p-12 card-glow border border-gray-200 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-12 shadow-lg hover:shadow-2xl border border-slate-200/50 hover:border-blue-300/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-on-scroll max-w-4xl mx-auto">
           <h2 class="text-2xl sm:text-3xl font-bold text-text mb-4 sm:mb-6">Ready to Start Your Project?</h2>
           <p class="text-textSecondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
             Let's collaborate to bring your vision to life. Whether you need a website, web app, or custom solution, I'm here to help.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:mutlu@techie.com?subject=Project%20Inquiry" class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-              Get Started
-            </a>
-            <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="text-text font-medium px-8 py-4 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors">
-              Hire on Upwork
-            </a>
-          </div>
+                      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="mailto:mutlu@techie.com?subject=Project%20Inquiry" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                <span class="relative z-10 flex items-center gap-3">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                  </svg>
+                  Get Started
+                </span>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
+              <a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-slate-800 font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                <span class="relative z-10 flex items-center gap-3">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 002 2z"/>
+                  </svg>
+                  Hire on Upwork
+                </span>
+              </a>
+            </div>
         </div>
       </section>
 
       <!-- Footer -->
-      <footer class="bg-card border-t border-gray-200 mt-20">
+      <footer class="bg-white border-t border-slate-200 mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div class="sm:col-span-2 lg:col-span-1">
@@ -612,8 +974,23 @@
 
     <script src="assets/main.js" defer></script>
     
-    <!-- Mobile Menu Script -->
+    <!-- Professional Animations Script -->
     <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
       document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -643,12 +1020,70 @@
           });
         }
         
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
+        // Observe all elements with animate-on-scroll class
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        animateElements.forEach(el => observer.observe(el));
         
-        // Show/hide scroll to top button
+        // Magnetic button effect - only on desktop
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        if (!isTouchDevice) {
+          magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+              const rect = btn.getBoundingClientRect();
+              const x = e.clientX - rect.left - rect.width / 2;
+              const y = e.clientY - rect.top - rect.height / 2;
+              
+              btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+              btn.style.transform = 'translate(0px, 0px) scale(1)';
+            });
+          });
+        }
+        
+        // Enhanced card animations - responsive
+        const linkCards = document.querySelectorAll('.animate-on-scroll');
+        linkCards.forEach((card, index) => {
+          if (!isTouchDevice) {
+            // Desktop hover effects
+            card.addEventListener('mouseenter', () => {
+              card.style.transform = 'translateY(-10px) scale(1.02)';
+              card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+              card.style.transform = 'translateY(0) scale(1)';
+            });
+          } else {
+            // Touch device effects
+            card.addEventListener('touchstart', () => {
+              card.style.transform = 'scale(0.98)';
+              card.style.transition = 'all 0.2s ease';
+            });
+            
+            card.addEventListener('touchend', () => {
+              card.style.transform = 'scale(1)';
+            });
+          }
+        });
+        
+        // Scroll to Top Button & Progress Bar
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const progressBar = document.querySelector('.scroll-progress-bar');
+        
+        // Show/hide scroll to top button and update progress bar
         window.addEventListener('scroll', () => {
           const scrollTop = window.pageYOffset;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          
+          // Update progress bar
+          if (progressBar) {
+            progressBar.style.width = scrollPercent + '%';
+          }
           
           // Show/hide scroll to top button
           if (scrollTop > 300) {
@@ -665,6 +1100,48 @@
             behavior: 'smooth'
           });
         });
+        
+        // Add ripple effect to scroll button
+        scrollToTopBtn.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+          `;
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+        
+        // Add ripple animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes ripple {
+            to {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Set current year
+        document.getElementById('y').textContent = new Date().getFullYear();
       });
     </script>
   </body>

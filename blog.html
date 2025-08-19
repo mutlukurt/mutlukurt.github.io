@@ -41,7 +41,7 @@
       }
       .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
       .reveal.show { opacity: 1; transform: translateY(0); }
-      .gradient-text { background: linear-gradient(135deg, #6366f1, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
+      .gradient-text { background: linear-gradient(90deg, #4F46E5, #8B5CF6, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
       .gradient-bg { background: linear-gradient(135deg, #6366f1, #ff6b6b); }
       .card-glow { box-shadow: 0 8px 32px rgba(74, 222, 128, 0.15); }
       .photo-glow { box-shadow: 0 0 40px rgba(74, 222, 128, 0.3); }
@@ -203,263 +203,263 @@
       }
     </script>
   </head>
-  <body class="min-h-screen font-inter text-[#2d2d2d] bg-[#f5f3f0]" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-slate-800 bg-slate-50" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation">
-        <a href="index.html" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
-          <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
-          <span class="hidden sm:inline lg:hidden">Modern UI Projects</span>
-          <span class="sm:hidden">Modern UI</span>
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur-xl border-b border-slate-200/50 min-h-[60px] flex items-center relative shadow-sm" style="pointer-events: auto;">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between w-full" aria-label="Main navigation" style="pointer-events: auto;">
+        <!-- Premium Logo/Brand -->
+        <a href="index.html" class="group flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate max-w-[50%] sm:max-w-none transition-all duration-300 hover:scale-105">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <span class="bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+            <span class="hidden lg:inline">Mutlu Kurt</span>
+            <span class="hidden sm:inline lg:hidden">Mutlu Kurt</span>
+            <span class="sm:hidden">MK</span>
+          </span>
         </a>
         
-        <!-- Desktop Navigation -->
-        <ul class="hidden lg:flex items-center gap-8 text-text">
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html">Home</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#about">About</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#recent-projects">Recent Projects</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#work">My Work</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html#products">Project Demos</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg bg-primary/10 transition-colors font-semibold" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="links.html">Links</a></li>
+        <!-- Premium Desktop Navigation -->
+        <ul class="hidden lg:flex items-center gap-1 text-slate-700">
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="index.html">
+            <span>Home</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="about.html">
+            <span>About</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="projects.html">
+            <span>Projects</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="work.html">
+            <span>My Work</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="demos.html">
+            <span>Demos</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl bg-slate-100 text-slate-900 transition-all duration-300 font-medium relative group" href="blog.html">
+            <span>Blog</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="links.html">
+            <span>Links</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
         </ul>
 
         <!-- Modern Mobile/Tablet Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-expanded="false" aria-label="Toggle mobile menu">
-          <svg class="w-6 h-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        <button id="mobileMenuBtn" class="lg:hidden p-3 rounded-xl hover:bg-slate-100 transition-all duration-300 group" aria-expanded="false" aria-label="Toggle mobile menu">
+          <div class="w-6 h-6 flex flex-col justify-center items-center gap-1">
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+          </div>
         </button>
         
         <!-- Simple Mobile Menu Dropdown -->
-        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
-          <nav class="py-2">
-            <a href="index.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
-            <a href="index.html#about" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
-            <a href="index.html#recent-projects" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Recent Projects</a>
-            <a href="index.html#work" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
-            <a href="index.html#products" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
-            <a href="blog.html" class="block px-4 py-3 text-text bg-gray-50 font-semibold transition-colors border-b border-gray-100">Blog</a>
-            <a href="links.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors">Links</a>
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl shadow-xl border-t border-slate-200/50 z-[9998] hidden lg:hidden">
+          <nav class="py-4">
+            <a href="index.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Home</a>
+            <a href="about.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">About</a>
+            <a href="projects.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Projects</a>
+            <a href="work.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">My Work</a>
+            <a href="demos.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Project Demos</a>
+            <a href="blog.html" class="block px-6 py-3 text-slate-700 bg-slate-50 text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Blog</a>
+            <a href="links.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 font-medium">Links</a>
           </nav>
         </div>
       </nav>
     </header>
 
-    <main class="bg-[#f5f3f0]">
+    <main class="bg-slate-50">
       <!-- Hero Section -->
-      <section class="text-center pt-16 sm:pt-20 pb-12 sm:pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section class="text-center pt-20 sm:pt-24 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-text leading-tight mb-4 sm:mb-6">
-            Frontend <span class="gradient-text">Insights</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight mb-6 sm:mb-8">
+            Frontend <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Insights</span>
           </h1>
-          <p class="text-base sm:text-lg lg:text-xl text-textSecondary leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <p class="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto font-light">
             Research, tutorials, and technical articles about modern web development and digital innovation
           </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a href="index.html" class="gradient-bg text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 text-sm sm:text-base flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
-              Back to Portfolio
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+            <a href="index.html" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 min-w-[200px]">
+              <span class="relative z-10 flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Portfolio
+              </span>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
-            <a href="#articles" class="text-text font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
-              Explore Articles
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
+            <a href="#articles" class="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-slate-800 font-semibold text-lg rounded-2xl shadow-lg hover:shadow-2xl border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30 min-w-[200px]">
+              <span class="relative z-10 flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+                Explore Articles
+              </span>
             </a>
           </div>
         </div>
       </section>
 
       <!-- Statistics Section -->
-      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-16 sm:mb-20 justify-items-center">
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-20 sm:mb-24 justify-items-center">
           <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">50+</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Articles</div>
+            <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-4 w-full text-center">50+</div>
+            <div class="text-slate-600 text-lg sm:text-xl text-center font-medium">Articles</div>
           </div>
           <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">10k+</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Readers</div>
+            <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-4 w-full text-center">10k+</div>
+            <div class="text-slate-600 text-lg sm:text-xl text-center font-medium">Readers</div>
           </div>
           <div class="text-center w-full flex flex-col items-center">
-            <div class="text-3xl sm:text-4xl font-black gradient-text mb-2 w-full text-center">25+</div>
-            <div class="text-textSecondary text-sm sm:text-base text-center">Topics</div>
+            <div class="text-4xl sm:text-5xl font-black text-indigo-600 mb-4 w-full text-center">25+</div>
+            <div class="text-slate-600 text-lg sm:text-xl text-center font-medium">Topics</div>
           </div>
         </div>
       </section>
 
       <!-- Featured Article -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
-        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-6 sm:p-8 card-glow border border-gray-200">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-24">
+        <div class="bg-white backdrop-blur rounded-2xl sm:rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="order-2 lg:order-1">
-              <div class="text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">Featured Article</div>
-              <h2 class="text-2xl sm:text-3xl font-bold text-text mb-3 sm:mb-4">Modern CSS Grid Layouts</h2>
-              <p class="text-sm sm:text-base text-textSecondary leading-relaxed mb-4 sm:mb-6">
-                Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices. Learn how to build modern, flexible web designs that adapt to any screen size.
+              <div class="text-lg text-blue-600 font-medium mb-4">Featured Article</div>
+              <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">Modern CSS Grid Layouts</h2>
+              <p class="text-slate-600 text-lg mb-6 sm:mb-8 leading-relaxed">
+                Explore the power of CSS Grid for creating complex, responsive layouts. Learn advanced techniques for building modern web applications with flexible and maintainable code.
               </p>
-              <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
-                <div>
-                  <div class="text-text font-semibold text-sm sm:text-base">Mutlu Kurt</div>
-                  <div class="text-textSecondary text-xs sm:text-sm">Frontend Developer</div>
-                </div>
+              <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                <a href="#" class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                  <span class="relative z-10">Read Full Article</span>
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+                <a href="#" class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-slate-800 font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-2xl border-2 border-slate-200 hover:border-blue-300 transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                  <span class="relative z-10">View All Articles</span>
+                </a>
               </div>
-              <span class="gradient-bg text-white font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl shadow-lg inline-block text-sm sm:text-base">
-                Coming Soon
-              </span>
             </div>
-            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
-              <div class="text-center">
-                <div class="text-primary text-4xl sm:text-6xl mb-3 sm:mb-4">
-                  <svg class="w-16 h-16 sm:w-24 sm:h-24 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+            <div class="order-1 lg:order-2">
+              <div class="aspect-video bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-xl overflow-hidden">
+                <div class="w-full h-full flex items-center justify-center">
+                  <svg class="w-24 h-24 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                 </div>
-                <div class="text-text font-semibold text-sm sm:text-base">CSS Grid Mastery</div>
-                <div class="text-textSecondary text-xs sm:text-sm">Advanced Layout Techniques</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Blog Posts Grid -->
-      <section id="articles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20">
-        <h2 class="text-2xl sm:text-3xl font-bold text-text text-center mb-8 sm:mb-12">Latest Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          
-          <!-- Blog Post 1 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-primary mb-2">Web Design</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Modern CSS Grid Layouts</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Exploring advanced CSS Grid techniques for creating responsive, complex layouts that work across all devices.
+      <!-- Articles Grid -->
+      <section id="articles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-24">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mb-6">Latest Articles</h2>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto font-light">Discover insights, tutorials, and best practices in modern web development</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Article Card 1 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-blue-100/20 to-indigo-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-blue-600 font-medium mb-3">CSS & Design</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Responsive Design Principles</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Learn the fundamental principles of responsive web design and how to implement them effectively in your projects.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">5 min read</div>
-                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">5 min read</span>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
 
-          <!-- Blog Post 2 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17 2H7C5.9 2 5 2.9 5 4v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 17c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5-4H7V4h10v11z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Performance</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Web Performance Optimization</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Best practices for improving Core Web Vitals and creating lightning-fast user experiences.
+          <!-- Article Card 2 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-red-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-red-100/20 to-pink-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-red-600 font-medium mb-3">JavaScript</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">ES6+ Features You Should Know</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Explore modern JavaScript features that will make your code more readable, maintainable, and efficient.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">8 min read</div>
-                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">8 min read</span>
+                <a href="#" class="text-red-600 hover:text-red-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
 
-          <!-- Blog Post 3 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-primary mb-2">UI/UX</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Design Systems in Practice</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Building scalable design systems that improve consistency and developer experience.
+          <!-- Article Card 3 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-emerald-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-emerald-100/20 to-teal-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-emerald-600 font-medium mb-3">Performance</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Web Performance Optimization</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Discover techniques to improve your website's loading speed and overall user experience.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">6 min read</div>
-                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">6 min read</span>
+                <a href="#" class="text-emerald-600 hover:text-emerald-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
 
-          <!-- Blog Post 4 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Tools</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Essential Dev Tools 2024</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Must-have development tools and extensions that boost productivity and code quality.
+          <!-- Article Card 4 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-purple-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-purple-100/20 to-indigo-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-purple-600 font-medium mb-3">Frameworks</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">React vs Vue: A Comparison</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Compare two popular frontend frameworks and understand which one might be better for your next project.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">4 min read</div>
-                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">10 min read</span>
+                <a href="#" class="text-purple-600 hover:text-purple-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
 
-          <!-- Blog Post 5 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <div class="text-primary text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-primary mb-2">Tutorial</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-primary transition-colors">Building a Portfolio Site</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Step-by-step guide to creating a professional portfolio website with modern technologies.
+          <!-- Article Card 5 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-orange-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-orange-100/20 to-amber-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-orange-600 font-medium mb-3">Accessibility</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Building Accessible Websites</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Learn how to create websites that are accessible to all users, including those with disabilities.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">10 min read</div>
-                <span class="text-primary group-hover:text-accent transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">7 min read</span>
+                <a href="#" class="text-orange-600 hover:text-orange-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
 
-          <!-- Blog Post 6 -->
-          <article class="bg-card backdrop-blur rounded-xl sm:rounded-2xl overflow-hidden card-glow hover:bg-cardHover transition-all transform hover:scale-105 group border border-gray-200">
-            <div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-              <div class="text-accent text-3xl sm:text-4xl group-hover:scale-110 transition-transform">
-                <svg class="w-12 h-12 sm:w-16 sm:h-16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="text-xs sm:text-sm font-medium text-accent mb-2">Career</div>
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors">Freelancing Success Tips</h3>
-              <p class="text-textSecondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                Lessons learned from successful freelancing and building a sustainable client base.
+          <!-- Article Card 6 -->
+          <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-slate-300/50 overflow-hidden">
+            <div class="aspect-video bg-gradient-to-br from-slate-100/20 to-gray-100/20"></div>
+            <div class="p-6 sm:p-8">
+              <div class="text-sm text-slate-600 font-medium mb-3">Tools</div>
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Essential Developer Tools</h3>
+              <p class="text-slate-600 text-base mb-4 leading-relaxed">
+                Discover the must-have tools and extensions that will boost your productivity as a developer.
               </p>
               <div class="flex items-center justify-between">
-                <div class="text-textSecondary text-xs sm:text-sm">7 min read</div>
-                <span class="text-accent group-hover:text-primary transition-colors font-medium text-xs sm:text-sm">Coming Soon</span>
+                <span class="text-sm text-slate-500">4 min read</span>
+                <a href="#" class="text-slate-600 hover:text-slate-700 font-medium text-sm">Read More →</a>
               </div>
             </div>
           </article>
@@ -467,95 +467,96 @@
       </section>
 
       <!-- Newsletter Section -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
-        <div class="bg-card backdrop-blur rounded-2xl sm:rounded-3xl p-8 sm:p-12 card-glow border border-gray-200 max-w-4xl mx-auto">
-          <h2 class="text-2xl sm:text-3xl font-bold text-text mb-4 sm:mb-6">Stay Updated with Latest Insights</h2>
-          <p class="text-textSecondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Get notified about new articles, tutorials, and industry insights delivered straight to your inbox.
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-24">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50 text-center">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">Stay Updated</h2>
+          <p class="text-slate-600 text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
+            Get notified when I publish new articles about web development, design, and technology.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl bg-gray-50 border border-gray-300 text-text placeholder-textSecondary focus:outline-none focus:border-primary transition-colors">
-            <button class="gradient-bg text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-              Subscribe
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 max-w-md mx-auto">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/30 focus:border-blue-300 text-slate-900 placeholder-slate-500">
+            <button class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+              <span class="relative z-10">Subscribe</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         </div>
       </section>
+    </main>
 
-      <!-- Footer -->
-      <footer class="bg-card border-t border-gray-200 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div class="sm:col-span-2 lg:col-span-1">
-              <div class="text-2xl font-bold gradient-text mb-4">Modern Web & Mobile UI Projects</div>
-              <p class="text-textSecondary mb-4">Frontend Developer crafting modern, high-performance web solutions.</p>
-              <div class="flex gap-4">
-                <a href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-                <a href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-                  </svg>
-                </a>
-                <a href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </a>
-                <a href="mailto:mutlu@techie.com" class="text-primary hover:text-accent transition-colors">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            
-            <div>
-              <h3 class="text-text font-semibold mb-4">Categories</h3>
-              <ul class="space-y-2 text-textSecondary">
-                <li><a href="#" class="hover:text-primary transition-colors">Web Design</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">Development</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">Performance</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">UX/UI</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 class="text-text font-semibold mb-4">Resources</h3>
-              <ul class="space-y-2 text-textSecondary">
-                <li><a href="#" class="hover:text-primary transition-colors">Tutorials</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">Code Snippets</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">Tools</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors">Books</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 class="text-text font-semibold mb-4">Connect</h3>
-              <ul class="space-y-2 text-textSecondary">
-                <li><a href="index.html#about" class="hover:text-primary transition-colors">About</a></li>
-                <li><a href="mailto:mutlu@techie.com" class="hover:text-primary transition-colors">Contact</a></li>
-                <li><a href="index.html" class="hover:text-primary transition-colors">Portfolio</a></li>
-                <li><a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Services</a></li>
-              </ul>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div class="sm:col-span-2 lg:col-span-1">
+            <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">Modern Web & Mobile UI Projects</div>
+            <p class="text-slate-600 mb-4">Frontend Developer crafting modern, high-performance web solutions.</p>
+            <div class="flex gap-4">
+              <a href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-purple-600 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-purple-600 transition-colors">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.65.5.09.68-.22.68-.48v-1.82c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.15 0-1.14.4-2.06 1.06-2.78-.11-.26-.46-1.32.1-2.75 0 0 .84-.27 2.75 1.06a9.24 9.24 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.57 1.43.22 2.49.11 2.75.66.72 1.05 1.64 1.05 2.78 0 4.01-2.34 4.88-4.57 5.14.36.32.68.94.68 1.9v2.82c0 .26.18.58.69.48A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@mutlukurtio" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-purple-600 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="mailto:mutlu@techie.com" class="text-indigo-600 hover:text-purple-600 transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/>
+                </svg>
+              </a>
             </div>
           </div>
           
-          <div class="text-center text-textSecondary border-t border-gray-200 pt-8">
-            <div class="text-sm mb-2">© <span id="y"></span> Mutlu Kurt. All rights reserved.</div>
-            <div class="text-xs">
-              <span class="font-medium">Built with:</span> 
-              HTML5 • Tailwind CSS 3.0 (CDN) • Vanilla JavaScript (ES6+) • 
-              CSS3 Animations • SVG Icons • Responsive Design • 
-              Mobile-First Approach • GitHub Pages
-            </div>
+          <div>
+            <h3 class="text-slate-900 font-semibold mb-4">Services</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li><a href="#" class="hover:text-indigo-600 transition-colors">Web Development</a></li>
+              <li><a href="#" class="hover:text-indigo-600 transition-colors">UI/UX Design</a></li>
+              <li><a href="#" class="hover:text-indigo-600 transition-colors">Responsive Design</a></li>
+              <li><a href="#" class="hover:text-indigo-600 transition-colors">Custom Templates</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-slate-900 font-semibold mb-4">Platforms</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li><a href="https://www.upwork.com/services/product/development-it-custom-responsive-portfolio-website-react-tailwind-1956100467527902576?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors">Upwork</a></li>
+              <li><a href="https://linkedin.com/in/mutlukurt" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors">LinkedIn</a></li>
+              <li><a href="https://github.com/mutlukurt" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors">GitHub</a></li>
+              <li><a href="https://www.shopier.com/codebymutlu" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors">Shopier</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-slate-900 font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li><a href="blog.html" class="hover:text-indigo-600 transition-colors">Blog</a></li>
+              <li><a href="links.html" class="hover:text-indigo-600 transition-colors">Links</a></li>
+              <li><a href="mailto:mutlu@techie.com" class="hover:text-indigo-600 transition-colors">Contact</a></li>
+              <li><a href="https://topmate.io/mutlukurt" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors">Topmate</a></li>
+            </ul>
           </div>
         </div>
-      </footer>
-    </main>
+        
+        <div class="text-center text-slate-600 border-t border-slate-200 pt-8">
+          <div class="text-sm mb-2">© <span id="y"></span> Mutlu Kurt. All rights reserved.</div>
+          <div class="text-xs">
+            <span class="font-medium">Built with:</span> 
+            HTML5 • Tailwind CSS 3.0 (CDN) • Vanilla JavaScript (ES6+) • 
+            CSS3 Animations • SVG Icons • Responsive Design • 
+            Mobile-First Approach • GitHub Pages
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
@@ -564,10 +565,8 @@
       </svg>
     </button>
 
-    <script src="assets/main.js" defer></script>
-    
-    <!-- Mobile Menu Script -->
     <script>
+      // Mobile Menu Toggle
       document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -587,15 +586,10 @@
               mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
           });
-          
-          // Close menu when clicking outside
-          document.addEventListener('click', (e) => {
-            if (!mobileMenuBtn.contains(e.target) && !mobileMenuOverlay.contains(e.target)) {
-              mobileMenuOverlay.classList.add('hidden');
-              mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-          });
         }
+        
+        // Set current year
+        document.getElementById('y').textContent = new Date().getFullYear();
         
         // Scroll to Top Button
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -604,7 +598,6 @@
         window.addEventListener('scroll', () => {
           const scrollTop = window.pageYOffset;
           
-          // Show/hide scroll to top button
           if (scrollTop > 300) {
             scrollToTopBtn.classList.add('show');
           } else {

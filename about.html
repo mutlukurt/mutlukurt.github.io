@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-        <script>
+    <script>
       // Mute Tailwind Play CDN production warning in console - MUST BE FIRST
       (function() {
         const __tw_warn = console.warn.bind(console);
@@ -30,15 +30,15 @@
           extend: {
             fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"] },
             colors: {
-              primary: "#6366f1",
-              secondary: "#818cf8",
-              accent: "#ff6b6b",
-              accent2: "#f59e0b",
-              background: "#f5f3f0",
-              card: "#FFFFFF",
-              cardHover: "#F1F5F9",
-              text: "#2d2d2d",
-              textSecondary: "#6b6b6b",
+              primary: "#6366f1", // Soft purple
+              secondary: "#818cf8", // Light purple
+              accent: "#ff6b6b", // Soft red
+              accent2: "#f59e0b", // Amber
+              background: "#f5f3f0", // Soft beige
+              card: "#FFFFFF", // White cards
+              cardHover: "#F1F5F9", // Light hover
+              text: "#2d2d2d", // Dark text
+              textSecondary: "#6b6b6b", // Gray text
               success: "#10B981",
               warning: "#F59E0B",
               error: "#EF4444",
@@ -48,153 +48,414 @@
       }
     </script>
     <style>
+      /* Prevent old styles/redirect flash on mobile until Tailwind initializes */
       html{visibility:hidden;opacity:0;transition:opacity .2s ease; scroll-behavior:smooth; scroll-padding-top: 80px;}
-      html, body { max-width: 100vw !important; overflow-x: hidden !important; }
-      * { box-sizing: border-box; }
+      
+      /* Critical mobile overflow fixes */
+      html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Ensure all containers stay within viewport */
+      .max-w-7xl {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+      .reveal.show { opacity: 1; transform: translateY(0); }
       .gradient-text { background: linear-gradient(135deg, #6366f1, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
       .gradient-bg { background: linear-gradient(135deg, #6366f1, #ff6b6b); }
       .card-glow { box-shadow: 0 8px 32px rgba(74, 222, 128, 0.15); }
-      .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
+      .photo-glow { box-shadow: 0 0 40px rgba(74, 222, 128, 0.3); }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      .animate-float-slow { animation: float 3s ease-in-out infinite; }
+      .animate-float-slow-delayed { animation: float 3s ease-in-out infinite 1.5s; }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
       }
+      
+      /* Professional Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      /* Animation Classes */
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in-left {
+        animation: fadeInLeft 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in-right {
+        animation: fadeInRight 0.8s ease-out forwards;
+      }
+      
+      .animate-scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+      }
+      
+      /* Delay Classes */
       .delay-100 { animation-delay: 0.1s; }
       .delay-200 { animation-delay: 0.2s; }
       .delay-300 { animation-delay: 0.3s; }
+      .delay-400 { animation-delay: 0.4s; }
+      .delay-500 { animation-delay: 0.5s; }
+      .delay-600 { animation-delay: 0.6s; }
+      
+      /* Initial hidden state for animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      
+      .animate-on-scroll.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Enhanced hover effects */
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      }
+      
+      .hover-glow {
+        transition: all 0.3s ease;
+      }
+      
+      .hover-glow:hover {
+        box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+        transform: scale(1.02);
+      }
+      
+      /* Mobile & Tablet Responsive Optimizations */
+      @media (max-width: 640px) {
+        /* Mobile navigation improvements */
+        .gradient-text {
+          font-size: 0.8rem;
+          line-height: 1.1;
+          max-width: 50%;
+          text-align: center;
+        }
+        
+        /* Mobile header spacing */
+        header {
+          min-height: 50px;
+        }
+        
+        header nav {
+          width: 100%;
+          padding: 0.5rem 1rem;
+        }
+        
+        /* Mobile logo container */
+        header nav a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        
+        /* Mobile scroll padding */
+        html {
+          scroll-padding-top: 50px !important;
+        }
+        
+        /* Mobile animations - reduce motion for performance */
+        .animate-float {
+          animation-duration: 4s;
+        }
+        
+        .animate-float-slow {
+          animation-duration: 6s;
+        }
+        
+        /* Mobile hover effects - convert to touch */
+        .hover-lift:active {
+          transform: translateY(-5px) scale(1.02);
+        }
+        
+        .hover-glow:active {
+          box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+        }
+        
+        /* Mobile text sizes */
+        .text-4xl {
+          font-size: 2rem;
+        }
+        
+        .text-5xl {
+          font-size: 2.5rem;
+        }
+      }
+      
+      @media (min-width: 641px) and (max-width: 1024px) {
+        /* Tablet optimizations */
+        /* Tablet navigation */
+        .nav-link {
+          font-size: 0.9375rem;
+          padding: 0.75rem 1rem;
+        }
+        
+        /* Tablet animations */
+        .animate-float {
+          animation-duration: 5s;
+        }
+      }
+      
+      /* Touch device optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .hover-lift:hover {
+          transform: none;
+        }
+        
+        .hover-glow:hover {
+          box-shadow: none;
+        }
+        
+        /* Enable touch effects */
+        .hover-lift:active {
+          transform: translateY(-5px) scale(1.02);
+          transition: all 0.2s ease;
+        }
+        
+        .hover-glow:active {
+          box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+          transition: all 0.2s ease;
+        }
+        
+        /* Ensure touch targets are large enough */
+        button, .nav-link {
+          min-width: 44px;
+          min-height: 44px;
+        }
+      }
     </style>
   </head>
-  <body class="min-h-screen font-inter text-[#2d2d2d] bg-[#f5f3f0]" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
+  <body class="min-h-screen font-inter text-slate-800 bg-slate-50" onload="document.documentElement.style.visibility='visible';document.documentElement.style.opacity='1'">
     
-    <!-- Sticky top navigation -->
-    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-200 min-h-[50px] flex items-center relative">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between w-full" aria-label="Main navigation">
-        <a href="index.html" class="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text truncate max-w-[50%] sm:max-w-none">
-          <span class="hidden lg:inline">Modern Web & Mobile UI Projects</span>
-          <span class="hidden sm:inline lg:hidden">Modern UI Projects</span>
-          <span class="sm:hidden">Modern UI</span>
+    <!-- Premium Navigation Bar -->
+    <header class="sticky top-0 z-[9999] bg-white/95 backdrop-blur-xl border-b border-slate-200/50 min-h-[60px] flex items-center relative shadow-sm" style="pointer-events: auto;">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between w-full" aria-label="Main navigation" style="pointer-events: auto;">
+        <!-- Premium Logo/Brand -->
+        <a href="index.html" class="group flex items-center gap-3 text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate max-w-[50%] sm:max-w-none transition-all duration-300 hover:scale-105">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <span class="bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+            <span class="hidden lg:inline">Mutlu Kurt</span>
+            <span class="hidden sm:inline lg:hidden">Mutlu Kurt</span>
+            <span class="sm:hidden">MK</span>
+          </span>
         </a>
         
-        <!-- Desktop Navigation -->
-        <ul class="hidden lg:flex items-center gap-8 text-text">
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="index.html">Home</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="about.html">About</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="projects.html">Projects</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="work.html">My Work</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="demos.html">Project Demos</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="blog.html">Blog</a></li>
-          <li><a class="nav-link px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="links.html">Links</a></li>
+        <!-- Premium Desktop Navigation -->
+        <ul class="hidden lg:flex items-center gap-1 text-slate-700">
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="index.html">
+            <span>Home</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl bg-slate-100 text-slate-900 transition-all duration-300 font-medium relative group" href="about.html">
+            <span>About</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="projects.html">
+            <span>Projects</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="work.html">
+            <span>My Work</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="demos.html">
+            <span>Demos</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="blog.html">
+            <span>Blog</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
+          <li><a class="nav-link px-4 py-2.5 rounded-xl hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 font-medium relative group" href="links.html">
+            <span>Links</span>
+            <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          </a></li>
         </ul>
 
-        <!-- Mobile Menu Button -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-expanded="false" aria-label="Toggle mobile menu">
-          <svg class="w-6 h-6 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        <!-- Premium Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-3 rounded-xl hover:bg-slate-100 transition-all duration-300 group" aria-expanded="false" aria-label="Toggle mobile menu">
+          <div class="w-6 h-6 flex flex-col justify-center items-center gap-1">
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+            <span class="w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 group-hover:bg-slate-900"></span>
+          </div>
         </button>
         
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-[9998] hidden lg:hidden">
-          <nav class="py-2">
-            <a href="index.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Home</a>
-            <a href="about.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">About</a>
-            <a href="projects.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Projects</a>
-            <a href="work.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">My Work</a>
-            <a href="demos.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Project Demos</a>
-            <a href="blog.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors border-b border-gray-100">Blog</a>
-            <a href="links.html" class="block px-4 py-3 text-text hover:bg-gray-50 transition-colors">Links</a>
+        <!-- Premium Mobile Menu Dropdown -->
+        <div id="mobileMenuOverlay" class="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl shadow-xl border-t border-slate-200/50 z-[9998] hidden lg:hidden">
+          <nav class="py-4">
+            <a href="index.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Home</a>
+            <a href="about.html" class="block px-6 py-3 text-slate-700 bg-slate-50 text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">About</a>
+            <a href="projects.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Projects</a>
+            <a href="work.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">My Work</a>
+            <a href="demos.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Project Demos</a>
+            <a href="blog.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 border-b border-slate-100/50 font-medium">Blog</a>
+            <a href="links.html" class="block px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 font-medium">Links</a>
           </nav>
         </div>
       </nav>
     </header>
 
-    <main class="bg-[#f5f3f0] pt-16">
+    <main class="bg-slate-50">
       <!-- About Section -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div class="text-center mb-12">
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text mb-6 animate-fade-in-up">About Me</h1>
-          <p class="text-lg text-textSecondary max-w-2xl mx-auto">Frontend Developer crafting beautiful, fast, and user-friendly websites</p>
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl sm:text-5xl font-black text-slate-900 mb-6 animate-fade-in-up">About Me</h1>
+          <p class="text-xl text-slate-600 max-w-3xl mx-auto font-light">Frontend Developer crafting beautiful, fast, and user-friendly websites</p>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
           <!-- Left: Content -->
           <div class="order-2 lg:order-1">
-            <p class="text-textSecondary leading-relaxed mb-4">
+            <p class="text-slate-600 leading-relaxed mb-6 text-lg">
               Behind every successful digital product lies a well-structured foundation and a user experience that truly adds value. I combine design aesthetics with technical expertise to deliver solutions that are both visually striking and performance-driven.
             </p>
-            <p class="text-textSecondary leading-relaxed mb-4">
+            <p class="text-slate-600 leading-relaxed mb-6 text-lg">
               My projects follow an approach centered on modern web standards, accessibility, and speed. I create websites, e-commerce pages, and custom templates that help brands make a strong impression in the digital space. Whether it's a mobile-friendly interface or tailored functionality, I adapt each project to meet its unique needs.
             </p>
-            <p class="text-textSecondary leading-relaxed mb-4">
+            <p class="text-slate-600 leading-relaxed mb-6 text-lg">
               For me, development is not just about coding — it's about shaping the entire process, from the initial concept to the final user experience. As a result, my products are not only functional but also easy to use, aesthetically pleasing, and fit for purpose.
             </p>
-            <p class="text-textSecondary leading-relaxed mb-6">
+            <p class="text-slate-600 leading-relaxed mb-8 text-lg">
               Today, I offer my self-developed website templates through Shopier and Etsy, while remaining open to collaborations that value both functionality and creativity. My goal is to deliver solutions that highlight innovation, usability, and design excellence in every project.
             </p>
 
             <!-- Contact Info -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a href="mailto:mutlu@techie.com" class="flex items-center gap-3 p-4 bg-card rounded-xl hover:bg-cardHover transition-all group">
-                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 .5v.4l8 5 8-5v-.4L12 11 4 6.5z"/></svg>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 max-w-2xl mx-auto">
+              <a href="mailto:mutlu@techie.com" class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50 w-full sm:w-auto min-w-[280px]">
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                  <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0.5">
+                      <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
+                      <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
+                    </svg>
+                  </div>
+                  <span class="text-slate-900 font-semibold text-lg text-center sm:text-left">mutlu@techie.com</span>
                 </div>
-                <span class="text-text font-medium">mutlu@techie.com</span>
               </a>
-              <a href="tel:+905461583405" class="flex items-center gap-3 p-4 bg-card rounded-xl hover:bg-cardHover transition-all group">
-                <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.37c1.62.54 3.38.83 5.1.83.83 0 1.5.67 1.5 1.5V21a3 3 0 0 1-3 3C9.61 24 0 14.39 0 3a3 3 0 0 1 3-3h3.86c.83 0 1.5.67 1.5 1.5 0 1.72.29 3.48.83 5.1.17.54.04 1.14-.37 1.55L6.6 10.8z"/></svg>
+              <a href="tel:+905461583405" class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-red-300/50 w-full sm:w-auto min-w-[280px]">
+                <div class="flex items-center justify-center sm:justify-start gap-4">
+                  <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0.5">
+                      <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                    </svg>
+                  </div>
+                  <span class="text-slate-900 font-semibold text-lg text-center sm:text-left">+90 546 158 34 05</span>
                 </div>
-                <span class="text-text font-medium">+90 546 158 34 05</span>
               </a>
             </div>
           </div>
 
           <!-- Right: Skills Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 order-1 lg:order-2 mb-8 lg:mb-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 order-1 lg:order-2 mb-8 lg:mb-0">
             <!-- Technical Skills -->
-            <div class="bg-card rounded-xl p-4 sm:p-6 card-glow border border-gray-200">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Technical Skills</h3>
-              <div class="space-y-2 sm:space-y-3">
-                <div class="flex items-center gap-2 sm:gap-3">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span class="text-primary font-bold text-xs sm:text-sm">HTML</span>
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-blue-300/50">
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Technical Skills</h3>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                    <span class="text-blue-600 font-bold text-sm">HTML</span>
                   </div>
-                  <span class="text-textSecondary text-sm sm:text-base">HTML5</span>
+                  <span class="text-slate-600 text-base font-medium">HTML5</span>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-3">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span class="text-primary font-bold text-xs sm:text-sm">CSS</span>
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                    <span class="text-blue-600 font-bold text-sm">CSS</span>
                   </div>
-                  <span class="text-textSecondary text-sm sm:text-base">CSS3</span>
+                  <span class="text-slate-600 text-base font-medium">CSS3</span>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-3">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span class="text-primary font-bold text-xs sm:text-sm">JS</span>
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                    <span class="text-blue-600 font-bold text-sm">JS</span>
                   </div>
-                  <span class="text-textSecondary text-sm sm:text-base">JavaScript</span>
+                  <span class="text-slate-600 text-base font-medium">JavaScript</span>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-3">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span class="text-primary font-bold text-xs sm:text-sm">RN</span>
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-600/20 flex items-center justify-center border border-blue-200">
+                    <span class="text-blue-600 font-bold text-sm">RN</span>
                   </div>
-                  <span class="text-textSecondary text-sm sm:text-base">React Native</span>
+                  <span class="text-slate-600 text-base font-medium">React Native</span>
                 </div>
               </div>
             </div>
 
             <!-- Education -->
-            <div class="bg-card rounded-xl p-4 sm:p-6 card-glow border border-gray-200">
-              <h3 class="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Education</h3>
-              <div class="space-y-2 sm:space-y-3">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-slate-200/50 hover:border-emerald-300/50">
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Education</h3>
+              <div class="space-y-4">
                 <div>
-                  <div class="text-text font-medium text-sm sm:text-base">Çankırı Karatekin University</div>
-                  <div class="text-textSecondary text-xs sm:text-sm">Labour Economics and Industrial Relations</div>
-                  <div class="text-primary text-xs sm:text-sm">2022 → Now</div>
+                  <div class="text-slate-900 font-semibold text-base">Çankırı Karatekin University</div>
+                  <div class="text-slate-600 text-sm">Labour Economics and Industrial Relations</div>
+                  <div class="text-blue-600 text-sm font-medium">2022 → Now</div>
                 </div>
-                <div class="pt-2 border-t border-gray-200">
-                  <div class="text-text font-medium text-sm sm:text-base">Anadolu University</div>
-                  <div class="text-textSecondary text-xs sm:text-sm">Web Design and Coding</div>
-                  <div class="text-primary text-xs sm:text-sm">Graduated 2022</div>
+                <div class="pt-4 border-t border-slate-200">
+                  <div class="text-slate-900 font-semibold text-base">Anadolu University</div>
+                  <div class="text-slate-600 text-sm">Web Design and Coding</div>
+                  <div class="text-blue-600 text-sm font-medium">Graduated 2022</div>
                 </div>
               </div>
             </div>
@@ -204,9 +465,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-card border-t border-gray-200">
+    <footer class="bg-white border-t border-slate-200 mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center text-textSecondary border-t border-gray-200 pt-8">
+        <div class="text-center text-slate-600 border-t border-slate-200 pt-8">
           <div class="text-sm mb-2">© <span id="y"></span> Mutlu Kurt. All rights reserved.</div>
           <div class="text-xs">
             <span class="font-medium">Built with:</span> 
