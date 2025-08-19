@@ -63,7 +63,7 @@
       
       /* 3D Hero Illustration Animation */
       @media (prefers-reduced-motion: no-preference) {
-        .hero-3d {
+        .hero-3d { 
           animation: heroFloat 8s ease-in-out infinite alternate;
           transform-origin: 50% 60%;
           will-change: transform;
@@ -72,7 +72,7 @@
           0%   { transform: translateY(0) rotateZ(-0.6deg); }
           100% { transform: translateY(-8px) rotateZ(0.6deg); }
         }
-        .hero-3d .card { filter: drop-shadow(0 18px 28px rgba(20,24,40,.18)); }
+        .card { filter: drop-shadow(0 18px 28px rgba(16,24,40,.18)); }
       }
       
       /* Professional Animations */
@@ -439,6 +439,11 @@
         .hero-3d {
           loading: lazy;
         }
+        
+        /* Mobile spacing for hero */
+        .hero-content {
+          gap: 2rem;
+        }
         .scroll-to-top {
           width: 50px;
           height: 50px;
@@ -564,6 +569,11 @@
         .hero-3d {
           max-width: 420px !important;
           margin: 0 auto;
+        }
+        
+        /* Tablet hero spacing */
+        .hero-content {
+          gap: 2.5rem;
         }
         
         .scroll-to-top {
@@ -1118,11 +1128,12 @@
           <div class="relative flex justify-center lg:justify-end">
             <div class="relative max-w-[520px] md:max-w-[560px] w-full aspect-[4/3] animate-fade-in-right delay-200">
               <img src="assets/hero-3d-illustration.svg" 
+                   class="hero-3d" 
                    alt="Isometric UI illustration showing modern web interface cards and analytics" 
-                   class="w-full h-auto hero-3d" 
+                   width="560" 
+                   height="360" 
                    decoding="async" 
-                   loading="eager"
-                   style="max-width: 520px; width: 100%; height: auto;" />
+                   loading="eager" />
             </div>
           </div>
         </div>
