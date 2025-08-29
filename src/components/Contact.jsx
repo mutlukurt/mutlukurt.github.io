@@ -33,9 +33,9 @@ const Contact = () => {
     
     try {
       // EmailJS configuration
-      const serviceID = 'service_mutlukurt' // EmailJS service ID'nizi buraya yazın
-      const templateID = 'template_contact' // EmailJS template ID'nizi buraya yazın  
-      const publicKey = 'YOUR_PUBLIC_KEY' // EmailJS public key'inizi buraya yazın
+      const serviceID = 'service_qx2ir9c' // EmailJS service ID
+      const templateID = 'template_wes9ayp' // EmailJS template ID  
+      const publicKey = 'AvlYJZYPkW4CVcrOF' // EmailJS public key
       
       const templateParams = {
         from_name: formData.name,
@@ -43,7 +43,7 @@ const Contact = () => {
         subject: formData.subject,
         message: formData.message,
         to_name: 'Mutlu Kurt',
-        to_email: 'mutlukurt@gmail.com' // Sizin mail adresiniz
+        to_email: 'mutlukurta@gmail.com' // Sizin mail adresiniz
       }
       
       await emailjs.send(serviceID, templateID, templateParams, publicKey)
