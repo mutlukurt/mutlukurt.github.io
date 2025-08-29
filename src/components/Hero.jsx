@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import TechIcons from './TechIcons'
 import { LightningIcon, RocketIcon } from './icons/TechSvgIcons'
-import profilePhoto from '../assets/IMG_6202.JPG'
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -124,7 +123,7 @@ const Hero = () => {
                 <div className="relative w-full h-full bg-gradient-to-r from-primary-500 to-blue-500 rounded-full p-2">
                   <div className="w-full h-full bg-white rounded-full p-2">
                     <img
-                      src={profilePhoto}
+                      src="/IMG_6202.JPG"
                       alt="Mutlu Kurt - Software Developer"
                       className="w-full h-full profile-photo rounded-full shadow-large"
                     />

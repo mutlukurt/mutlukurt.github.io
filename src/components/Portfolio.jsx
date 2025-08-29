@@ -3,14 +3,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github } from 'lucide-react'
 
-// Import project images
-import prestigeMotorsImg from '../assets/prestige-motors.png'
-import elaraVanceImg from '../assets/elara-vance.png'
-import alexCorbinImg from '../assets/alex-corbin-portfolio.png'
-import dashProImg from '../assets/dash-pro.png'
-import novaVaultImg from '../assets/nova-vault-web3-wallet.png'
-import foodFunImg from '../assets/food-fun.png'
-
 const Portfolio = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -24,7 +16,7 @@ const Portfolio = () => {
       id: 1,
       title: "Prestige Motors",
       description: "Luxury car dealership website with modern design and smooth animations. Features vehicle showcase, booking system, and responsive layout.",
-      image: prestigeMotorsImg,
+      image: "/prestige-motors.png",
       link: "https://mutlukurt.github.io/prestige-motors/",
       github: "#",
       category: "web",
@@ -34,7 +26,7 @@ const Portfolio = () => {
       id: 2,
       title: "Elara Vance Portfolio",
       description: "Personal portfolio website with creative design and interactive elements. Showcases work with elegant typography and smooth transitions.",
-      image: elaraVanceImg,
+      image: "/elara-vance.png",
       link: "https://mutlukurt.github.io/elara-vance-portfolio/",
       github: "#",
       category: "web",
@@ -44,7 +36,7 @@ const Portfolio = () => {
       id: 3,
       title: "Alex Corbin Portfolio",
       description: "Creative portfolio website with unique layout and engaging animations. Features project showcase and contact integration.",
-      image: alexCorbinImg,
+      image: "/alex-corbin-portfolio.png",
       link: "https://mutlukurt.github.io/alex-corbin-portfolio/",
       github: "#",
       category: "web",
@@ -54,7 +46,7 @@ const Portfolio = () => {
       id: 4,
       title: "DashPro",
       description: "Professional dashboard template with clean UI and comprehensive data visualization. Perfect for business analytics and management.",
-      image: dashProImg,
+      image: "/dash-pro.png",
       link: "https://mutlukurt.github.io/dashpro/",
       github: "#",
       category: "web",
@@ -64,7 +56,7 @@ const Portfolio = () => {
       id: 5,
       title: "NovaVault Web3",
       description: "Modern Web3 wallet landing page with cryptocurrency features and blockchain integration. Secure and user-friendly interface.",
-      image: novaVaultImg,
+      image: "/nova-vault-web3-wallet.png",
       link: "https://mutlukurt.github.io/NovaVault-Web3-Landing/",
       github: "#",
       category: "web",
@@ -74,7 +66,7 @@ const Portfolio = () => {
       id: 6,
       title: "Food Fun",
       description: "Restaurant website template with appetizing design and online ordering system. Features menu showcase and reservation booking.",
-      image: foodFunImg,
+      image: "/food-fun.png",
       link: "https://mutlukurt.github.io/foodfun/",
       github: "#",
       category: "web",
