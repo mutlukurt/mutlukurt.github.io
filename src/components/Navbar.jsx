@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import CodingIcon from './icons/CodingIcon'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -82,7 +83,7 @@ const Navbar = () => {
             className="flex items-center space-x-2"
           >
             <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">MK</span>
+              <CodingIcon className="w-6 h-6" color="white" />
             </div>
             <span className="text-xl font-bold text-gray-900">Mutlu Kurt</span>
           </motion.div>

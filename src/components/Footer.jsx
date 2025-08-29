@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowUp } from 'lucide-react'
+import CodingIcon from './icons/CodingIcon'
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -65,7 +66,7 @@ const Footer = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-blue-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">MK</span>
+                    <CodingIcon className="w-7 h-7" color="white" />
                   </div>
                   <h3 className="text-2xl font-bold">Mutlu Kurt</h3>
                 </div>
