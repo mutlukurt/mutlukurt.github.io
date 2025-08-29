@@ -18,9 +18,9 @@ const Portfolio = () => {
       description: "Luxury car dealership website with modern design and smooth animations. Features vehicle showcase, booking system, and responsive layout.",
       image: "/prestige-motors.png",
       link: "https://mutlukurt.github.io/prestige-motors/",
-      github: "#",
+      github: "https://github.com/mutlukurt/prestige-motors",
       category: "web",
-      technologies: ["React", "Tailwind CSS", "Framer Motion"]
+      technologies: ["HTML", "CSS", "JavaScript"]
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Portfolio = () => {
       description: "Personal portfolio website with creative design and interactive elements. Showcases work with elegant typography and smooth transitions.",
       image: "/elara-vance.png",
       link: "https://mutlukurt.github.io/elara-vance-portfolio/",
-      github: "#",
+      github: "https://github.com/mutlukurt/elara-vance-portfolio",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript"]
     },
@@ -38,9 +38,9 @@ const Portfolio = () => {
       description: "Creative portfolio website with unique layout and engaging animations. Features project showcase and contact integration.",
       image: "/alex-corbin-portfolio.png",
       link: "https://mutlukurt.github.io/alex-corbin-portfolio/",
-      github: "#",
+      github: "https://github.com/mutlukurt/alex-corbin-portfolio",
       category: "web",
-      technologies: ["React", "CSS3", "Animations"]
+      technologies: ["HTML", "CSS", "JavaScript"]
     },
     {
       id: 4,
@@ -48,9 +48,9 @@ const Portfolio = () => {
       description: "Professional dashboard template with clean UI and comprehensive data visualization. Perfect for business analytics and management.",
       image: "/dash-pro.png",
       link: "https://mutlukurt.github.io/dashpro/",
-      github: "#",
+      github: "https://github.com/mutlukurt/dashpro",
       category: "web",
-      technologies: ["React", "Chart.js", "Tailwind CSS"]
+      technologies: ["React", "Tailwind CSS", "Recharts"]
     },
     {
       id: 5,
@@ -58,9 +58,9 @@ const Portfolio = () => {
       description: "Modern Web3 wallet landing page with cryptocurrency features and blockchain integration. Secure and user-friendly interface.",
       image: "/nova-vault-web3-wallet.png",
       link: "https://mutlukurt.github.io/NovaVault-Web3-Landing/",
-      github: "#",
+      github: "https://github.com/mutlukurt/NovaVault-Web3-Landing",
       category: "web",
-      technologies: ["React", "Web3.js", "Tailwind CSS"]
+      technologies: ["HTML", "CSS", "JavaScript", "Python"]
     },
     {
       id: 6,
@@ -68,7 +68,7 @@ const Portfolio = () => {
       description: "Restaurant website template with appetizing design and online ordering system. Features menu showcase and reservation booking.",
       image: "/food-fun.png",
       link: "https://mutlukurt.github.io/foodfun/",
-      github: "#",
+      github: "https://github.com/mutlukurt/foodfun",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript"]
     }
