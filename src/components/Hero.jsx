@@ -22,13 +22,13 @@ const Hero = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-screen">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left space-y-8"
+            className="text-center lg:text-left space-y-8 relative z-20 order-2 lg:order-1"
           >
             {/* Main Heading */}
             <div className="space-y-4">
@@ -108,7 +108,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center lg:justify-end relative z-10 order-1 lg:order-2"
           >
             <motion.div
               animate={{ y: [0, -20, 0] }}
