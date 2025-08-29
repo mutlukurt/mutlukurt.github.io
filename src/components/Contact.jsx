@@ -53,14 +53,14 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      content: "+90 555 123 4567",
-      link: "tel:+905551234567",
+      content: "+90 546 158 3405",
+      link: "tel:+905461583405",
       color: "from-green-500 to-green-600"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      content: "Ankara, Turkey",
+      content: "Istanbul, Turkey",
       link: "#",
       color: "from-red-500 to-red-600"
     }
