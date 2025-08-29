@@ -24,11 +24,44 @@ const Navbar = () => {
   ]
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-    setIsOpen(false)
+    console.log('Navigating to:', href) // Debug için
+    setIsOpen(false) // Önce menüyü kapat
+    
+    // Menünün kapanması için kısa bir gecikme
+    setTimeout(() => {
+      const element = document.querySelector(href)
+      console.log('Element found:', element) // Debug için
+      
+      if (element) {
+        // Manuel hesaplama ile kesin pozisyonlama
+        const navbar = document.querySelector('nav')
+        const navbarHeight = navbar ? navbar.offsetHeight : 80
+        
+        // Element'in sayfa üstünden uzaklığını al
+        const elementRect = element.getBoundingClientRect()
+        const absoluteElementTop = elementRect.top + window.pageYOffset
+        
+        // Navbar yüksekliği + 30px padding çıkar (section'ın başının görünür olması için)
+        const targetPosition = absoluteElementTop - navbarHeight - 30
+        
+        console.log('Navbar height:', navbarHeight) // Debug için
+        console.log('Element top:', absoluteElementTop) // Debug için
+        console.log('Target position:', targetPosition) // Debug için
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        })
+        
+        // Scroll tamamlandıktan sonra kontrol et
+        setTimeout(() => {
+          const currentScroll = window.pageYOffset
+          console.log('Final scroll position:', currentScroll) // Debug için
+        }, 1000)
+      } else {
+        console.log('Element not found for:', href) // Debug için
+      }
+    }, 200) // Biraz daha uzun gecikme menü animasyonu için
   }
 
   return (

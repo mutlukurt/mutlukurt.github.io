@@ -30,7 +30,17 @@ const Footer = () => {
     if (href.startsWith('#')) {
       const element = document.querySelector(href)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        const navbar = document.querySelector('nav')
+        const navbarHeight = navbar ? navbar.offsetHeight : 80
+        
+        const elementRect = element.getBoundingClientRect()
+        const absoluteElementTop = elementRect.top + window.pageYOffset
+        const targetPosition = absoluteElementTop - navbarHeight - 30
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        })
       }
     } else {
       window.open(href, '_blank', 'noopener,noreferrer')

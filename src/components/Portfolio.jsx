@@ -252,7 +252,17 @@ const Portfolio = () => {
               Interested in working together? Let's create something amazing!
             </p>
             <motion.button
-              onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const element = document.querySelector('#contact')
+                if (element) {
+                  const navbar = document.querySelector('nav')
+                  const navbarHeight = navbar ? navbar.offsetHeight : 80
+                  const elementRect = element.getBoundingClientRect()
+                  const absoluteElementTop = elementRect.top + window.pageYOffset
+                  const targetPosition = absoluteElementTop - navbarHeight - 30
+                  window.scrollTo({ top: Math.max(0, targetPosition), behavior: 'smooth' })
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-primary"
