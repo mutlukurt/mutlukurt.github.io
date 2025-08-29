@@ -34,15 +34,6 @@ const About = () => {
 
   const educationData = [
     {
-      icon: <GraduationCap className="w-6 h-6" />,
-      title: "Labor Economics",
-      institution: "Çankırı Karatekin University",
-      period: "2022 - Present",
-      type: "Bachelor's Degree - Senior Year",
-      description: "Currently in my final year as a senior student, specializing in economic analysis and labor market dynamics.",
-      color: "from-green-500 to-green-600"
-    },
-    {
       icon: <Palette className="w-6 h-6" />,
       title: "Visual Communication Design",
       institution: "Anadolu University",
@@ -50,6 +41,15 @@ const About = () => {
       type: "Bachelor's Degree",
       description: "Currently pursuing my bachelor's degree, focusing on modern design principles and digital communication.",
       color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: <GraduationCap className="w-6 h-6" />,
+      title: "Labor Economics",
+      institution: "Çankırı Karatekin University",
+      period: "2022 - Present",
+      type: "Bachelor's Degree - Senior Year",
+      description: "Currently in my final year as a senior student, specializing in economic analysis and labor market dynamics.",
+      color: "from-green-500 to-green-600"
     },
     {
       icon: <Code className="w-6 h-6" />,
