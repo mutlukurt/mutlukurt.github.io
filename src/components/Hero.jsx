@@ -8,7 +8,17 @@ const Hero = () => {
   const scrollToAbout = () => {
     const element = document.querySelector('#about')
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const navbar = document.querySelector('nav')
+      const navbarHeight = navbar ? navbar.offsetHeight : 80
+      
+      const elementRect = element.getBoundingClientRect()
+      const absoluteElementTop = elementRect.top + window.pageYOffset
+      const targetPosition = absoluteElementTop - navbarHeight - 30
+      
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: 'smooth'
+      })
     }
   }
 
@@ -85,7 +95,17 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full max-w-md sm:max-w-none mx-auto lg:mx-0"
             >
               <motion.button
-                onClick={() => document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const element = document.querySelector('#portfolio')
+                  if (element) {
+                    const navbar = document.querySelector('nav')
+                    const navbarHeight = navbar ? navbar.offsetHeight : 80
+                    const elementRect = element.getBoundingClientRect()
+                    const absoluteElementTop = elementRect.top + window.pageYOffset
+                    const targetPosition = absoluteElementTop - navbarHeight - 30
+                    window.scrollTo({ top: Math.max(0, targetPosition), behavior: 'smooth' })
+                  }
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary"
@@ -93,7 +113,17 @@ const Hero = () => {
                 View My Work
               </motion.button>
               <motion.button
-                onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const element = document.querySelector('#contact')
+                  if (element) {
+                    const navbar = document.querySelector('nav')
+                    const navbarHeight = navbar ? navbar.offsetHeight : 80
+                    const elementRect = element.getBoundingClientRect()
+                    const absoluteElementTop = elementRect.top + window.pageYOffset
+                    const targetPosition = absoluteElementTop - navbarHeight - 30
+                    window.scrollTo({ top: Math.max(0, targetPosition), behavior: 'smooth' })
+                  }
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-secondary"
