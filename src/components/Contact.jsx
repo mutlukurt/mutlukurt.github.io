@@ -32,10 +32,15 @@ const Contact = () => {
     setIsSubmitting(true)
     
     try {
-      // EmailJS configuration
-      const serviceID = 'service_mutlukurt' // EmailJS service ID'nizi buraya yazın
-      const templateID = 'template_contact' // EmailJS template ID'nizi buraya yazın  
-      const publicKey = 'YOUR_PUBLIC_KEY' // EmailJS public key'inizi buraya yazın
+      // EmailJS configuration - Using environment variables for security
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID  
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      
+      // Check if environment variables are loaded
+      if (!serviceID || !templateID || !publicKey) {
+        throw new Error('EmailJS configuration missing. Please check environment variables.')
+      }
       
       const templateParams = {
         from_name: formData.name,
@@ -43,7 +48,7 @@ const Contact = () => {
         subject: formData.subject,
         message: formData.message,
         to_name: 'Mutlu Kurt',
-        to_email: 'mutlukurt@gmail.com' // Sizin mail adresiniz
+        to_email: import.meta.env.VITE_EMAIL_TO
       }
       
       await emailjs.send(serviceID, templateID, templateParams, publicKey)
