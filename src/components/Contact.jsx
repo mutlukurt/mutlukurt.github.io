@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -30,16 +31,34 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitStatus('success')
-      setIsSubmitting(false)
-      setFormData({ name: '', email: '', subject: '', message: '' })
+    try {
+      // EmailJS configuration
+      const serviceID = 'service_mutlukurt' // EmailJS service ID'nizi buraya yazın
+      const templateID = 'template_contact' // EmailJS template ID'nizi buraya yazın  
+      const publicKey = 'YOUR_PUBLIC_KEY' // EmailJS public key'inizi buraya yazın
       
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Mutlu Kurt',
+        to_email: 'mutlukurt@gmail.com' // Sizin mail adresiniz
+      }
+      
+      await emailjs.send(serviceID, templateID, templateParams, publicKey)
+      
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      console.error('Email gönderme hatası:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
       setTimeout(() => {
         setSubmitStatus(null)
       }, 5000)
-    }, 2000)
+    }
   }
 
   const contactInfo = [
@@ -304,6 +323,17 @@ const Contact = () => {
                     className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg"
                   >
                     ✅ Thank you! Your message has been sent successfully. I'll get back to you soon.
+                  </motion.div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg"
+                  >
+                    ❌ Sorry, there was an error sending your message. Please try again or contact me directly.
                   </motion.div>
                 )}
               </form>
