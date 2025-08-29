@@ -56,12 +56,24 @@ A modern, responsive portfolio website built with React, Tailwind CSS, and Frame
    npm install
    ```
 
-3. Start the development server:
+3. Setup environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Then edit `.env` file and add your EmailJS credentials:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id_here
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+   VITE_EMAIL_TO=your_email@example.com
+   ```
+
+4. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Build for Production
 
@@ -70,6 +82,29 @@ npm run build
 ```
 
 The build files will be generated in the `dist` folder.
+
+## ⚙️ EmailJS Configuration
+
+This project uses EmailJS for the contact form. To set it up:
+
+### For Local Development:
+1. Create a `.env` file in the root directory
+2. Add your EmailJS credentials (see `.env.example`)
+
+### For GitHub Pages Deployment:
+1. Go to your GitHub repository settings
+2. Navigate to **Secrets and variables** → **Actions**
+3. Add the following repository secrets:
+   - `VITE_EMAILJS_SERVICE_ID`
+   - `VITE_EMAILJS_TEMPLATE_ID`
+   - `VITE_EMAILJS_PUBLIC_KEY`
+   - `VITE_EMAIL_TO`
+
+### Getting EmailJS Credentials:
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create a new service (Gmail, Outlook, etc.)
+3. Create an email template
+4. Get your Service ID, Template ID, and Public Key
 
 ### Preview Production Build
 
